@@ -19,7 +19,6 @@ const truncateString = (str: string, startChars: number, endChars: number): stri
 const formatSender = (sender: string) => truncateString(sender, 10, 10);
 
 const Template14: React.FC<Template14Props> = ({ formData }) => {
-  console.log("🚀 ~ Template14 ~ formData:", formData);
 
   // Prepare formatted values with fallbacks
   const senderFormatted = formatSender(formData.sender || "TBzgJv9jWwpRsSTpuvJ");

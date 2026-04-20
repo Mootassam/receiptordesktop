@@ -63,7 +63,6 @@ function Sidebar({
   formData,
   setFormData,
 }) {
-  console.log("🚀 ~ Sidebar ~ value:", value)
   // Template field label mappings
   const templateFieldLabels = {
     template1: {
@@ -221,7 +220,6 @@ function Sidebar({
   };
 
   const fieldLabels = getCurrentFieldLabels();
-  console.log("🚀 ~ Sidebar ~ fieldLabels:", fieldLabels)
   const [selectedCoin, setSelectedCoin] = useState("USDT");
   const [showEditModal, setShowEditModal] = useState(false);
   const [language, setLanguage] = useState("english");
@@ -358,9 +356,6 @@ function Sidebar({
   };
 
   const handleSave = () => {
-    console.log("Saved data:", formData);
-    console.log("Random data enabled:", randomData);
-    console.log("Selected coin:", selectedCoin);
     setShowEditModal(false);
   };
 

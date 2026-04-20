@@ -2,6 +2,9 @@
 /dist_electron
 /app/dist
 /app/node_modules
+/app/build
+.cursor
+/app/node_modules
 /.vscode
  .vite
 

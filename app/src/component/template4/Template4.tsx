@@ -39,7 +39,6 @@ const response = await axios.get(
         const rate = data.ethereum?.usd;
         if (rate && typeof rate === 'number' && rate > 0) {
           setEthUsdRate(rate);
-          console.log('Template4 - ETH rate from API:', rate);
         } else {
           throw new Error('Invalid rate data');
         }

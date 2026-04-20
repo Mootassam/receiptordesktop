@@ -29,7 +29,6 @@ const Template18: React.FC<Template18Props> = ({ formData }) => {
         const rate = data.ethereum?.usd;
         if (rate && typeof rate === 'number' && rate > 0) {
           setEthUsdRate(rate);
-          console.log('Template18 - ETH rate from API:', rate);
         } else {
           throw new Error('Invalid rate data');
         }

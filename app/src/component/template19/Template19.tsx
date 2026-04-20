@@ -28,7 +28,6 @@ const Template19: React.FC<Template19Props> = ({ formData }) => {
         const rate = data.bitcoin?.usd;
         if (rate && typeof rate === 'number' && rate > 0) {
           setBtcUsdRate(rate);
-          console.log('Template19 - BTC rate from API:', rate);
         } else {
           throw new Error('Invalid rate data');
         }
