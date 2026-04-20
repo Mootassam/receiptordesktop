@@ -1,9 +1,8 @@
-
 import React from "react";
 import { useDispatch } from "react-redux";
 import { i18n } from "../../../i18n";
 import actions from "../../../modules/auth/authActions";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 function EmptyPermissionsPage() {
   const dispatch = useDispatch();
@@ -12,190 +11,215 @@ function EmptyPermissionsPage() {
     dispatch(actions.doSignout());
   };
 
-  const contactSupport = () => {
-    // In a real app, this would open support contact or redirect
-    alert("Redirecting to customer support...");
-  };
-
   return (
-    <div className="empty__page">
+    <div className="activation-page">
+      <div className="activation-container">
+        <div className="activation-card">
+          <h1 className="activation-title">Almost There!</h1>
+          <p className="activation-description">
+            Your account has been successfully registered and is ready for activation.
+          </p>
+
+          <p className="activation-instruction">
+            To complete your registration and access your account, please contact our 
+            customer support team. They will guide you through the final activation steps.
+          </p>
+
+          <div className="action-buttons">
+            <Link to="/LiveChat" className="primary-button">
+              Contact Support to Activate
+            </Link>
+            <button className="secondary-button" onClick={doSignout}>
+              {i18n("auth.signout")}
+            </button>
+          </div>
+
+          <div className="support-footer">
+            <p className="support-heading">Need help?</p>
+            <p className="support-email">
+              Email us at{" "}
+              <a href="mailto:OneClick.helpdesk01@gmail.com">
+                OneClick.helpdesk01@gmail.com
+              </a>
+            </p>
+            <p className="support-hours">
+              Our team is available 24/7 to assist with activation.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <style>{`
-        .empty__page {
-          background-color: #000000;
-          color: #FFFFFF;
+        .activation-page {
           min-height: 100vh;
+          background-color: #e8f1f8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 24px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .activation-container {
+          width: 100%;
+          max-width: 520px;
+        }
+
+        .activation-card {
+          background: white;
+          border-radius: 28px;
+          padding: 44px 40px;
+          box-shadow: 0 20px 35px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.03);
+          text-align: center;
+          animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .activation-title {
+          font-size: 34px;
+          font-weight: 700;
+          color: #1a252f;
+          margin: 0 0 16px 0;
+          letter-spacing: -0.5px;
+        }
+
+        .activation-description {
+          font-size: 18px;
+          color: #3d566e;
+          margin: 0 0 32px 0;
+          line-height: 1.5;
+          font-weight: 500;
+        }
+
+        .activation-instruction {
+          font-size: 16px;
+          color: #5e6f7e;
+          line-height: 1.6;
+          margin: 0 0 36px 0;
+        }
+
+        .action-buttons {
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          padding: 20px;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          gap: 12px;
+          margin-bottom: 36px;
         }
-        
-        .imgEle {
-          width: 150px;
-          height: 150px;
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
-          margin-bottom: 30px;
-          opacity: 0.8;
-        }
-        
-        .empty__text {
-          text-align: center;
-          max-width: 500px;
-          background-color: #1A1A1A;
-          padding: 40px 30px;
-          border-radius: 16px;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-        
-        .empty__text h3 {
-          color: #F3BA2F;
-          font-size: 20px;
-          font-weight: bold;
-          margin-bottom: 20px;
-          line-height: 1.5;
-        }
-        
-        .empty__text p {
-          color: #AAAAAA;
-          font-size: 16px;
-          line-height: 1.6;
-          margin-bottom: 30px;
-        }
-        
-        .button-group {
-          display: flex;
-          gap: 15px;
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-        
-        .support-button {
-          background-color: #F3BA2F;
-          color: #000000;
+
+        .primary-button {
+          background: #1a252f;
+          color: white;
           border: none;
-          border-radius: 8px;
-          padding: 12px 24px;
-          font-size: 14px;
-          font-weight: bold;
+          border-radius: 14px;
+          padding: 16px 20px;
+          font-size: 16px;
+          font-weight: 600;
           cursor: pointer;
-          transition: all 0.3s ease;
-          min-width: 160px;
+          transition: all 0.25s;
+          text-decoration: none;
+          display: block;
+          text-align: center;
+          box-shadow: 0 6px 14px rgba(26, 37, 47, 0.15);
         }
-        
-        .support-button:hover {
-          background-color: #e0ab29;
+
+        .primary-button:hover {
+          background: #2c3e50;
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(243, 186, 47, 0.3);
+          box-shadow: 0 10px 20px rgba(26, 37, 47, 0.2);
         }
-        
-        .logout-button {
-          background-color: transparent;
-          color: #F3BA2F;
-          border: 2px solid #F3BA2F;
-          border-radius: 8px;
-          padding: 12px 24px;
-          font-size: 14px;
-          font-weight: bold;
+
+        .secondary-button {
+          background: transparent;
+          color: #5e6f7e;
+          border: 1.5px solid #d0dde8;
+          border-radius: 14px;
+          padding: 14px 20px;
+          font-size: 15px;
+          font-weight: 500;
           cursor: pointer;
-          transition: all 0.3s ease;
-          min-width: 160px;
+          transition: all 0.2s;
         }
-        
-        .logout-button:hover {
-          background-color: rgba(243, 186, 47, 0.1);
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(243, 186, 47, 0.2);
+
+        .secondary-button:hover {
+          background: #f1f5f9;
+          border-color: #a0bbd0;
+          color: #2c3e50;
         }
-        
-        .contact-info {
-          margin-top: 25px;
-          padding-top: 25px;
-          border-top: 1px solid #2A2A2A;
+
+        .support-footer {
+          border-top: 1px solid #e2e8f0;
+          padding-top: 28px;
+          margin-top: 8px;
         }
-        
-        .contact-info p {
-          color: #777777;
+
+        .support-heading {
+          font-size: 15px;
+          font-weight: 600;
+          color: #1a252f;
+          margin: 0 0 10px 0;
+        }
+
+        .support-email {
           font-size: 14px;
-          margin-bottom: 8px;
+          color: #5e6f7e;
+          margin: 0 0 10px 0;
         }
-        
-        .email-link {
-          color: #F3BA2F;
+
+        .support-email a {
+          color: #4a90e2;
           text-decoration: none;
           font-weight: 500;
-          transition: opacity 0.2s;
         }
-        
-        .email-link:hover {
-          opacity: 0.8;
+
+        .support-email a:hover {
           text-decoration: underline;
         }
-        
+
+        .support-hours {
+          font-size: 13px;
+          color: #8a9aaa;
+          margin: 0;
+        }
+
+        /* Responsive */
         @media (max-width: 480px) {
-          .empty__text {
-            padding: 30px 20px;
-            margin: 0 15px;
+          .activation-page {
+            padding: 16px;
+            align-items: flex-start;
           }
-          
-          .empty__text h3 {
-            font-size: 18px;
+
+          .activation-card {
+            padding: 36px 24px;
+            border-radius: 24px;
           }
-          
-          .button-group {
-            flex-direction: column;
-            align-items: center;
+
+          .activation-title {
+            font-size: 30px;
           }
-          
-          .support-button,
-          .logout-button {
-            width: 100%;
-            max-width: 280px;
+
+          .activation-description {
+            font-size: 16px;
+          }
+
+          .activation-instruction {
+            font-size: 15px;
+          }
+
+          .primary-button,
+          .secondary-button {
+            padding: 14px 16px;
           }
         }
       `}</style>
-
-
-      <div className="empty__text">
-        <h3>ACCOUNT SUSPENDED</h3>
-        <p>
-          Your account has been temporarily suspended due to violation of our Terms of Service.
-          Please contact our customer support team to resolve this issue and restore your account access.
-        </p>
-        <p>
-          We've also sent detailed information to your registered email address.
-          Please check your inbox and spam folder for updates regarding your account status.
-        </p>
-
-        <div className="button-group">
-          <Link
-            className="support-button remove_blue"
-            to="/LiveChat"
-          >
-            CONTACT SUPPORT
-          </Link>
-          <button
-            className="logout-button"
-            type="button"
-            onClick={doSignout}
-          >
-            {i18n("auth.signout")}
-          </button>
-        </div>
-
-        <div className="contact-info">
-          <p>Need immediate assistance?</p>
-          <p>
-            Email us at:{" "}
-            <a href="mailto:OneClick.helpdesk01@gmail.com" className="email-link">
-              OneClick.helpdesk01@gmail.com
-            </a>
-          </p>
-        </div>
-      </div>
     </div>
   );
 }

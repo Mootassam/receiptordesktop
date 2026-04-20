@@ -3,334 +3,230 @@ import { Link } from "react-router-dom";
 
 function Error404Page() {
   return (
-    <div className="error404-container">
-      {/* Header Section - Matching Other Pages */}
-      <div className="header">
-        <div className="nav-bar">
-  
-          <div className="page-title">404 Error</div>
-        </div>
-      </div>
-
-      {/* Content Card - Matching Other Pages */}
-      <div className="content-card">
-        <div className="error404-content">
+    <div className="error-page">
+      <div className="error-container">
+        <div className="error-card">
           {/* Crypto Animation */}
           <div className="crypto-animation">
-            <div className="crypto-icon btc-icon">
-              <i className="fab fa-btc" />
-            </div>
-            <div className="crypto-icon eth-icon">
-              <i className="fab fa-ethereum" />
-            </div>
-            <div className="crypto-icon usdt-icon">
-              <i className="fas fa-dollar-sign" />
-            </div>
-          </div>
-
-          {/* Error Icon */}
-          <div className="error-icon">
-            <i className="fas fa-exclamation-circle" />
+            <div className="crypto-coin btc">₿</div>
+            <div className="crypto-coin eth">Ξ</div>
+            <div className="crypto-coin usdt">₮</div>
           </div>
 
           {/* Error Code */}
-          <h1 className="error-code">404</h1>
+          <div className="error-code">404</div>
 
           {/* Error Title */}
-          <h2 className="error-title">Page Not Found</h2>
+          <h1 className="error-title">Page Not Found</h1>
 
           {/* Error Message */}
           <p className="error-message">
-            The page you're looking for doesn't exist. It might have been moved or
-            you entered the wrong address.
+            The page you're looking for doesn't exist or has been moved.
+            Please check the URL or return to the dashboard.
           </p>
 
-          {/* Home Button */}
-          <Link to="/" className="home-button">
-            <i className="fas fa-home" /> Go Back Home
-          </Link>
+          {/* Action Buttons */}
+          <div className="error-actions">
+            <Link to="/" className="primary-button">
+              Go to Dashboard
+            </Link>
+            <button className="secondary-button" onClick={() => window.history.back()}>
+              Go Back
+            </button>
+          </div>
         </div>
       </div>
 
       <style>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-
-        body {
-          background-color: #f5f7fa;
-          color: #333;
-          line-height: 1.6;
-          overflow-x: hidden;
-        }
-
-        .error404-container {
-          max-width: 400px;
-          margin: 0 auto;
-          position: relative;
+        .error-page {
           min-height: 100vh;
-          background: linear-gradient(135deg, #106cf5 0%, #0a4fc4 100%);
-        }
-
-        /* Header Section - Matching Other Pages */
-        .header {
-          background: linear-gradient(135deg, #106cf5 0%, #0a4fc4 100%);
-          min-height: 60px;
-          position: relative;
-          padding: 20px;
-        }
-
-        .nav-bar {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .back-arrow {
-          color: white;
-          font-size: 20px;
-          font-weight: 300;
-          text-decoration: none;
-          transition: opacity 0.3s ease;
-        }
-
-        .back-arrow:hover {
-          opacity: 0.8;
-        }
-
-        .page-title {
-          color: white;
-          font-size: 17px;
-          font-weight: 600;
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-        }
-
-        /* Content Card - Matching Other Pages */
-        .content-card {
-          background: white;
-          border-radius: 40px 40px 0 0;
-          padding: 40px 20px 100px;
-          box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
-          min-height: calc(100vh - 60px);
+          background-color: #e8f1f8;
           display: flex;
           align-items: center;
           justify-content: center;
+          padding: 24px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        .error404-content {
+        .error-container {
           width: 100%;
+          max-width: 520px;
+        }
+
+        .error-card {
+          background: white;
+          border-radius: 28px;
+          padding: 48px 40px;
+          box-shadow: 0 20px 35px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.03);
           text-align: center;
-          max-width: 320px;
-          margin: 0 auto;
+          animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
         /* Crypto Animation */
         .crypto-animation {
-          position: relative;
-          height: 120px;
-          margin-bottom: 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+          margin-bottom: 32px;
         }
 
-        .crypto-icon {
-          position: absolute;
+        .crypto-coin {
           width: 50px;
           height: 50px;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 24px;
-          color: white;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          font-size: 28px;
+          font-weight: 700;
           animation: float 3s ease-in-out infinite;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        .btc-icon {
-          background: linear-gradient(135deg, #F7931A 0%, #F15A24 100%);
-          top: 10px;
-          left: 30%;
+        .crypto-coin.btc {
+          background: linear-gradient(135deg, #f7931a, #f7a83a);
+          color: white;
           animation-delay: 0s;
         }
 
-        .eth-icon {
-          background: linear-gradient(135deg, #627EEA 0%, #8A63D2 100%);
-          top: 40px;
-          left: 50%;
-          transform: translateX(-50%);
+        .crypto-coin.eth {
+          background: linear-gradient(135deg, #627eea, #7f9cf5);
+          color: white;
           animation-delay: 0.5s;
         }
 
-        .usdt-icon {
-          background: linear-gradient(135deg, #26A17B 0%, #1C7B5F 100%);
-          top: 10px;
-          right: 30%;
+        .crypto-coin.usdt {
+          background: linear-gradient(135deg, #26a17b, #2ebd91);
+          color: white;
           animation-delay: 1s;
         }
 
-        /* Error Icon */
-        .error-icon {
-          font-size: 48px;
-          color: #ff7a00;
-          margin-bottom: 20px;
-          animation: pulse 2s infinite;
+        @keyframes float {
+          0% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+          100% {
+            transform: translateY(0);
+          }
         }
 
         /* Error Code */
         .error-code {
-          font-size: 72px;
+          font-size: 80px;
           font-weight: 800;
-          color: #222;
-          margin-bottom: 10px;
+          color: #1a252f;
           line-height: 1;
+          margin-bottom: 16px;
+          letter-spacing: -2px;
         }
 
         /* Error Title */
         .error-title {
-          font-size: 24px;
+          font-size: 28px;
           font-weight: 700;
-          color: #222;
-          margin-bottom: 16px;
+          color: #2c3e50;
+          margin: 0 0 16px 0;
         }
 
         /* Error Message */
         .error-message {
-          font-size: 14px;
-          color: #888f99;
-          line-height: 1.5;
-          margin-bottom: 30px;
-          padding: 0 10px;
+          font-size: 16px;
+          color: #5e6f7e;
+          line-height: 1.6;
+          margin: 0 0 36px 0;
+          padding: 0 8px;
         }
 
-        /* Home Button */
-        .home-button {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          background: #106cf5;
+        /* Action Buttons */
+        .error-actions {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .primary-button {
+          background: #1a252f;
           color: white;
-          text-decoration: none;
-          padding: 12px 28px;
-          border-radius: 8px;
-          font-size: 14px;
-          font-weight: 600;
-          transition: all 0.3s ease;
           border: none;
+          border-radius: 14px;
+          padding: 16px 20px;
+          font-size: 16px;
+          font-weight: 600;
           cursor: pointer;
-          box-shadow: 0 4px 12px rgba(16, 108, 245, 0.2);
+          transition: all 0.25s;
+          text-decoration: none;
+          display: block;
+          text-align: center;
+          box-shadow: 0 6px 14px rgba(26, 37, 47, 0.15);
         }
 
-        .home-button:hover {
-          background: #0a4fc4;
+        .primary-button:hover {
+          background: #2c3e50;
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(16, 108, 245, 0.3);
+          box-shadow: 0 10px 20px rgba(26, 37, 47, 0.2);
         }
 
-        .home-button:active {
-          transform: translateY(0);
+        .secondary-button {
+          background: transparent;
+          color: #5e6f7e;
+          border: 1.5px solid #d0dde8;
+          border-radius: 14px;
+          padding: 14px 20px;
+          font-size: 15px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s;
         }
 
-        /* Animations */
-        @keyframes float {
-          0% {
-            transform: translateY(0) rotate(0deg);
-          }
-          50% {
-            transform: translateY(-10px) rotate(5deg);
-          }
-          100% {
-            transform: translateY(0) rotate(0deg);
-          }
+        .secondary-button:hover {
+          background: #f1f5f9;
+          border-color: #a0bbd0;
+          color: #2c3e50;
         }
 
-        @keyframes pulse {
-          0% {
-            transform: scale(1);
-            opacity: 1;
-          }
-          50% {
-            transform: scale(1.05);
-            opacity: 0.8;
-          }
-          100% {
-            transform: scale(1);
-            opacity: 1;
-          }
-        }
-
-        @keyframes bounce {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-15px);
-          }
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 380px) {
-          .error404-container {
-            padding: 0;
-          }
-
-          .header {
+        /* Responsive */
+        @media (max-width: 480px) {
+          .error-page {
             padding: 16px;
-            min-height: 50px;
+            align-items: flex-start;
           }
 
-          .content-card {
-            padding: 30px 16px 80px;
-            border-radius: 30px 30px 0 0;
-          }
-
-          .error-code {
-            font-size: 60px;
-          }
-
-          .error-title {
-            font-size: 20px;
-          }
-
-          .error-message {
-            font-size: 13px;
-          }
-
-          .home-button {
-            padding: 10px 24px;
-            font-size: 13px;
-          }
-
-          .crypto-icon {
-            width: 44px;
-            height: 44px;
-            font-size: 20px;
-          }
-        }
-
-        @media (min-width: 768px) {
-          .content-card {
-            border-radius: 30px 30px 0 0;
-          }
-
-          .error404-content {
-            max-width: 360px;
+          .error-card {
+            padding: 36px 24px;
+            border-radius: 24px;
           }
 
           .error-code {
-            font-size: 80px;
+            font-size: 64px;
           }
 
           .error-title {
-            font-size: 28px;
+            font-size: 24px;
           }
 
           .error-message {
-            font-size: 16px;
+            font-size: 15px;
+          }
+
+          .crypto-coin {
+            width: 42px;
+            height: 42px;
+            font-size: 24px;
           }
         }
       `}</style>

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { ethers } from "ethers";
 
 import actions from "../../../modules/auth/authActions";
 import selectors from "../../../modules/auth/authSelectors";
@@ -33,8 +32,6 @@ function Signin() {
 
   const [isChecked, setIsChecked] = useState(true);
   const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
-  const [walletLoading, setWalletLoading] = useState(false);
-  const [walletError, setWalletError] = useState<string | null>(null);
   const [currentLanguageLabel, setCurrentLanguageLabel] = useState("");
 
   const form = useForm({
@@ -47,7 +44,6 @@ function Signin() {
     },
   });
 
-  // Function to update the language label
   const updateLanguageLabel = () => {
     const currentLanguage = getLanguageCode();
     const labelLanguage = getLanguages();
@@ -66,14 +62,9 @@ function Signin() {
 
   useEffect(() => {
     dispatch(actions.doClearErrorMessage());
-    // Initial language label setup
     updateLanguageLabel();
 
-    // Set up an interval to check for language changes
-    // This is a workaround since we don't have a language change event
     const intervalId = setInterval(updateLanguageLabel, 500);
-
-    // Also update on window focus (user might have changed language in another tab)
     const handleFocus = () => updateLanguageLabel();
     window.addEventListener('focus', handleFocus);
 
@@ -83,25 +74,15 @@ function Signin() {
     };
   }, [dispatch]);
 
-  // Add another effect to update language label when modal closes
   useEffect(() => {
     if (!isLanguageModalOpen) {
-      // Small delay to ensure language change has been processed
       setTimeout(updateLanguageLabel, 100);
     }
   }, [isLanguageModalOpen]);
 
-  /* =======================
-     Email / Password Login
-  ======================= */
   const onSubmit = ({ email, password, rememberMe }) => {
     dispatch(actions.doSigninWithEmailAndPassword(email, password, rememberMe));
   };
-
-  /* =======================
-     Wallet Login (Any Provider)
-  ======================= */
-
 
   const goBack = () => {
     history.goBack();
@@ -116,559 +97,421 @@ function Signin() {
     setIsLanguageModalOpen(true);
   };
 
-
-
-
-
   return (
-    <div style={{ backgroundColor: "#ffffff", minHeight: "100vh" }}>
-      {/* Header */}
+    <div className="signin-container">
+      <div className="signin-wrapper">
+ 
 
+        {/* Card */}
+        <div className="signin-card">
+          <h1 className="signin-title">{i18n("auth.signin.title")}</h1>
+          <p className="signin-subtitle">{i18n("auth.signin.subtitle")}</p>
 
-      {/* Main Content */}
-      <div className="containera">
+          <FormProvider {...form}>
+            {externalErrorMessage && (
+              <div className="error-alert">
+                {externalErrorMessage}
+              </div>
+            )}
 
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+              <div className="input-field">
+                <label className="input-label">{i18n('auth.fields.mailbox')}</label>
+                <InputFormItem
+                  type="email"
+                  name="email"
+                  placeholder={i18n("auth.fields.emailPlaceholder")}
+                  className="input-control"
+                />
+              </div>
 
-        <FormProvider {...form}>
-          {externalErrorMessage && (
-            <div
-              className="error-message"
-              style={{
-                color: "red",
-                textAlign: "center",
-                marginBottom: "1rem",
-                padding: "0.5rem",
-                backgroundColor: "#ffe6e6",
-                borderRadius: "4px",
-              }}
-            >
-              {externalErrorMessage}
-            </div>
-          )}
+              <div className="input-field">
+                <label className="input-label">{i18n('auth.fields.password')}</label>
+                <InputFormItem
+                  type="password"
+                  name="password"
+                  placeholder={i18n("auth.fields.passwordPlaceholder")}
+                  className="input-control"
+                  autoComplete="current-password"
+                />
+              </div>
 
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="form-group">
-              <label className="form-label">{i18n('auth.fields.mailbox')}</label>
-              <InputFormItem
-                type="email"
-                name="email"
-                placeholder={i18n("auth.fields.emailPlaceholder")}
-                className="form-input"
-              />
-            </div>
+              <div className="form-footer">
+                <div className="remember-me" onClick={toggleCheckbox}>
+                  <div className={`custom-checkbox ${isChecked ? 'checked' : ''}`}></div>
+                  <span className="remember-text">{i18n("auth.common.rememberPassword")}</span>
+                </div>
+       
+              </div>
 
-            <div className="form-group">
-              <label className="form-label">{i18n('auth.fields.password')}</label>
-              <InputFormItem
-                type="password"
-                name="password"
-                placeholder={i18n("auth.fields.passwordPlaceholder")}
-                className="form-input"
-                autoComplete="current-password"
-              />
-            </div>
-
-            <div className="checkbox-group">
-              <div
-                className={`checkbox ${isChecked ? "checked" : ""}`}
-                onClick={toggleCheckbox}
-              ></div>
-              <label className="checkbox-label" onClick={toggleCheckbox}>
-                {i18n("auth.common.rememberPassword")}
-              </label>
-            </div>
-
-            <button
-              className="login-button"
-              disabled={loading || walletLoading}
-              type="submit"
-              style={{ opacity: loading || walletLoading ? 0.6 : 1 }}
-            >
-              {loading ? (
-                <>
-                  <i
-                    className="fas fa-spinner fa-spin"
-                    style={{ marginRight: "8px" }}
-                  ></i>
-                  {i18n("auth.signin.signingIn")}
-                </>
-              ) : (
-                <span>{i18n("auth.signin.button")}</span>
-              )}
-            </button>
-
-            <Link to="/auth/signup" className="signup-button-link">
-              <button type="button" className="signup-button">
-                {i18n("auth.signin.signupNow")}
+              <button
+                className="submit-btn"
+                disabled={loading}
+                type="submit"
+              >
+                {loading ? (
+                  <>
+                    <span className="spinner"></span>
+                    {i18n("auth.signin.signingIn")}
+                  </>
+                ) : (
+                  i18n("auth.signin.button")
+                )}
               </button>
-            </Link>
 
-           
-          </form>
-        </FormProvider>
-
+              <div className="signup-prompt">
+                <span>{i18n("auth.signin.noAccount")} </span>
+                <Link to="/auth/signup" className="signup-link">
+                  {i18n("auth.signin.signupNow")}
+                </Link>
+              </div>
+            </form>
+          </FormProvider>
+        </div>
       </div>
 
-
-
       <style>{`
-        /* ... (keep all your existing CSS styles exactly as they are) ... */
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        /* Clean Signin Styles */
+        .signin-container {
+          min-height: 100vh;
+          background-color: #e8f1f8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        .header {
-          background-color: #007AFF;
-          color: white;
-          padding: 16px 20px;
+        .signin-wrapper {
+          width: 100%;
+          max-width: 420px;
+        }
+
+        .signin-header {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          box-shadow: 0 2px 8px rgba(0, 122, 255, 0.15);
-          max-width: 400px !important;
-          margin: 0 auto;
+          margin-bottom: 20px;
+          padding: 0 4px;
         }
 
-        .back-button {
-          display: flex;
-          align-items: center;
-          gap: 8px;
+        .back-btn {
           background: none;
           border: none;
-          color: white;
-          font-size: 17px;
+          color: #2c3e50;
+          font-size: 15px;
           font-weight: 500;
           cursor: pointer;
+          padding: 8px 0;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          transition: color 0.2s;
+        }
+
+        .back-btn:hover {
+          color: #1a252f;
         }
 
         .back-arrow {
           font-size: 20px;
-          font-weight: 300;
+          line-height: 1;
         }
 
-        .language-selector-modal {
-          background: rgba(255, 255, 255, 0.2);
-          border: none;
-          border-radius: 6px;
-          padding: 6px 12px;
-          color: white;
+        .lang-btn {
+          background: rgba(255, 255, 255, 0.7);
+          border: 1px solid rgba(0, 0, 0, 0.05);
+          border-radius: 30px;
+          padding: 8px 18px;
           font-size: 14px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          transition: all 0.2s ease;
-          user-select: none;
-          min-width: 80px;
-          justify-content: center;
-        }
-
-        .language-selector-modal:hover {
-          background: rgba(255, 255, 255, 0.3);
-          transform: translateY(-1px);
-        }
-
-        .language-display {
-          display: flex;
-          align-items: center;
-          gap: 6px;
           font-weight: 500;
+          color: #2c3e50;
+          cursor: pointer;
+          backdrop-filter: blur(4px);
+          transition: all 0.2s;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
         }
 
-        .language-display i {
-          font-size: 10px;
-          transition: transform 0.2s ease;
+        .lang-btn:hover {
+          background: white;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         }
 
-        .language-selector-modal:hover .language-display i {
-          transform: translateY(1px);
+        .signin-card {
+          background: white;
+          border-radius: 24px;
+          padding: 36px 32px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 8px rgba(0, 0, 0, 0.03);
+          transition: transform 0.3s ease;
         }
 
-        .containera {
-          max-width: 400px;
-          margin: 40px auto;
-          padding: 0 20px;
-          flex: 1;
-          width: 100%;
-          background-color: #ffffff;
+        .signin-title {
+          font-size: 28px;
+          font-weight: 600;
+          color: #1a252f;
+          margin: 0 0 8px 0;
+          letter-spacing: -0.3px;
         }
 
-        .tabs {
-          display: none;
-          background-color: #f8f9fa;
+        .signin-subtitle {
+          font-size: 15px;
+          color: #5e6f7e;
+          margin: 0 0 32px 0;
+          line-height: 1.4;
+        }
+
+        .error-alert {
+          background: #fee9e7;
+          color: #c23d3d;
+          padding: 14px 16px;
           border-radius: 12px;
-          padding: 4px;
-          margin-bottom: 32px;
-        }
-
-        .tab {
-          flex: 1;
-          padding: 12px 16px;
-          text-align: center;
-          border-radius: 10px;
-          font-weight: 500;
+          margin-bottom: 24px;
           font-size: 14px;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          border: none;
-          background: none;
+          border-left: 4px solid #c23d3d;
         }
 
-        .tab.active {
-          background-color: #007AFF;
-          color: white;
-        }
-
-        .tab:not(.active) {
-          background-color: transparent;
-          color: #8E8E93;
-        }
-
-        .form-group {
+        .input-field {
           margin-bottom: 24px;
         }
 
-        .form-label {
+        .input-label {
           display: block;
-          margin-bottom: 8px;
+          font-size: 14px;
           font-weight: 500;
-          color: #1D1D1F;
-          font-size: 14px;
+          color: #2c3e50;
+          margin-bottom: 8px;
         }
 
-        .form-input {
+        .input-control {
           width: 100%;
-          padding: 16px;
-          background-color: #f8f9fa;
-          border: 2px solid transparent;
-          border-radius: 7px;
-          font-size: 14px;
+          padding: 14px 16px;
+          background: #f8fafc;
+          border: 1.5px solid #dfe6ed;
+          border-radius: 14px;
+          font-size: 15px;
+          color: #1a252f;
           transition: all 0.2s ease;
-          border: none;
           outline: none;
+          box-sizing: border-box;
         }
 
-        .form-input:focus {
-          outline: none;
-          background-color: white;
-          border-color: #007AFF;
-          box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+        .input-control:focus {
+          background: white;
+          border-color: #4a90e2;
+          box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.08);
         }
 
-        .form-input::placeholder {
-          color: #8E8E93;
+        .input-control::placeholder {
+          color: #9aabbb;
+          font-weight: 400;
         }
 
-        .checkbox-group {
+        .form-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 16px 0 28px;
+        }
+
+        .remember-me {
           display: flex;
           align-items: center;
-          gap: 12px;
-          margin-bottom: 32px;
+          gap: 10px;
+          cursor: pointer;
         }
 
-        .checkbox {
+        .custom-checkbox {
           width: 20px;
           height: 20px;
-          border-radius: 50%;
-          border: 2px solid #C7C7CC;
+          border-radius: 6px;
+          border: 2px solid #cfdde8;
           background: white;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.2s ease;
+          transition: all 0.15s;
+          position: relative;
         }
 
-        .checkbox.checked {
-          background-color: #007AFF;
-          border-color: #007AFF;
+        .custom-checkbox.checked {
+          background: #4a90e2;
+          border-color: #4a90e2;
         }
 
-        .checkbox.checked::after {
-          content: '✓';
-          color: white;
+        .custom-checkbox.checked::after {
+          content: '';
+          position: absolute;
+          left: 6px;
+          top: 2px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+
+        .remember-text {
           font-size: 14px;
-          font-weight: bold;
+          color: #3d566e;
+          font-weight: 500;
+          user-select: none;
         }
 
-        .checkbox-label {
+        .forgot-link {
           font-size: 14px;
-          color: #1D1D1F;
-          cursor: pointer;
-        }
-
-        .login-button {
-          width: 100%;
-          background-color: #007AFF;
-          color: white;
-          border: none;
-          border-radius: 7px;
-          padding: 12px;
-          font-size: 14px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          margin-bottom: 16px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .login-button:hover:not(:disabled) {
-          background-color: #0056CC;
-          transform: translateY(-1px);
-        }
-
-        .login-button:disabled {
-          cursor: not-allowed;
-        }
-
-        .signup-button {
-          width: 100%;
-          background-color: white;
-          color: #007AFF;
-          border: 2px solid #007AFF;
-          border-radius: 7px;
-          padding: 12px;
-          font-size: 14px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.2s ease;
-        }
-
-        .signup-button:hover {
-          background-color: #f8f9fa;
-        }
-
-        .signup-button-link {
+          color: #4a90e2;
           text-decoration: none;
-          display: block;
-        }
-
-        .footer {
-          text-align: right;
-          margin-top: 24px;
-        }
-
-        .forgot-password {
-          color: #007AFF;
-          text-decoration: none;
-          font-size: 13px;
           font-weight: 500;
         }
 
-        .forgot-password:hover {
+        .forgot-link:hover {
           text-decoration: underline;
         }
 
-        .wallet-button {
+        .submit-btn {
           width: 100%;
-          background-color: white;
-          color: #007AFF;
-          border: 2px solid #007AFF;
-          border-radius: 7px;
-          padding: 14px;
-          font-size: 14px;
+          background: #1a252f;
+          color: white;
+          border: none;
+          border-radius: 14px;
+          padding: 15px;
+          font-size: 16px;
           font-weight: 600;
           cursor: pointer;
-          transition: all 0.2s ease;
+          transition: all 0.25s;
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 10px;
+          box-shadow: 0 4px 12px rgba(26, 37, 47, 0.1);
         }
 
-        .wallet-button:hover:not(:disabled) {
-          background-color: #f0f7ff;
+        .submit-btn:hover:not(:disabled) {
+          background: #2c3e50;
           transform: translateY(-1px);
+          box-shadow: 0 8px 16px rgba(26, 37, 47, 0.15);
         }
 
-        .wallet-button:disabled {
+        .submit-btn:active:not(:disabled) {
+          transform: translateY(0);
+          box-shadow: 0 4px 8px rgba(26, 37, 47, 0.1);
+        }
+
+        .submit-btn:disabled {
+          opacity: 0.7;
           cursor: not-allowed;
-          opacity: 0.6;
         }
 
-        .fa-spinner {
-          animation: spin 1s linear infinite;
+        .spinner {
+          width: 18px;
+          height: 18px;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          border-top-color: white;
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
         }
 
         @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+          to { transform: rotate(360deg); }
         }
 
+        .signup-prompt {
+          text-align: center;
+          margin-top: 24px;
+          font-size: 15px;
+          color: #5e6f7e;
+        }
+
+        .signup-link {
+          color: #4a90e2;
+          font-weight: 600;
+          text-decoration: none;
+          margin-left: 4px;
+        }
+
+        .signup-link:hover {
+          text-decoration: underline;
+        }
+
+        /* Language Modal (bottom sheet) */
         .modal-overlay {
           position: fixed;
           top: 0;
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: rgba(0, 0, 0, 0.5);
-          backdrop-filter: blur(4px);
+          background: rgba(0, 0, 0, 0.2);
+          backdrop-filter: blur(3px);
           display: flex;
           align-items: flex-end;
-          justify-content: end;
+          justify-content: center;
           z-index: 1000;
-          animation: fadeIn 0.3s ease;
         }
 
         .modal-container-bottom {
           background: white;
           border-radius: 24px 24px 0 0;
           width: 100%;
-          max-width: 400px;
-          max-height: 85vh;
+          max-width: 420px;
+          max-height: 70vh;
           overflow: hidden;
-          box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
-          animation: slideUpFromBottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          display: flex;
-          flex-direction: column;
-          margin: 0 auto;
+          box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+          animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+          from { transform: translateY(100%); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-header-bottom {
-          padding: 16px 20px 8px 20px;
-          border-bottom: 1px solid #eef2f7;
-          position: relative;
+          padding: 16px 20px;
+          border-bottom: 1px solid #edf2f7;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
         }
 
         .modal-drag-handle {
           width: 40px;
           height: 4px;
-          background: #ddd;
+          background: #d0dde8;
           border-radius: 2px;
-          margin: 0 auto 12px auto;
-        }
-
-        .modal-title-wrapper {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 8px;
+          margin: 8px auto 0;
         }
 
         .modal-title {
-          font-size: 17px;
-          font-weight: 700;
-          color: #222;
-          flex: 1;
-          padding-right: 10px;
+          font-size: 18px;
+          font-weight: 600;
+          color: #1a252f;
         }
 
         .modal-close-btn-bottom {
-          background: #f5f7fa;
+          background: none;
           border: none;
-          color: #666;
-          font-size: 16px;
+          color: #5e6f7e;
+          font-size: 20px;
           cursor: pointer;
-          padding: 8px;
-          border-radius: 50%;
-          width: 36px;
-          height: 36px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.2s ease;
-          flex-shrink: 0;
-        }
-
-        .modal-close-btn-bottom:hover {
-          background: #eef2f7;
-          color: #333;
+          padding: 4px 8px;
         }
 
         .modal-content-bottom {
-          flex: 1;
-          overflow-y: auto;
-          padding: 0;
-          max-height: calc(85vh - 100px);
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        @keyframes slideUpFromBottom {
-          from {
-            opacity: 0;
-            transform: translateY(100%);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @media (max-width: 480px) {
-          .containera {
-            margin: 20px auto;
-          }
-          
-          .header {
-            padding: 12px 16px;
-          }
-          
-          .form-input {
-            padding: 14px;
-          }
-          
-          .login-button, .signup-button {
-            padding: 14px;
-          }
-
-          .wallet-button {
-            padding: 14px;
-          }
-
-          .language-selector-modal {
-            padding: 5px 10px;
-            min-width: 70px;
-          }
-
-          .modal-container-bottom {
-            max-height: 90vh;
-          }
-
-          .modal-header-bottom {
-            padding: 12px 16px 6px 16px;
-          }
-
-          .modal-title {
-            font-size: 16px;
-          }
-
-          .modal-drag-handle {
-            width: 36px;
-            height: 3px;
-            margin-bottom: 10px;
-          }
-        }
-
-        .text-input {
-          width: 100%;
           padding: 16px;
-          background-color: #f8f9fa;
-          border: 2px solid transparent;
-          border-radius: 7px;
-          font-size: 14px;
-          transition: all 0.2s ease;
-          border: none;
-          outline: none;
+          overflow-y: auto;
+          max-height: calc(70vh - 70px);
         }
 
-        .text-input:focus {
-          outline: none;
-          background-color: white;
-          border-color: #007AFF;
-          box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
-        }
+        /* Responsive */
+        @media (max-width: 480px) {
+          .signin-container {
+            padding: 16px;
+            align-items: flex-start;
+          }
 
-        .text-input::placeholder {
-          color: #8E8E93;
+          .signin-card {
+            padding: 28px 20px;
+            border-radius: 20px;
+          }
+
+          .signin-title {
+            font-size: 24px;
+          }
         }
       `}</style>
     </div>

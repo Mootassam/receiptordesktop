@@ -15,7 +15,7 @@ export default class AuthService {
 
     const tenantId = await UserService.getSingle();
 
-    const response = await authAxios.post("/auth/signupmobile", {
+    const response = await authAxios.post("/auth/sign-up", {
       email,
       password,
       phoneNumber,

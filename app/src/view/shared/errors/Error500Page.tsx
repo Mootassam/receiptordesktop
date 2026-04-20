@@ -1,338 +1,241 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-export class Error500Page extends Component {
-    render() {
-        return (
-            <div className="error-container">
-                {/* Header Section - Matching HelpCenter */}
-                <div className="header">
-                    <div className="nav-bar">
-                        <div className="page-title">Server Error</div>
-                    </div>
-                </div>
+function Error500Page() {
+  const handleRefresh = () => {
+    window.location.reload();
+  };
 
-                {/* Content Card - Matching HelpCenter */}
-                <div className="content-card">
-                    <div className="error-content">
-                        {/* Crypto Animation */}
-                        <div className="crypto-animation">
-                            <div className="bitcoin">
-                                <i className="fab fa-btc" />
-                            </div>
-                            <div className="eth">
-                                <i className="fab fa-ethereum" />
-                            </div>
-                            <div className="bnb">
-                                <i className="fas fa-coins" />
-                            </div>
-                        </div>
+  return (
+    <div className="error-page">
+      <div className="error-container">
+        <div className="error-card">
+          {/* Crypto Animation */}
+          <div className="crypto-animation">
+            <div className="crypto-coin btc">₿</div>
+            <div className="crypto-coin eth">Ξ</div>
+            <div className="crypto-coin usdt">₮</div>
+          </div>
 
-                        {/* Error Code */}
-                        <div className="error-code">500</div>
-                        
-                        {/* Error Title */}
-                        <div className="error-title">Internal Server Error</div>
-                        
-                        {/* Error Message */}
-                        <div className="error-message">
-                            Oops! Something went wrong on our end. Our team has been notified and is
-                            working to fix the issue.
-                        </div>
+          {/* Error Code */}
+          <div className="error-code">500</div>
 
-                        {/* Back to Home Button */}
-                        <Link to="/">
-                            <button className="home-button">
-                                <i className="fas fa-home home-icon" />
-                                Back to Home
-                            </button>
-                        </Link>
-                    </div>
-                </div>
+          {/* Error Title */}
+          <h1 className="error-title">Server Error</h1>
 
-                <style>{`
-                    * {
-                        margin: 0;
-                        padding: 0;
-                        box-sizing: border-box;
-                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-                    }
+          {/* Error Message */}
+          <p className="error-message">
+            Oops! Something went wrong on our end. Our team has been notified
+            and is working to fix the issue. Please try again in a few moments.
+          </p>
 
-                    body {
-                        background-color: #f5f7fa;
-                        color: #333;
-                        line-height: 1.6;
-                        overflow-x: hidden;
-                    }
+          {/* Action Buttons */}
+          <div className="error-actions">
+            <Link to="/" className="primary-button">
+              Go to Dashboard
+            </Link>
+            <button className="secondary-button" onClick={handleRefresh}>
+              Refresh Page
+            </button>
+          </div>
+        </div>
+      </div>
 
-                    .error-container {
-                        max-width: 400px;
-                        margin: 0 auto;
-                        position: relative;
-                        min-height: 100vh;
-                        background: linear-gradient(135deg, #106cf5 0%, #0a4fc4 100%);
-                    }
+      <style>{`
+        .error-page {
+          min-height: 100vh;
+          background-color: #e8f1f8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 24px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
-                    /* Header Section - Matching HelpCenter */
-                    .header {
-                        background: linear-gradient(135deg, #106cf5 0%, #0a4fc4 100%);
-                        min-height: 60px;
-                        position: relative;
-                        padding: 20px;
-                    }
+        .error-container {
+          width: 100%;
+          max-width: 520px;
+        }
 
-                    .nav-bar {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                    }
+        .error-card {
+          background: white;
+          border-radius: 28px;
+          padding: 48px 40px;
+          box-shadow: 0 20px 35px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.03);
+          text-align: center;
+          animation: fadeInUp 0.5s ease-out;
+        }
 
-                    .page-title {
-                        color: white;
-                        font-size: 17px;
-                        font-weight: 600;
-                        position: absolute;
-                        left: 50%;
-                        transform: translateX(-50%);
-                    }
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
-                    /* Content Card - Matching HelpCenter */
-                    .content-card {
-                        background: white;
-                        border-radius: 40px 40px 0 0;
-                        padding: 40px 20px;
-                        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
-                        min-height: calc(100vh - 60px);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
+        /* Crypto Animation */
+        .crypto-animation {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+          margin-bottom: 32px;
+        }
 
-                    .error-content {
-                        text-align: center;
-                        width: 100%;
-                        max-width: 320px;
-                    }
+        .crypto-coin {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 28px;
+          font-weight: 700;
+          animation: float 3s ease-in-out infinite;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
 
-                    /* Crypto Animation */
-                    .crypto-animation {
-                        position: relative;
-                        height: 150px;
-                        margin-bottom: 30px;
-                    }
+        .crypto-coin.btc {
+          background: linear-gradient(135deg, #f7931a, #f7a83a);
+          color: white;
+          animation-delay: 0s;
+        }
 
-                    .bitcoin, .eth, .bnb {
-                        position: absolute;
-                        width: 60px;
-                        height: 60px;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 30px;
-                        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-                        color: white;
-                    }
+        .crypto-coin.eth {
+          background: linear-gradient(135deg, #627eea, #7f9cf5);
+          color: white;
+          animation-delay: 0.5s;
+        }
 
-                    .bitcoin {
-                        background: linear-gradient(135deg, #F7931A 0%, #F15A24 100%);
-                        top: 20px;
-                        left: 50px;
-                        animation: floatBitcoin 5s ease-in-out infinite;
-                        z-index: 3;
-                    }
+        .crypto-coin.usdt {
+          background: linear-gradient(135deg, #26a17b, #2ebd91);
+          color: white;
+          animation-delay: 1s;
+        }
 
-                    .eth {
-                        background: linear-gradient(135deg, #627EEA 0%, #8A63D2 100%);
-                        top: 50px;
-                        right: 50px;
-                        animation: floatEth 5s ease-in-out infinite 0.5s;
-                        z-index: 2;
-                    }
+        @keyframes float {
+          0% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
 
-                    .bnb {
-                        background: linear-gradient(135deg, #F0B90B 0%, #FF9900 100%);
-                        bottom: 20px;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        animation: floatBnb 5s ease-in-out infinite 1s;
-                        z-index: 1;
-                    }
+        /* Error Code */
+        .error-code {
+          font-size: 80px;
+          font-weight: 800;
+          color: #1a252f;
+          line-height: 1;
+          margin-bottom: 16px;
+          letter-spacing: -2px;
+        }
 
-                    /* Error Code */
-                    .error-code {
-                        font-size: 72px;
-                        font-weight: 800;
-                        color: #106cf5;
-                        margin-bottom: 10px;
-                        text-shadow: 0 4px 10px rgba(16, 108, 245, 0.2);
-                        line-height: 1;
-                    }
+        /* Error Title */
+        .error-title {
+          font-size: 28px;
+          font-weight: 700;
+          color: #2c3e50;
+          margin: 0 0 16px 0;
+        }
 
-                    /* Error Title */
-                    .error-title {
-                        font-size: 24px;
-                        font-weight: 700;
-                        color: #222;
-                        margin-bottom: 16px;
-                    }
+        /* Error Message */
+        .error-message {
+          font-size: 16px;
+          color: #5e6f7e;
+          line-height: 1.6;
+          margin: 0 0 36px 0;
+          padding: 0 8px;
+        }
 
-                    /* Error Message */
-                    .error-message {
-                        font-size: 15px;
-                        color: #666;
-                        line-height: 1.5;
-                        margin-bottom: 40px;
-                        padding: 0 10px;
-                    }
+        /* Action Buttons */
+        .error-actions {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
 
-                    /* Home Button */
-                    .home-button {
-                        background: linear-gradient(135deg, #106cf5 0%, #0a4fc4 100%);
-                        color: white;
-                        border: none;
-                        border-radius: 12px;
-                        padding: 16px 32px;
-                        font-size: 16px;
-                        font-weight: 600;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                        box-shadow: 0 6px 15px rgba(16, 108, 245, 0.3);
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 10px;
-                        min-width: 200px;
-                    }
+        .primary-button {
+          background: #1a252f;
+          color: white;
+          border: none;
+          border-radius: 14px;
+          padding: 16px 20px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.25s;
+          text-decoration: none;
+          display: block;
+          text-align: center;
+          box-shadow: 0 6px 14px rgba(26, 37, 47, 0.15);
+        }
 
-                    .home-button:hover {
-                        transform: translateY(-3px);
-                        box-shadow: 0 10px 25px rgba(16, 108, 245, 0.4);
-                    }
+        .primary-button:hover {
+          background: #2c3e50;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(26, 37, 47, 0.2);
+        }
 
-                    .home-button:active {
-                        transform: translateY(-1px);
-                    }
+        .secondary-button {
+          background: transparent;
+          color: #5e6f7e;
+          border: 1.5px solid #d0dde8;
+          border-radius: 14px;
+          padding: 14px 20px;
+          font-size: 15px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
 
-                    .home-icon {
-                        font-size: 18px;
-                    }
+        .secondary-button:hover {
+          background: #f1f5f9;
+          border-color: #a0bbd0;
+          color: #2c3e50;
+        }
 
-                    /* Animations */
-                    @keyframes floatBitcoin {
-                        0% {
-                            transform: translateY(0) rotate(0deg);
-                        }
-                        50% {
-                            transform: translateY(-20px) rotate(10deg);
-                        }
-                        100% {
-                            transform: translateY(0) rotate(0deg);
-                        }
-                    }
+        /* Responsive */
+        @media (max-width: 480px) {
+          .error-page {
+            padding: 16px;
+            align-items: flex-start;
+          }
 
-                    @keyframes floatEth {
-                        0% {
-                            transform: translateY(0) rotate(0deg);
-                        }
-                        50% {
-                            transform: translateY(-15px) rotate(-10deg);
-                        }
-                        100% {
-                            transform: translateY(0) rotate(0deg);
-                        }
-                    }
+          .error-card {
+            padding: 36px 24px;
+            border-radius: 24px;
+          }
 
-                    @keyframes floatBnb {
-                        0% {
-                            transform: translateX(-50%) translateY(0);
-                        }
-                        50% {
-                            transform: translateX(-50%) translateY(-10px);
-                        }
-                        100% {
-                            transform: translateX(-50%) translateY(0);
-                        }
-                    }
+          .error-code {
+            font-size: 64px;
+          }
 
-                    /* Responsive adjustments */
-                    @media (max-width: 380px) {
-                        .error-container {
-                            padding: 0;
-                        }
+          .error-title {
+            font-size: 24px;
+          }
 
-                        .header {
-                            padding: 16px;
-                            min-height: 50px;
-                        }
+          .error-message {
+            font-size: 15px;
+          }
 
-                        .content-card {
-                            padding: 30px 16px;
-                            border-radius: 30px 30px 0 0;
-                        }
-
-                        .crypto-animation {
-                            height: 120px;
-                            margin-bottom: 25px;
-                        }
-
-                        .bitcoin, .eth, .bnb {
-                            width: 50px;
-                            height: 50px;
-                            font-size: 24px;
-                        }
-
-                        .bitcoin {
-                            left: 30px;
-                        }
-
-                        .eth {
-                            right: 30px;
-                        }
-
-                        .error-code {
-                            font-size: 60px;
-                        }
-
-                        .error-title {
-                            font-size: 20px;
-                        }
-
-                        .error-message {
-                            font-size: 14px;
-                            padding: 0 5px;
-                        }
-
-                        .home-button {
-                            padding: 14px 24px;
-                            font-size: 15px;
-                            min-width: 180px;
-                        }
-                    }
-
-                    @media (min-width: 768px) {
-                        .content-card {
-                            border-radius: 30px 30px 0 0;
-                        }
-
-                        .error-content {
-                            max-width: 400px;
-                        }
-
-                        .crypto-animation {
-                            height: 180px;
-                        }
-
-                        .bitcoin, .eth, .bnb {
-                            width: 70px;
-                            height: 70px;
-                            font-size: 36px;
-                        }
-                    }
-                `}</style>
-            </div>
-        )
-    }
+          .crypto-coin {
+            width: 42px;
+            height: 42px;
+            font-size: 24px;
+          }
+        }
+      `}</style>
+    </div>
+  );
 }
 
-export default Error500Page
+export default Error500Page;

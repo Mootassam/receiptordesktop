@@ -90,33 +90,33 @@ const en = {
       }
     },
 
-      helpCenterDetail: {
-    faqNotFound: "FAQ item not found, redirect needed",
-    
-    questions: {
-      aiQuantification: "Introduction to AI Quantification",
-      exploreNFTs: "Explore NFTs with AureX",
-      bitcoinEnergy: "Elon Musk Says Bitcoin Is Based on Energy, Which Is Impossible to Fake\n10/13/2025, 8:00:00 AM (UTC-8)",
-      bitcoinRecordPrice: "Bitcoin Touches Record Price Above $125,000\n10/4/2025, 8:00:00 AM (UTC-8)",
-      trumpStatueBitcoin: "Giant Trump statue holding Bitcoin displayed outside US Capitol to mark Fed rate decision\n9/16/2025, 8:00:00 AM (UTC-8)"
+    helpCenterDetail: {
+      faqNotFound: "FAQ item not found, redirect needed",
+
+      questions: {
+        aiQuantification: "Introduction to AI Quantification",
+        exploreNFTs: "Explore NFTs with AureX",
+        bitcoinEnergy: "Elon Musk Says Bitcoin Is Based on Energy, Which Is Impossible to Fake\n10/13/2025, 8:00:00 AM (UTC-8)",
+        bitcoinRecordPrice: "Bitcoin Touches Record Price Above $125,000\n10/4/2025, 8:00:00 AM (UTC-8)",
+        trumpStatueBitcoin: "Giant Trump statue holding Bitcoin displayed outside US Capitol to mark Fed rate decision\n9/16/2025, 8:00:00 AM (UTC-8)"
+      },
+
+      answers: {
+        aboutAccounts: "Formal accounts can use all online functions of the platform, while demo accounts can only use some of the functions of the platform to a limited extent, cannot use liquidity mining to make profits, and cannot deposit and withdraw coins. (Demo accounts can receive fixed virtual funds once on the 1st of each month)",
+        transactionVolume: "According to the relevant provisions of the Anti-Money Laundering Law, each transaction requires price control, and a certain transaction volume must be completed before the currency can be withdrawn, so as to prevent users from laundering money on the exchange! For example, if you deposit 10,000U, the transaction amount must reach the relevant specified amount!",
+        transferFunds: "In order to ensure the independence of funds between your various accounts and facilitate your reasonable risk control, the accounts of major trading modules are divided Transfer refers to the process of converting assets between various trading accounts.",
+        whatAreFutures: "Futures, also known as futures, are a form of trading that spans time. Buyers and sellers sign a contract to agree to deliver a specified amount of spot goods at a specified time, price and other trading conditions. Futures are usually concentrated in futures exchanges and bought and sold with standardized contracts. The assets traded are usually commodities or financial instruments. The predetermined price that both parties agree to buy and sell an asset is called the forward price.",
+        convertedAmountChanges: "The converted value in assets is the value of the digital currency currently held in USD. It changes due to the price fluctuations of digital assets, but the amount of your digital assets does not change.",
+        realNameAuthentication: "For the safety of your funds, we limit the association of your receiving account with the real-name information of your current account.",
+        frozenAssets: "Frozen assets means that when you perform transactions or withdrawal operations, the process is not fully completed. The current assets are temporarily managed by the system and cannot be freely controlled by you. It does not mean that you have lost the asset or that something is abnormal with the asset. Please rest assured.",
+        futuresTradingRules: "Participate in transactions by estimating the next price trend (up or down) of the current trading pair. The range of the increase or decrease is not calculated during settlement, and only the income is calculated based on the result of the increase or decrease The profit percentages for settlement at different delivery times are different, and the profits will be accurately displayed in the trading interface.",
+        aiQuantification: "An AI quantitative trading robot is an automated trading system that combines artificial intelligence (AI) with quantitative trading techniques. Its primary function is to automatically buy and sell financial products and cryptocurrencies based on market data and specific trading strategies to achieve stable profits or control risks.",
+        exploreNFTs: "Step into the world of NFTs with AureX, your all-in-one digital asset trading wallet. Designed for both beginners and professional traders, AureX lets you explore, buy, sell, and manage high-quality NFTs securely and efficiently.\n\nWith advanced security, real-time tracking, and seamless transactions, AureX keeps you in full control of your digital collectibles. From exclusive art pieces to limited-edition digital assets, discover the future of digital ownership — all in one place, with confidence and ease.",
+        bitcoinEnergy: "Tesla and Spacex CEO Elon Musk said on Oct. 14 on X that bitcoin is based on energy, contrasting it with fiat currencies that governments can inflate. His remark was in response to a Zerohedge post linking the rise in gold, silver, and bitcoin prices to currency debasement driven by government spending on the global artificial intelligence arms race. Zerohedge added that money can be printed but energy cannot. Musk agreed, writing: 'True. That is why bitcoin is based on energy: you can issue fake fiat currency, and every government in history has done so, but it is impossible to fake energy.'\n\nWhat did Elon Musk say about bitcoin and energy?\nElon Musk stated that Bitcoin is based on energy, emphasizing that while governments can print fiat currency, energy cannot be faked or created artificially.\n\nWhy did Elon Musk contrast bitcoin with fiat currencies?\nMusk highlighted that fiat currencies are prone to inflation because governments can issue more of them, while bitcoin's foundation in energy gives it a more tangible and limited value base.\n\nWhat was the context of Musk's comment about bitcoin?\nHis comment responded to a Zerohedge post suggesting that the rising prices of gold, silver, and bitcoin are linked to global government spending and currency debasement caused by the AI arms race.\n\nWhat is the main takeaway from Musk's statement?\nMusk's remark reinforces the idea that bitcoin's value is rooted in the real-world cost of energy, contrasting it with the easily manipulated nature of traditional fiat money.",
+        bitcoinRecordPrice: "Bitcoin nabbed a new high.\n\nThe leading cryptocurrency overnight touched a record, reaching all-time highs around $125,400 to top the old high-water mark, around $124,480, set in August. (It more recently traded closer to $123,000.)\n\nThe latest moves have bitcoin's total market value at about $2.45 trillion, according to CoinMarketCap, and the total value of crypto at around $4.21 trillion. Bitcoin has had a dramatic year, climbing off prices below $80,000 seen in April.\n\nWhile bitcoin bulls generally have seen the continued climb of the currency as inevitable, some have had more specific reasons for foreseeing more upside in late 2025. It has a history of posting new records in the 1,064-day window after bear-market lows, the last of which was on Nov. 21, 2022.\n\nMeanwhile, bitcoin trading volumes on crypto exchanges have been rising since a September-end drawdown. Rising volumes have tended to be good for prices.\n\nSome analysts see reasons to expect bitcoin to keep climbing. JPMorgan analysts in an Oct. 1 note suggested that the 'debasement trade'—in which both retail and institutional investors hedge their bets with gold and bitcoin—to pick up steam amid concerns ranging from heightened geopolitical uncertainty to enduringly high government debt across economies and waning U.S. dollar dominance.\n\nMore broadly, recent developments have suggested that the crypto industry is making continued progress as it seeks to claim more investor dollars and position in the world of finance—among them the launch of several new crypto ETFs and the rise in popularity of crypto treasury stocks.",
+        trumpStatueBitcoin: "WASHINGTON (7News) — A 12-foot golden statue of President Donald Trump holding a Bitcoin was installed outside the U.S. Capitol, coinciding with the Federal Reserve's upcoming interest rate decision on Wednesday.\n\nAt 2 p.m., the Fed announced that it reduced its key interest rate by a quarter-point, marking the first cut since Dec. 2024. The cut will lower the short-term rate to about 4.1% down from 4.3%. Last year, the central bank lowered rates three times due to concerns that job growth was slowing and unemployment was rising.\n\nThe central bank also revealed plans for two more rate cuts this year. However, only one is anticipated in 2026, which might disappoint Wall Street, as they had expected five cuts by next year.\n\nThe temporary piece, located on 3rd Street from 9 a.m. to 4 p.m., was funded by a collective of cryptocurrency investors. Organizers said the piece is intended to provoke debate about the future of digital currency, monetary policy, and the federal government's role in financial markets."
+      }
     },
-    
-    answers: {
-      aboutAccounts: "Formal accounts can use all online functions of the platform, while demo accounts can only use some of the functions of the platform to a limited extent, cannot use liquidity mining to make profits, and cannot deposit and withdraw coins. (Demo accounts can receive fixed virtual funds once on the 1st of each month)",
-      transactionVolume: "According to the relevant provisions of the Anti-Money Laundering Law, each transaction requires price control, and a certain transaction volume must be completed before the currency can be withdrawn, so as to prevent users from laundering money on the exchange! For example, if you deposit 10,000U, the transaction amount must reach the relevant specified amount!",
-      transferFunds: "In order to ensure the independence of funds between your various accounts and facilitate your reasonable risk control, the accounts of major trading modules are divided Transfer refers to the process of converting assets between various trading accounts.",
-      whatAreFutures: "Futures, also known as futures, are a form of trading that spans time. Buyers and sellers sign a contract to agree to deliver a specified amount of spot goods at a specified time, price and other trading conditions. Futures are usually concentrated in futures exchanges and bought and sold with standardized contracts. The assets traded are usually commodities or financial instruments. The predetermined price that both parties agree to buy and sell an asset is called the forward price.",
-      convertedAmountChanges: "The converted value in assets is the value of the digital currency currently held in USD. It changes due to the price fluctuations of digital assets, but the amount of your digital assets does not change.",
-      realNameAuthentication: "For the safety of your funds, we limit the association of your receiving account with the real-name information of your current account.",
-      frozenAssets: "Frozen assets means that when you perform transactions or withdrawal operations, the process is not fully completed. The current assets are temporarily managed by the system and cannot be freely controlled by you. It does not mean that you have lost the asset or that something is abnormal with the asset. Please rest assured.",
-      futuresTradingRules: "Participate in transactions by estimating the next price trend (up or down) of the current trading pair. The range of the increase or decrease is not calculated during settlement, and only the income is calculated based on the result of the increase or decrease The profit percentages for settlement at different delivery times are different, and the profits will be accurately displayed in the trading interface.",
-      aiQuantification: "An AI quantitative trading robot is an automated trading system that combines artificial intelligence (AI) with quantitative trading techniques. Its primary function is to automatically buy and sell financial products and cryptocurrencies based on market data and specific trading strategies to achieve stable profits or control risks.",
-      exploreNFTs: "Step into the world of NFTs with AureX, your all-in-one digital asset trading wallet. Designed for both beginners and professional traders, AureX lets you explore, buy, sell, and manage high-quality NFTs securely and efficiently.\n\nWith advanced security, real-time tracking, and seamless transactions, AureX keeps you in full control of your digital collectibles. From exclusive art pieces to limited-edition digital assets, discover the future of digital ownership — all in one place, with confidence and ease.",
-      bitcoinEnergy: "Tesla and Spacex CEO Elon Musk said on Oct. 14 on X that bitcoin is based on energy, contrasting it with fiat currencies that governments can inflate. His remark was in response to a Zerohedge post linking the rise in gold, silver, and bitcoin prices to currency debasement driven by government spending on the global artificial intelligence arms race. Zerohedge added that money can be printed but energy cannot. Musk agreed, writing: 'True. That is why bitcoin is based on energy: you can issue fake fiat currency, and every government in history has done so, but it is impossible to fake energy.'\n\nWhat did Elon Musk say about bitcoin and energy?\nElon Musk stated that Bitcoin is based on energy, emphasizing that while governments can print fiat currency, energy cannot be faked or created artificially.\n\nWhy did Elon Musk contrast bitcoin with fiat currencies?\nMusk highlighted that fiat currencies are prone to inflation because governments can issue more of them, while bitcoin's foundation in energy gives it a more tangible and limited value base.\n\nWhat was the context of Musk's comment about bitcoin?\nHis comment responded to a Zerohedge post suggesting that the rising prices of gold, silver, and bitcoin are linked to global government spending and currency debasement caused by the AI arms race.\n\nWhat is the main takeaway from Musk's statement?\nMusk's remark reinforces the idea that bitcoin's value is rooted in the real-world cost of energy, contrasting it with the easily manipulated nature of traditional fiat money.",
-      bitcoinRecordPrice: "Bitcoin nabbed a new high.\n\nThe leading cryptocurrency overnight touched a record, reaching all-time highs around $125,400 to top the old high-water mark, around $124,480, set in August. (It more recently traded closer to $123,000.)\n\nThe latest moves have bitcoin's total market value at about $2.45 trillion, according to CoinMarketCap, and the total value of crypto at around $4.21 trillion. Bitcoin has had a dramatic year, climbing off prices below $80,000 seen in April.\n\nWhile bitcoin bulls generally have seen the continued climb of the currency as inevitable, some have had more specific reasons for foreseeing more upside in late 2025. It has a history of posting new records in the 1,064-day window after bear-market lows, the last of which was on Nov. 21, 2022.\n\nMeanwhile, bitcoin trading volumes on crypto exchanges have been rising since a September-end drawdown. Rising volumes have tended to be good for prices.\n\nSome analysts see reasons to expect bitcoin to keep climbing. JPMorgan analysts in an Oct. 1 note suggested that the 'debasement trade'—in which both retail and institutional investors hedge their bets with gold and bitcoin—to pick up steam amid concerns ranging from heightened geopolitical uncertainty to enduringly high government debt across economies and waning U.S. dollar dominance.\n\nMore broadly, recent developments have suggested that the crypto industry is making continued progress as it seeks to claim more investor dollars and position in the world of finance—among them the launch of several new crypto ETFs and the rise in popularity of crypto treasury stocks.",
-      trumpStatueBitcoin: "WASHINGTON (7News) — A 12-foot golden statue of President Donald Trump holding a Bitcoin was installed outside the U.S. Capitol, coinciding with the Federal Reserve's upcoming interest rate decision on Wednesday.\n\nAt 2 p.m., the Fed announced that it reduced its key interest rate by a quarter-point, marking the first cut since Dec. 2024. The cut will lower the short-term rate to about 4.1% down from 4.3%. Last year, the central bank lowered rates three times due to concerns that job growth was slowing and unemployment was rising.\n\nThe central bank also revealed plans for two more rate cuts this year. However, only one is anticipated in 2026, which might disappoint Wall Street, as they had expected five cuts by next year.\n\nThe temporary piece, located on 3rd Street from 9 a.m. to 4 p.m., was funded by a collective of cryptocurrency investors. Organizers said the piece is intended to provoke debate about the future of digital currency, monetary policy, and the federal government's role in financial markets."
-    }
-  },
     transfer: {
       title: "Transfer History",
       noTransferHistory: "No transfer history available",
@@ -197,7 +197,7 @@ const en = {
       }
     },
 
-   loginPassword: {
+    loginPassword: {
       title: "Login Password",
       cardTitle: "CHANGE LOGIN PASSWORD",
       fields: {
@@ -381,7 +381,7 @@ const en = {
       }
     },
 
-      profile: {
+    profile: {
       title: "Personal Center",
       user: "User",
       userInitial: "U",
@@ -514,7 +514,7 @@ const en = {
         pnl: "P&L",
         opened: "Opened",
         closed: "Closed",
-        leverage:"Leverage"
+        leverage: "Leverage"
       },
       futuresStatus: {
         long: "Long",
@@ -1051,7 +1051,7 @@ const en = {
       }
     },
 
- 
+
 
     assetsDetail: {
       title: "Asset Details",
@@ -1244,7 +1244,7 @@ const en = {
         faqLink: "Find answers to common security questions"
       }
     },
-  
+
 
     notification: {
       title: "Notification",
@@ -2044,6 +2044,7 @@ const en = {
     signin: {
       title: "LOGIN",
       button: "Login",
+      subtitle: "Sign in to continue to your account",
       signingIn: "Logging in...",
       forgotPassword: "FORGOT PASSWORD?",
       signUp: "SIGN UP",
@@ -2051,7 +2052,7 @@ const en = {
       downloadApp: "DOWNLOAD OUR APP",
       appDescription: "Get the best crypto experience on your mobile device",
       googlePlay: "Google Play",
-
+      noAccount: " Don’t have an account yet? ",
       // New additions from component
       signupNow: "Sign up now",
       forgetPassword: "Forget password",
