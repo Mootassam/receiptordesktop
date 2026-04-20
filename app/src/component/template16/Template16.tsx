@@ -166,7 +166,7 @@ button {
   height: 14.375px;
   right: 31.25px;
   bottom: 11.875px;
-  background: url(./images/template16/HOf3KcPPTz.png)
+  background: url(/images/template16/HOf3KcPPTz.png)
     no-repeat center;
   background-size: cover;
   z-index: 43;
@@ -177,7 +177,7 @@ button {
   height: 13.125px;
   right: 89.375px;
   bottom: 12.5px;
-  background: url(./images/template16/vRAZdwWOrD.png)
+  background: url(/images/template16/vRAZdwWOrD.png)
     no-repeat center;
   background-size: cover;
   z-index: 45;
@@ -188,7 +188,7 @@ button {
   height: 13.125px;
   right: 66.25px;
   bottom: 12.5px;
-  background: url(./images/template16/Jur70QaNWP.png)
+  background: url(/images/template16/Jur70QaNWP.png)
     no-repeat center;
   background-size: cover;
   z-index: 44;
@@ -199,7 +199,7 @@ button {
   height: 13.125px;
   right: 253.75px;
   bottom: 11.875px;
-  background: url(./images/template16/Az1PchX9Zr.png)
+  background: url(/images/template16/Az1PchX9Zr.png)
     no-repeat center;
   background-size: cover;
   z-index: 48;
@@ -210,7 +210,7 @@ button {
   height: 11.25px;
   right: 273.75px;
   bottom: 12.5px;
-  background: url(./images/template16/3xrdxSygwh.png)
+  background: url(/images/template16/3xrdxSygwh.png)
     no-repeat center;
   background-size: cover;
   z-index: 49;
@@ -221,7 +221,7 @@ button {
   height: 10px;
   right: 233.125px;
   bottom: 13.75px;
-  background: url(./images/template16/9i3GRkcd2o.png)
+  background: url(/images/template16/9i3GRkcd2o.png)
     no-repeat center;
   background-size: cover;
   z-index: 47;
@@ -232,7 +232,7 @@ button {
   height: 4.375px;
   right: 218.125px;
   bottom: 16.875px;
-  background: url(./images/template16/0HgyTOTZAX.png)
+  background: url(/images/template16/0HgyTOTZAX.png)
     no-repeat center;
   background-size: cover;
   z-index: 46;
@@ -251,7 +251,7 @@ button {
   height: 800px;
   right: 0;
   bottom: 0;
-  background: url(./images/template16/XP5UdfRb2j.png)
+  background: url(/images/template16/XP5UdfRb2j.png)
     no-repeat center;
   background-size: cover;
   z-index: 2;
@@ -426,7 +426,7 @@ button {
   height: 9.375px;
   right: 18.75px;
   bottom: 15px;
-  background: url(./images/template16/yyd3UmszA0.png)
+  background: url(/images/template16/yyd3UmszA0.png)
     no-repeat center;
   background-size: cover;
   z-index: 7;
@@ -497,7 +497,7 @@ button {
   height: 11.25px;
   right: 216.25px;
   bottom: 20px;
-  background: url(./images/template16/ke2pqinpsj.png)
+  background: url(/images/template16/ke2pqinpsj.png)
     no-repeat center;
   background-size: cover;
   z-index: 21;
@@ -550,7 +550,7 @@ button {
   height: 3.125px;
   right: 136.875px;
   bottom: 8.125px;
-  background: url(./images/template16/tfbAV3Ggps.png)
+  background: url(/images/template16/tfbAV3Ggps.png)
     no-repeat center;
   background-size: cover;
   z-index: 1;
@@ -587,7 +587,7 @@ button {
   height: 14.375px;
   right: 16.25px;
   bottom: 11.875px;
-  background: url(./images/template16/6bZqKkooQ7.png)
+  background: url(/images/template16/6bZqKkooQ7.png)
     no-repeat center;
   background-size: cover;
   z-index: 39;
@@ -598,7 +598,7 @@ button {
   height: 13.75px;
   right: 328.75px;
   bottom: 11.875px;
-  background: url(./images/template16/jtJKXkn8xt.png)
+  background: url(/images/template16/jtJKXkn8xt.png)
     no-repeat center;
   background-size: cover;
   z-index: 41;
@@ -644,7 +644,7 @@ button {
   position: relative;
   width: 8.125px;
   height: 6.875px;
-  background: url(./images/template16/Vtz0Vutge4.png)
+  background: url(/images/template16/Vtz0Vutge4.png)
     no-repeat center;
   background-size: cover;
   z-index: 36;

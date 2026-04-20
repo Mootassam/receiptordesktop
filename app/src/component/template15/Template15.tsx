@@ -15,7 +15,7 @@ const truncateString = (str: string, startChars: number, endChars: number): stri
   return `${start}...${end}`;
 };
 
-// Format sender address: first 7, last 7 characters → "TAzsQ9G...PHzA8wr"
+// Format sender address: first 7, last 7 characters "TAzsQ9G...PHzA8wr"
 const formatSender = (sender: string) => truncateString(sender, 7, 7);
 
 // Format USD amount with commas and 2 decimal places
@@ -28,10 +28,12 @@ const formatUSD = (amount: number): string => {
   }).format(amount);
 };
 
-// Exchange rate USDT → USD (small realistic variation)
+// Exchange rate USDT to USD (small realistic variation)
 const USDT_TO_USD_RATE = 1.001;
 
 const Template15: React.FC<Template15Props> = ({ formData }) => {
+  const assetBase = window.location.protocol === "file:" ? "./" : "/";
+
   // Parse amount (remove any non-numeric characters if needed, but assume it's a number or numeric string)
   const rawAmount = formData.amount ? parseFloat(String(formData.amount).replace(/,/g, '')) : 2482.112203;
   const amountDisplay = formData.amount ? `+${formData.amount}USDT` : "+2,482.112203USDT";
@@ -40,7 +42,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   const usdValue = rawAmount * USDT_TO_USD_RATE;
   const usdEquivalent = formatUSD(usdValue);
 
-  // Date and time – combine or use separate fields
+  // Date and time combined display
   const dateTimeDisplay = formData.date || "Today at 6:11 AM";
   
   // Network fee (could also derive from amount * small rate, but keep as is)
@@ -94,7 +96,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   height: 13.75px;
   right: 32.5px;
   bottom: 14.375px;
-  background: url(./template15/JXPMueKpuh.png)
+  background: url(${assetBase}template15/JXPMueKpuh.png)
     no-repeat center;
   background-size: cover;
   z-index: 30;
@@ -105,7 +107,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   height: 13.75px;
   right: 88.125px;
   bottom: 14.375px;
-  background: url(./template15/tmhKZffptD.png)
+  background: url(${assetBase}template15/tmhKZffptD.png)
     no-repeat center;
   background-size: cover;
   z-index: 32;
@@ -116,7 +118,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   height: 13.75px;
   right: 273.75px;
   bottom: 14.375px;
-  background: url(./template15/aGrhjY4r9W.png)
+  background: url(${assetBase}template15/aGrhjY4r9W.png)
     no-repeat center;
   background-size: cover;
   z-index: 33;
@@ -127,7 +129,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   height: 12.5px;
   right: 65px;
   bottom: 15px;
-  background: url(./template15/VwFFSzDMxP.png)
+  background: url(${assetBase}template15/VwFFSzDMxP.png)
     no-repeat center;
   background-size: cover;
   z-index: 31;
@@ -163,7 +165,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   height: 16.25px;
   right: 23.75px;
   bottom: 11.875px;
-  background: url(./template15/PAELoUFG2M.png)
+  background: url(${assetBase}template15/PAELoUFG2M.png)
     no-repeat center;
   background-size: cover;
   z-index: 26;
@@ -174,7 +176,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   height: 12.5px;
   right: 340px;
   bottom: 15px;
-  background: url(./template15/MwTecw7Drx.png)
+  background: url(${assetBase}template15/MwTecw7Drx.png)
     no-repeat center;
   background-size: cover;
   z-index: 28;
@@ -224,7 +226,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   width: 131.25px;
   height: 4.375px;
   margin: 621.25px 0 0 118.75px;
-  background: url(./template15/RAhdORRxEm.png)
+  background: url(${assetBase}template15/RAhdORRxEm.png)
     no-repeat center;
   background-size: cover;
   z-index: 2;
@@ -322,7 +324,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   position: relative;
   width: 34.375px;
   height: 26.25px;
-  background: url(./template15/Ty19FTGnXS.png)
+  background: url(${assetBase}template15/Ty19FTGnXS.png)
     no-repeat center;
   background-size: cover;
   z-index: 15;
@@ -475,7 +477,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   position: relative;
   width: 34.375px;
   height: 26.25px;
-  background: url(./template15/B4UZO1tfCR.png)
+  background: url(${assetBase}template15/B4UZO1tfCR.png)
     no-repeat center;
   background-size: cover;
   z-index: 8;
@@ -523,7 +525,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   height: 800px;
   right: 0;
   bottom: 0;
-  background: url(./template15/L5u8dg6HOE.png)
+  background: url(${assetBase}template15/L5u8dg6HOE.png)
     no-repeat center;
   background-size: cover;
 }

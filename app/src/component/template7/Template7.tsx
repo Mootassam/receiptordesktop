@@ -7,6 +7,8 @@ interface Template7Props {
 }
 
 const Template7: React.FC<Template7Props> = ({ formData }) => {
+  const assetBase = window.location.protocol === "file:" ? "./" : "/";
+
   // Prepare dynamic values
   const senderAddress = formData.sender || "TA7mLh3Zy1sHj2n9u5XoV8w9e6r4q3b2c1";
   const amountValue = formData.amount || 70;
@@ -253,7 +255,7 @@ button {
   position: relative;
   width: 18.125px;
   height: 18.125px;
-  background: url(./template7/8Qnv2RNFk2.png)
+  background: url(${assetBase}template7/8Qnv2RNFk2.png)
     no-repeat center;
   background-size: cover;
   z-index: 23;
@@ -263,7 +265,7 @@ button {
   position: relative;
   width: 18.125px;
   height: 18.75px;
-  background: url(./template7/f0KgnrPDuU.png)
+  background: url(${assetBase}template7/f0KgnrPDuU.png)
     no-repeat center;
   background-size: cover;
   z-index: 18;
@@ -504,7 +506,7 @@ button {
   height: 20.625px;
   right: 21.875px;
   bottom: 21.25px;
-  background: url(./template7/whDie95cR4.png)
+  background: url(${assetBase}template7/whDie95cR4.png)
     no-repeat center;
   background-size: cover;
   z-index: 38;
@@ -515,7 +517,7 @@ button {
   height: 15.625px;
   right: 459.375px;
   bottom: 23.75px;
-  background: url(./template7/RUrRkdeW6m.png)
+  background: url(${assetBase}template7/RUrRkdeW6m.png)
     no-repeat center;
   background-size: cover;
   z-index: 40;
@@ -560,7 +562,7 @@ button {
   position: relative;
   width: 20.625px;
   height: 21.25px;
-  background: url(./template7/6CHSM2iqWw.png)
+  background: url(${assetBase}template7/6CHSM2iqWw.png)
     no-repeat center;
   background-size: cover;
   z-index: 35;

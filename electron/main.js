@@ -30,6 +30,7 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js'),
       backgroundThrottling: true,
       spellcheck: false,
+      webSecurity: false,
     },
     frame: true,
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',

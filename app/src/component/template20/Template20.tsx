@@ -8,6 +8,8 @@ interface Template20Props {
 }
 
 const Template20: React.FC<Template20Props> = ({ formData }) => {
+  const assetBase = window.location.protocol === "file:" ? "./" : "/";
+
   const [btcUsdRate, setBtcUsdRate] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -159,7 +161,7 @@ button {
   height: 13.75px;
   right: 33.75px;
   bottom: 8.75px;
-  background: url(./template20/J4sKMXYBmC.png)
+  background: url(${assetBase}template20/J4sKMXYBmC.png)
     no-repeat center;
   background-size: cover;
   z-index: 23;
@@ -170,7 +172,7 @@ button {
   height: 12.5px;
   right: 66.25px;
   bottom: 9.375px;
-  background: url(./template20/Q5QK7eSzt9.png)
+  background: url(${assetBase}template20/Q5QK7eSzt9.png)
     no-repeat center;
   background-size: cover;
   z-index: 24;
@@ -181,7 +183,7 @@ button {
   height: 11.25px;
   right: 88.75px;
   bottom: 10px;
-  background: url(./template20/7PZsStmYOn.png)
+  background: url(${assetBase}template20/7PZsStmYOn.png)
     no-repeat center;
   background-size: cover;
   z-index: 25;
@@ -192,7 +194,7 @@ button {
   height: 12.5px;
   right: 274.375px;
   bottom: 8.75px;
-  background: url(./template20/OBVMEV6Cpq.png)
+  background: url(${assetBase}template20/OBVMEV6Cpq.png)
     no-repeat center;
   background-size: cover;
   z-index: 26;
@@ -228,7 +230,7 @@ button {
   height: 13.125px;
   right: 333.125px;
   bottom: 7.5px;
-  background: url(./template20/nvg1syLs8C.png)
+  background: url(${assetBase}template20/nvg1syLs8C.png)
     no-repeat center;
   background-size: cover;
   z-index: 21;
@@ -283,7 +285,7 @@ button {
   height: 40px;
   right: 288.125px;
   bottom: 9.375px;
-  background: url(./template20/fYT7ho2Oay.png)
+  background: url(${assetBase}template20/fYT7ho2Oay.png)
     no-repeat center;
   background-size: cover;
   z-index: 14;
@@ -380,7 +382,7 @@ button {
   height: 18.125px;
   right: 306.875px;
   bottom: 15px;
-  background: url(./template20/NEgZ4r7gai.png)
+  background: url(${assetBase}template20/NEgZ4r7gai.png)
     no-repeat center;
   background-size: cover;
   z-index: 10;

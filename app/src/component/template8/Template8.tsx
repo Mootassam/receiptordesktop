@@ -7,6 +7,8 @@ interface Template8Props {
 }
 
 const Template8: React.FC<Template8Props> = ({ formData }) => {
+  const assetBase = window.location.protocol === "file:" ? "./" : "/";
+
     // Prepare dynamic values
     const amountDisplay = formData.amount ? `-${formData.amount}USDT` : "-88USDT";
     const amountNumber = formData.amount ? `${formData.amount} USDT` : "89 USDT";
@@ -101,7 +103,7 @@ const Template8: React.FC<Template8Props> = ({ formData }) => {
             height: 14.375px;
             right: 34.375px;
             bottom: 11.25px;
-            background: url(./template8/iG0WNOzkgh.png) no-repeat center;
+            background: url(${assetBase}template8/iG0WNOzkgh.png) no-repeat center;
             background-size: cover;
             z-index: 48;
         }
@@ -112,7 +114,7 @@ const Template8: React.FC<Template8Props> = ({ formData }) => {
             height: 13.125px;
             right: 66.25px;
             bottom: 11.875px;
-            background: url(./template8/kFJiTQqjQh.png) no-repeat center;
+            background: url(${assetBase}template8/kFJiTQqjQh.png) no-repeat center;
             background-size: cover;
             z-index: 49;
         }
@@ -123,7 +125,7 @@ const Template8: React.FC<Template8Props> = ({ formData }) => {
             height: 13.75px;
             right: 278.75px;
             bottom: 11.25px;
-            background: url(./template8/42pQHRWzCv.png) no-repeat center;
+            background: url(${assetBase}template8/42pQHRWzCv.png) no-repeat center;
             background-size: cover;
             z-index: 52;
         }
@@ -134,7 +136,7 @@ const Template8: React.FC<Template8Props> = ({ formData }) => {
             height: 10px;
             right: 259.375px;
             bottom: 13.125px;
-            background: url(./template8/R8rmhQBaio.png) no-repeat center;
+            background: url(${assetBase}template8/R8rmhQBaio.png) no-repeat center;
             background-size: cover;
             z-index: 51;
         }
@@ -172,7 +174,7 @@ const Template8: React.FC<Template8Props> = ({ formData }) => {
             height: 12.5px;
             right: 13.125px;
             bottom: 10px;
-            background: url(./template8/RiVeOcB2A4.png) no-repeat center;
+            background: url(${assetBase}template8/RiVeOcB2A4.png) no-repeat center;
             background-size: cover;
             z-index: 44;
         }
@@ -183,7 +185,7 @@ const Template8: React.FC<Template8Props> = ({ formData }) => {
             height: 10px;
             right: 333.125px;
             bottom: 11.25px;
-            background: url(./template8/9BN5H2wvw3.png) no-repeat center;
+            background: url(${assetBase}template8/9BN5H2wvw3.png) no-repeat center;
             background-size: cover;
             z-index: 46;
         }
@@ -242,7 +244,7 @@ const Template8: React.FC<Template8Props> = ({ formData }) => {
             position: relative;
             width: 12.5px;
             height: 11.875px;
-            background: url(./template8/6q22e3hWd3.png) no-repeat center;
+            background: url(${assetBase}template8/6q22e3hWd3.png) no-repeat center;
             background-size: cover;
             z-index: 41;
         }
@@ -404,7 +406,7 @@ const Template8: React.FC<Template8Props> = ({ formData }) => {
             height: 11.25px;
             right: 0;
             bottom: 16.25px;
-            background: url(./template8/f67YyS34ws.png) no-repeat center;
+            background: url(${assetBase}template8/f67YyS34ws.png) no-repeat center;
             background-size: cover;
             z-index: 31;
             flex-shrink: 0;
@@ -516,7 +518,7 @@ const Template8: React.FC<Template8Props> = ({ formData }) => {
             position: relative;
             width: 10.625px;
             height: 10.625px;
-            background: url(./template8/epYNUnQLk7.png) no-repeat center;
+            background: url(${assetBase}template8/epYNUnQLk7.png) no-repeat center;
             background-size: cover;
             z-index: 26;
         }
@@ -743,7 +745,7 @@ const Template8: React.FC<Template8Props> = ({ formData }) => {
             height: 11.25px;
             right: 201.875px;
             bottom: 11.875px;
-            background: url(./template8/6ckR8Ndn4m.png) no-repeat center;
+            background: url(${assetBase}template8/6ckR8Ndn4m.png) no-repeat center;
             background-size: cover;
             z-index: 10;
         }
@@ -810,7 +812,7 @@ const Template8: React.FC<Template8Props> = ({ formData }) => {
             width: 85.625px;
             height: 3.125px;
             margin: 18.125px 0 0 136.875px;
-            background: url(./template8/BmSwgtXRFJ.png) no-repeat center;
+            background: url(${assetBase}template8/BmSwgtXRFJ.png) no-repeat center;
             background-size: cover;
             z-index: 2;
         }

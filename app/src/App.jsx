@@ -9,7 +9,6 @@ import jQuery from 'jquery';
 import 'bootstrap/dist/js/bootstrap';
 import "./App.css"
 
-(window as any).$ = (window as any).jQuery = jQuery;
 
 const store = configureStore();
 

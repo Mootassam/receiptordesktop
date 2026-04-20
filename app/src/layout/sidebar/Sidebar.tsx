@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import "./sidebar.css";
 import optionBank from "../../data/OptionBank";
 import { FormData } from "../../shared/FormDataContext";
+import { useDispatch, useSelector } from "react-redux";
+import authActions from "../../modules/auth/authActions";
 import {
   FaEraser,
   FaUndo,
@@ -219,6 +221,9 @@ function Sidebar({
     return templateFieldLabels[value] || templateFieldLabels.template1;
   };
 
+    const dispatch = useDispatch();
+  
+
   const fieldLabels = getCurrentFieldLabels();
   const [selectedCoin, setSelectedCoin] = useState("USDT");
   const [showEditModal, setShowEditModal] = useState(false);
@@ -359,6 +364,12 @@ function Sidebar({
     setShowEditModal(false);
   };
 
+  const logout = () => {  
+
+dispatch(authActions.doSignout());
+
+  }
+
   const handleRandomToggle = () => {
     if (!randomData) {
       setFormData(generateRandomData());
@@ -381,6 +392,10 @@ function Sidebar({
   return (
     <>
       <div className="app__sidebar">
+
+        <div onClick={logout}>
+          Logout
+        </div>
         {/* Coin Selection */}
         <div className="coin__selection">
           <label htmlFor="coin">Select Coin</label>

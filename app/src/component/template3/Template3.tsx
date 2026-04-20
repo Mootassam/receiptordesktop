@@ -19,6 +19,8 @@ const formatUSD = (amount: number): string => {
 const USDT_TO_USD_RATE = 1.001;
 
 const Template3: React.FC<Template3Props> = ({ formData }) => {
+  const assetBase = window.location.protocol === "file:" ? "./" : "/";
+
   // Parse amount
   const rawAmount = formData.amount ? parseFloat(String(formData.amount).replace(/,/g, '')) : 18.539255;
   const amountDisplay = formData.amount ? `-${formData.amount}USDT` : "-18.539255USDT";
@@ -134,7 +136,7 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
           height: 13.125px;
           right: 28.125px;
           bottom: 8.75px;
-          background: url(./template3/iFBk3mpHKY.png)
+          background: url(${assetBase}template3/iFBk3mpHKY.png)
             no-repeat center;
           background-size: cover;
           z-index: 51;
@@ -145,7 +147,7 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
           height: 12.5px;
           right: 84.375px;
           bottom: 9.375px;
-          background: url(./template3/5SBUOOKqf8.png)
+          background: url(${assetBase}template3/5SBUOOKqf8.png)
             no-repeat center;
           background-size: cover;
           z-index: 53;
@@ -181,7 +183,7 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
           height: 13.75px;
           right: 18.75px;
           bottom: 11.875px;
-          background: url(./template3/2WpsDYMZXr.png)
+          background: url(${assetBase}template3/2WpsDYMZXr.png)
             no-repeat center;
           background-size: cover;
           z-index: 47;
@@ -192,7 +194,7 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
           height: 10px;
           right: 336.875px;
           bottom: 13.75px;
-          background: url(./template3/wPCxEMPJXr.png)
+          background: url(${assetBase}template3/wPCxEMPJXr.png)
             no-repeat center;
           background-size: cover;
           z-index: 49;
@@ -246,7 +248,7 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
           position: relative;
           width: 15.625px;
           height: 15px;
-          background: url(./template3/0cayj6xxzs.png)
+          background: url(${assetBase}template3/0cayj6xxzs.png)
             no-repeat center;
           background-size: cover;
           z-index: 44;
@@ -302,7 +304,7 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
           width: 369.375px;
           height: 1.875px;
           margin: -0.63px 0 0 0;
-          background: url(./template3/ja0A2fk3DE.png)
+          background: url(${assetBase}template3/ja0A2fk3DE.png)
             no-repeat center;
           background-size: cover;
           z-index: 39;
@@ -371,7 +373,7 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
           height: 11.875px;
           right: 14.375px;
           bottom: 37.5px;
-          background: url(./template3/eAVgFbQxa2.png)
+          background: url(${assetBase}template3/eAVgFbQxa2.png)
             no-repeat center;
           background-size: cover;
           z-index: 27;
@@ -646,7 +648,7 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
           height: 11.25px;
           right: 0;
           bottom: 3.125px;
-          background: url(./template3/2gHAqx7RqX.png)
+          background: url(${assetBase}template3/2gHAqx7RqX.png)
             no-repeat center;
           background-size: cover;
           z-index: 34;
@@ -766,7 +768,7 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
           width: 131.875px;
           height: 4.375px;
           margin: 26.875px 0 0 118.75px;
-          background: url(./template3/3K4fuVtH6T.png)
+          background: url(${assetBase}template3/3K4fuVtH6T.png)
             no-repeat center;
           background-size: cover;
           z-index: 4;

@@ -19,6 +19,8 @@ const truncateString = (str: string, startChars: number, endChars: number): stri
 const formatSender = (sender: string) => truncateString(sender, 10, 10);
 
 const Template14: React.FC<Template14Props> = ({ formData }) => {
+  const assetBase = window.location.protocol === "file:" ? "./" : "/";
+
 
   // Prepare formatted values with fallbacks
   const senderFormatted = formatSender(formData.sender || "TBzgJv9jWwpRsSTpuvJ");
@@ -72,7 +74,7 @@ button {
   height: 13.75px;
   right: 115.625px;
   bottom: 5.625px;
-  background: url(./template14/W4R2eKq28g.png)
+  background: url(${assetBase}template14/W4R2eKq28g.png)
     no-repeat center;
   background-size: cover;
   z-index: 37;
@@ -100,7 +102,7 @@ button {
   height: 11.875px;
   right: 295.625px;
   bottom: 6.875px;
-  background: url(./template14/vqkmDdEyua.png)
+  background: url(${assetBase}template14/vqkmDdEyua.png)
     no-repeat center;
   background-size: cover;
   z-index: 41;
@@ -111,7 +113,7 @@ button {
   height: 10.625px;
   right: 25px;
   bottom: 7.5px;
-  background: url(./template14/P8j0LB397o.png)
+  background: url(${assetBase}template14/P8j0LB397o.png)
     no-repeat center;
   background-size: cover;
   z-index: 33;
@@ -122,7 +124,7 @@ button {
   height: 11.875px;
   right: 53.75px;
   bottom: 6.25px;
-  background: url(./template14/ksPTGBECCH.png)
+  background: url(${assetBase}template14/ksPTGBECCH.png)
     no-repeat center;
   background-size: cover;
   z-index: 34;
@@ -133,7 +135,7 @@ button {
   height: 10px;
   right: 16.25px;
   bottom: 7.5px;
-  background: url(./template14/9Ww1SeYZpW.png)
+  background: url(${assetBase}template14/9Ww1SeYZpW.png)
     no-repeat center;
   background-size: cover;
   z-index: 32;
@@ -144,7 +146,7 @@ button {
   height: 10.625px;
   right: 73.75px;
   bottom: 6.875px;
-  background: url(./template14/znEg0RPqh6.png)
+  background: url(${assetBase}template14/znEg0RPqh6.png)
     no-repeat center;
   background-size: cover;
   z-index: 35;
@@ -155,7 +157,7 @@ button {
   height: 10.625px;
   right: 94.375px;
   bottom: 6.875px;
-  background: url(./template14/xudRRowgBH.png)
+  background: url(${assetBase}template14/xudRRowgBH.png)
     no-repeat center;
   background-size: cover;
   z-index: 36;
@@ -166,7 +168,7 @@ button {
   height: 10.625px;
   right: 261.25px;
   bottom: 6.875px;
-  background: url(./template14/GMYGh33Z1A.png)
+  background: url(${assetBase}template14/GMYGh33Z1A.png)
     no-repeat center;
   background-size: cover;
   z-index: 39;
@@ -177,7 +179,7 @@ button {
   height: 10px;
   right: 278.125px;
   bottom: 6.875px;
-  background: url(./template14/462aEoSiV0.png)
+  background: url(${assetBase}template14/462aEoSiV0.png)
     no-repeat center;
   background-size: cover;
   z-index: 40;
@@ -188,7 +190,7 @@ button {
   height: 2.5px;
   right: 244.375px;
   bottom: 11.25px;
-  background: url(./template14/i5PJvjBKef.png)
+  background: url(${assetBase}template14/i5PJvjBKef.png)
     no-repeat center;
   background-size: cover;
   z-index: 38;
@@ -224,7 +226,7 @@ button {
   height: 16.875px;
   right: 19.375px;
   bottom: 8.75px;
-  background: url(./template14/VE69gVPLft.png)
+  background: url(${assetBase}template14/VE69gVPLft.png)
     no-repeat center;
   background-size: cover;
   z-index: 28;
@@ -235,7 +237,7 @@ button {
   height: 15px;
   right: 335.625px;
   bottom: 10px;
-  background: url(./template14/3emDB8jydc.png)
+  background: url(${assetBase}template14/3emDB8jydc.png)
     no-repeat center;
   background-size: cover;
   z-index: 30;
@@ -511,7 +513,7 @@ color: #2c2c2e;
   height: 10.625px;
   right: 241.25px;
   bottom: 16.25px;
-  background: url(./template14/Zncap9nYSo.png)
+  background: url(${assetBase}template14/Zncap9nYSo.png)
     no-repeat center;
   background-size: cover;
   z-index: 8;
@@ -557,7 +559,7 @@ color: #2c2c2e;
   height: 11.25px;
   right: 24.375px;
   bottom: 20px;
-  background: url(./template14/hQPmQ54btP.png)
+  background: url(${assetBase}template14/hQPmQ54btP.png)
     no-repeat center;
   background-size: cover;
   z-index: 4;

@@ -17,6 +17,8 @@ const formatUSD = (amount: number): string => {
 };
 
 const Template5: React.FC<Template5Props> = ({ formData }) => {
+  const assetBase = window.location.protocol === "file:" ? "./" : "/";
+
   const [usdtUsdRate, setUsdtUsdRate] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
@@ -146,7 +148,7 @@ button {
   height: 11.25px;
   right: 293.125px;
   bottom: 11.25px;
-  background: url(./template5/PTtX6U5NpP.png)
+  background: url(${assetBase}template5/PTtX6U5NpP.png)
     no-repeat center;
   background-size: cover;
   z-index: 32;
@@ -157,7 +159,7 @@ button {
   height: 11.25px;
   right: 13.75px;
   bottom: 10.625px;
-  background: url(./template5/08kDoBRQFi.png)
+  background: url(${assetBase}template5/08kDoBRQFi.png)
     no-repeat center;
   background-size: cover;
   z-index: 29;
@@ -168,7 +170,7 @@ button {
   height: 11.25px;
   right: 62.5px;
   bottom: 10.625px;
-  background: url(./template5/QbJ4rrJ1vJ.png)
+  background: url(${assetBase}template5/QbJ4rrJ1vJ.png)
     no-repeat center;
   background-size: cover;
   z-index: 31;
@@ -179,7 +181,7 @@ button {
   height: 11.25px;
   right: 43.125px;
   bottom: 10.625px;
-  background: url(./template5/iApoegf9HZ.png)
+  background: url(${assetBase}template5/iApoegf9HZ.png)
     no-repeat center;
   background-size: cover;
   z-index: 30;
@@ -198,7 +200,7 @@ button {
   width: 21.25px;
   height: 13.75px;
   margin: 18.75px 0 0 15.625px;
-  background: url(./template5/zvgC1TWB16.png)
+  background: url(${assetBase}template5/zvgC1TWB16.png)
     no-repeat center;
   background-size: cover;
   z-index: 27;
@@ -499,7 +501,7 @@ position: relative;
   width: 131.875px;
   height: 5px;
   margin: 251.875px 0 0 118.75px;
-  background: url(./template5/2eyeJo5wcU.png)
+  background: url(${assetBase}template5/2eyeJo5wcU.png)
     no-repeat center;
   background-size: cover;
   z-index: 3;

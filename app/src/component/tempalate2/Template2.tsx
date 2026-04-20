@@ -22,6 +22,8 @@ const formatTxid = (txid: string) => truncateString(txid, 6, 6);           // "8
 const formatTokenAddress = (address: string) => truncateString(address, 5, 5); // "TR7NH...jLj6t"
 
 const Template2: React.FC<Template2Props> = ({ formData }) => {
+  const assetBase = window.location.protocol === "file:" ? "./" : "/";
+
     // Prepare formatted values with fallbacks
     const senderFormatted = formatSender(formData.sender || "TH98ybKh1R2myLFwpEzMHV");
     const receiverFormatted = formatReceiver(formData.receiver || "TXoy99Kdfan3Yhc3usLGYa");
@@ -99,7 +101,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             height: 35.625px;
             right: 103.75px;
             bottom: -0.63px;
-            background: url(./tempalate2/mo58s7vb09.png) no-repeat center;
+            background: url(${assetBase}tempalate2/mo58s7vb09.png) no-repeat center;
             background-size: cover;
             z-index: 38;
         }
@@ -109,7 +111,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             width: 163.75px;
             height: 33.75px;
             margin: 1.25px 0 0 1.875px;
-            background: url(./tempalate2/BmaSRY39Jq.png) no-repeat center;
+            background: url(${assetBase}tempalate2/BmaSRY39Jq.png) no-repeat center;
             background-size: cover;
             z-index: 39;
         }
@@ -120,7 +122,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             height: 20.625px;
             right: 135.625px;
             bottom: 6.875px;
-            background: url(./tempalate2/tpGif7AbjO.png) no-repeat center;
+            background: url(${assetBase}tempalate2/tpGif7AbjO.png) no-repeat center;
             background-size: cover;
             z-index: 47;
         }
@@ -131,7 +133,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             height: 8.75px;
             right: 9.375px;
             bottom: 12.5px;
-            background: url(./tempalate2/QbjKuHwWAA.png) no-repeat center;
+            background: url(${assetBase}tempalate2/QbjKuHwWAA.png) no-repeat center;
             background-size: cover;
             z-index: 46;
         }
@@ -160,7 +162,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             height: 13.125px;
             right: 20px;
             bottom: 11.25px;
-            background: url(./tempalate2/0QKFTcfKw3.png) no-repeat center;
+            background: url(${assetBase}tempalate2/0QKFTcfKw3.png) no-repeat center;
             background-size: cover;
             z-index: 41;
         }
@@ -171,7 +173,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             height: 12.5px;
             right: 75.625px;
             bottom: 11.25px;
-            background: url(./tempalate2/nOyVemaKtP.png) no-repeat center;
+            background: url(${assetBase}tempalate2/nOyVemaKtP.png) no-repeat center;
             background-size: cover;
             z-index: 43;
         }
@@ -182,7 +184,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             height: 12.5px;
             right: 52.5px;
             bottom: 11.25px;
-            background: url(./tempalate2/78wZpjuGHw.png) no-repeat center;
+            background: url(${assetBase}tempalate2/78wZpjuGHw.png) no-repeat center;
             background-size: cover;
             z-index: 42;
         }
@@ -193,7 +195,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             height: 13.125px;
             right: 289.375px;
             bottom: 10.625px;
-            background: url(./tempalate2/38jONjNWCo.png) no-repeat center;
+            background: url(${assetBase}tempalate2/38jONjNWCo.png) no-repeat center;
             background-size: cover;
             z-index: 44;
         }
@@ -214,7 +216,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             position: relative;
             width: 6.25px;
             height: 11.875px;
-            background: url(./tempalate2/yjwoQdZaU5.png) no-repeat center;
+            background: url(${assetBase}tempalate2/yjwoQdZaU5.png) no-repeat center;
             background-size: cover;
             z-index: 37;
         }
@@ -324,7 +326,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             height: 32.5px;
             right: 289.375px;
             bottom: 11.25px;
-            background: url(./tempalate2/kufDOOS2sX.png) no-repeat center;
+            background: url(${assetBase}tempalate2/kufDOOS2sX.png) no-repeat center;
             background-size: cover;
             z-index: 32;
         }
@@ -546,7 +548,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             width: 13.125px;
             height: 13.125px;
             margin: 0 0 0 0;
-            background: url(./tempalate2/vLLGwTrqMD.png) no-repeat center;
+            background: url(${assetBase}tempalate2/vLLGwTrqMD.png) no-repeat center;
             background-size: cover;
             z-index: 19;
         }
@@ -556,7 +558,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             width: 13.125px;
             height: 12.5px;
             margin: 19.375px 0 0 0;
-            background: url(./tempalate2/XubB4vemii.png) no-repeat center;
+            background: url(${assetBase}tempalate2/XubB4vemii.png) no-repeat center;
             background-size: cover;
             z-index: 18;
         }
@@ -632,7 +634,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             height: 12.5px;
             right: 0;
             bottom: 0;
-            background: url(./tempalate2/Vm9NQF2iYL.png) no-repeat center;
+            background: url(${assetBase}tempalate2/Vm9NQF2iYL.png) no-repeat center;
             background-size: cover;
             z-index: 11;
         }
@@ -721,7 +723,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             height: 8.75px;
             right: 18.75px;
             bottom: 17.5px;
-            background: url(./tempalate2/JrjhzV4TtK.png) no-repeat center;
+            background: url(${assetBase}tempalate2/JrjhzV4TtK.png) no-repeat center;
             background-size: cover;
             z-index: 7;
         }
@@ -731,7 +733,7 @@ const Template2: React.FC<Template2Props> = ({ formData }) => {
             width: 131.25px;
             height: 4.375px;
             margin: 235.625px 0 0 118.75px;
-            background: url(./tempalate2/Ee2iNnxYrV.png) no-repeat center;
+            background: url(${assetBase}tempalate2/Ee2iNnxYrV.png) no-repeat center;
             background-size: cover;
             z-index: 2;
         }

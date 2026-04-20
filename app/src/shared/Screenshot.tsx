@@ -7,6 +7,7 @@ class Screenshot {
     if (!divRef.current) return;
 
     const element = divRef.current;
+    const isFileProtocol = window.location.protocol === "file:";
 
     // Wait for fonts to load properly
     await document.fonts.ready;
@@ -14,11 +15,12 @@ class Screenshot {
     try {
       // 🔥 Get exact rendered size (prevents subpixel bugs)
       const rect = element.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
 
       const canvas = await html2canvas(element, {
         scale: Math.max(2, window.devicePixelRatio),
-        useCORS: true,
-        allowTaint: false,
+        useCORS: !isFileProtocol,
+        allowTaint: isFileProtocol,
         backgroundColor: null, // 👈 prevents white artifacts
         logging: false,
         imageTimeout: 0,

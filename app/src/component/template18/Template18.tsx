@@ -8,6 +8,8 @@ interface Template18Props {
 }
 
 const Template18: React.FC<Template18Props> = ({ formData }) => {
+  const assetBase = window.location.protocol === "file:" ? "./" : "/";
+
   const [ethUsdRate, setEthUsdRate] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
@@ -152,7 +154,7 @@ const Template18: React.FC<Template18Props> = ({ formData }) => {
            height: 13px;
            right: 19px;
            bottom: 11px;
-           background: url(./template6/NMvvKDDhXn.png) no-repeat center;
+           background: url(${assetBase}template6/NMvvKDDhXn.png) no-repeat center;
            background-size: cover;
            z-index: 36;
          }
@@ -162,7 +164,7 @@ const Template18: React.FC<Template18Props> = ({ formData }) => {
            height: 13px;
            right: 74px;
            bottom: 11px;
-           background: url(./template6/EAts1ioTQm.png) no-repeat center;
+           background: url(${assetBase}template6/EAts1ioTQm.png) no-repeat center;
            background-size: cover;
            z-index: 38;
          }
@@ -172,7 +174,7 @@ const Template18: React.FC<Template18Props> = ({ formData }) => {
            height: 12px;
            right: 51px;
            bottom: 12px;
-           background: url(./template6/yigZ9OeWvY.png) no-repeat center;
+           background: url(${assetBase}template6/yigZ9OeWvY.png) no-repeat center;
            background-size: cover;
            z-index: 37;
          }
@@ -190,7 +192,7 @@ const Template18: React.FC<Template18Props> = ({ formData }) => {
            width: 23px;
            height: 14px;
            margin: 16px 0 0 16px;
-           background: url(./template6/4iCMCT7nDJ.png) no-repeat center;
+           background: url(${assetBase}template6/4iCMCT7nDJ.png) no-repeat center;
            background-size: cover;
            z-index: 34;
          }
@@ -418,7 +420,7 @@ const Template18: React.FC<Template18Props> = ({ formData }) => {
            width: 341px;
            height: 3px;
            margin: 0 0 0 14px;
-           background: url(./template6/oU7Ojcv9P6.png) no-repeat center;
+           background: url(${assetBase}template6/oU7Ojcv9P6.png) no-repeat center;
            background-size: cover;
            z-index: 18;
          }
@@ -625,7 +627,7 @@ const Template18: React.FC<Template18Props> = ({ formData }) => {
            width: 131px;
            height: 5px;
            margin: 132px 0 0 119px;
-           background: url(./template6/A1qzfmrCBy.png) no-repeat center;
+           background: url(${assetBase}template6/A1qzfmrCBy.png) no-repeat center;
            background-size: cover;
            z-index: 2;
          }

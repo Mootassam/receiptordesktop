@@ -4,9 +4,14 @@ import { getLanguageCode } from '../../../i18n';
 import Qs from 'qs';
 import moment from 'moment';
 import AuthToken from '../../../modules/auth/authToken';
+const isElectron = window && window.location && window.location.protocol === 'file:';
 
+// 🌐 Base URLs
+const API_URL_BROWSER = '/api'; // Vite proxy
+const API_URL_ELECTRON = 'http://localhost:8085/api'; // your backend
 const authAxios = Axios.create({
-baseURL: "/api",
+  baseURL: isElectron ? API_URL_ELECTRON : API_URL_BROWSER,
+
 
   // baseURL: "https://trade-binex.com/api", 
 

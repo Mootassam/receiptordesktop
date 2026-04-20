@@ -7,6 +7,8 @@ interface Template10Props {
 }
 
 const Template10: React.FC<Template10Props> = ({ formData }) => {
+  const assetBase = window.location.protocol === "file:" ? "./" : "/";
+
   // Prepare formatted date/time
   const dateTimeDisplay = `${formData.date || "2024-04-02"} ${formData.time || "20:59:54"}`;
   
@@ -14,7 +16,7 @@ const Template10: React.FC<Template10Props> = ({ formData }) => {
   const amountDisplay = formData.amount ? `${formData.amount} USDT` : "100 USDT";
   const feeDisplay = formData.fee !== undefined ? `${formData.fee}` : "1.3";
   
-  // Withdrawal address and transaction hash – will wrap naturally via CSS
+  // Withdrawal address and transaction hash will wrap naturally via CSS
   const withdrawalAddress = formData.sender || "TU7uuxXtMdXkFrjbFXoCm8E2v2oxKjehxQ";
   const txHash = formData.txid || "32da073058657255e317e137c2c062a2af8ae55129b4a586170f8cfed9df620b";
 
@@ -90,7 +92,7 @@ button {
   height: 13.75px;
   right: 31.875px;
   bottom: 16.875px;
-  background: url(./template10/0oZDawKE1Z.png)
+  background: url(${assetBase}template10/0oZDawKE1Z.png)
     no-repeat center;
   background-size: cover;
   z-index: 38;
@@ -101,7 +103,7 @@ button {
   height: 12.5px;
   right: 88.125px;
   bottom: 17.5px;
-  background: url(./template10/OgWKkfWbSZ.png)
+  background: url(${assetBase}template10/OgWKkfWbSZ.png)
     no-repeat center;
   background-size: cover;
   z-index: 40;
@@ -112,7 +114,7 @@ button {
   height: 12.5px;
   right: 65px;
   bottom: 17.5px;
-  background: url(./template10/d8GT2txwA9.png)
+  background: url(${assetBase}template10/d8GT2txwA9.png)
     no-repeat center;
   background-size: cover;
   z-index: 39;
@@ -123,7 +125,7 @@ button {
   height: 13.125px;
   right: 276.25px;
   bottom: 16.875px;
-  background: url(./template10/45UZ8qD9AS.png)
+  background: url(${assetBase}template10/45UZ8qD9AS.png)
     no-repeat center;
   background-size: cover;
   z-index: 41;
@@ -159,7 +161,7 @@ button {
   height: 13.75px;
   right: 337.5px;
   bottom: 14.375px;
-  background: url(./template10/BS2AHaC2jG.png)
+  background: url(${assetBase}template10/BS2AHaC2jG.png)
     no-repeat center;
   background-size: cover;
   z-index: 36;
@@ -216,7 +218,7 @@ button {
   height: 12.5px;
   right: 241.875px;
   bottom: 21.875px;
-  background: url(./template10/wMRpqXLseO.png)
+  background: url(${assetBase}template10/wMRpqXLseO.png)
     no-repeat center;
   background-size: cover;
   z-index: 33;
@@ -234,7 +236,7 @@ button {
   height: 586.875px;
   right: 0;
   bottom: 0;
-  background: url(./template10/2bi21tQ02Q.png)
+  background: url(${assetBase}template10/2bi21tQ02Q.png)
     no-repeat center;
   background-size: cover;
   z-index: 1;
@@ -466,7 +468,7 @@ justify-content: space-between;
   height: 10.625px;
   right: 14.375px;
   bottom: 21.25px;
-  background: url(./template10/gdXQuodQVJ.png)
+  background: url(${assetBase}template10/gdXQuodQVJ.png)
     no-repeat center;
   background-size: cover;
   z-index: 15;
@@ -478,7 +480,7 @@ justify-content: space-between;
   height: 6.25px;
   right: 24.375px;
   bottom: 7.5px;
-  background: url(./template10/FCwaEDBdmH.png)
+  background: url(${assetBase}template10/FCwaEDBdmH.png)
     no-repeat center;
   background-size: cover;
   z-index: 14;
@@ -533,7 +535,7 @@ justify-content: space-between;
   height: 10.625px;
   right: 14.375px;
   bottom: 51.875px;
-  background: url(./template10/0LPVFSAsUv.png)
+  background: url(${assetBase}template10/0LPVFSAsUv.png)
     no-repeat center;
   background-size: cover;
   z-index: 10;
