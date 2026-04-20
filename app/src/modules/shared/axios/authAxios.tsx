@@ -13,7 +13,7 @@ const authAxios = Axios.create({
   baseURL: isElectron ? API_URL_ELECTRON : API_URL_BROWSER,
 
 
-  // baseURL: "https://trade-binex.com/api", 
+  // baseURL: "https://trade-OneClick.com/api", 
 
   paramsSerializer: function (params) {
     return Qs.stringify(params, {

@@ -20,11 +20,11 @@ import {
   FaPhone,
   FaTelegram,
   FaWhatsapp,
-  FaComment
+  FaComment,
+  FaSignOutAlt
 } from "react-icons/fa";
 
 // Import coin images (you'll need to add these images to your project)
-// If you don't have the images, you can use these placeholders or replace with actual images
 import usdtIcon from "../../assets/usdt.svg";
 import btcIcon from "../../assets/btc.png";
 import ethIcon from "../../assets/eth.svg";
@@ -191,22 +191,18 @@ function Sidebar({
       time: 'Time',
       fee: 'Network fee'
     },
-
     template19: {
       amount: 'Amount',
       date: 'Date',
       time: 'Time',
       fee: 'Network fee'
     },
-
-
     template20: {
       sender: 'Address',
       amount: 'Amount',
       date: 'Date',
       time: 'Time',
     },
-
     template21: {
       sender: 'Address',
       amount: 'Amount',
@@ -221,8 +217,7 @@ function Sidebar({
     return templateFieldLabels[value] || templateFieldLabels.template1;
   };
 
-    const dispatch = useDispatch();
-  
+  const dispatch = useDispatch();
 
   const fieldLabels = getCurrentFieldLabels();
   const [selectedCoin, setSelectedCoin] = useState("USDT");
@@ -241,8 +236,6 @@ function Sidebar({
     whatsapp: 0,
     notifications: 3
   });
-
-  // formData is now received from props (global state from App.tsx)
 
   // Coin options
   const coinOptions = [
@@ -345,7 +338,6 @@ function Sidebar({
         const text = await navigator.clipboard.readText();
         setFormData(prev => ({ ...prev, [fieldName]: text }));
       } else {
-        // Fallback for older browsers
         const text = prompt("Paste your text here:");
         if (text !== null) {
           setFormData(prev => ({ ...prev, [fieldName]: text }));
@@ -364,11 +356,9 @@ function Sidebar({
     setShowEditModal(false);
   };
 
-  const logout = () => {  
-
-dispatch(authActions.doSignout());
-
-  }
+  const logout = () => {
+    dispatch(authActions.doSignout());
+  };
 
   const handleRandomToggle = () => {
     if (!randomData) {
@@ -379,11 +369,7 @@ dispatch(authActions.doSignout());
 
   const handleScreenshot = () => {
     setIsScreenshotAnimating(true);
-
-    // Trigger screenshot function
     screenshot();
-
-    // Reset animation after 300ms
     setTimeout(() => {
       setIsScreenshotAnimating(false);
     }, 300);
@@ -392,10 +378,6 @@ dispatch(authActions.doSignout());
   return (
     <>
       <div className="app__sidebar">
-
-        <div onClick={logout}>
-          Logout
-        </div>
         {/* Coin Selection */}
         <div className="coin__selection">
           <label htmlFor="coin">Select Coin</label>
@@ -409,14 +391,12 @@ dispatch(authActions.doSignout());
                   borderColor: selectedCoin === coin.id ? coin.color : undefined
                 }}
               >
-                {/* Try to use image, fallback to SVG if not available */}
                 {coin.icon ? (
                   <img
                     src={coin.icon}
                     alt={coin.name}
                     className="coin__icon"
                     onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-                      // If image fails to load, show fallback
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
                       const nextSibling = target.nextElementSibling as HTMLElement;
@@ -471,7 +451,6 @@ dispatch(authActions.doSignout());
             </select>
           </div>
 
-
           {/* Tools Section */}
           <div className="form__group">
             <label htmlFor="">Drawing Tools</label>
@@ -492,19 +471,10 @@ dispatch(authActions.doSignout());
                   <FaEraser size={16} />
                 </button>
               </div>
-              {/* <div className="phone__header-btn">
-                <button
-                  className="phone__header-edit-btn"
-                  onClick={() => setShowPhoneHeaderModal(true)}
-                  title="Edit Phone Header"
-                >
-                  <FaMobileAlt size={16} />
-                </button>
-              </div> */}
             </div>
           </div>
 
-          {/* Brush Size - Removed preview */}
+          {/* Brush Size */}
           <div className="form__group">
             <label htmlFor="brushSize">Brush Size</label>
             <div className="brush__size-container">
@@ -535,23 +505,23 @@ dispatch(authActions.doSignout());
           </div>
         </div>
 
-
-
-        {/* Screenshot Button */}
+        {/* Screenshot Button with pulse animation */}
         <button
-          className="app__screenshot"
+          className={`app__screenshot ${isScreenshotAnimating ? 'screenshot--clicked' : ''}`}
           onClick={handleScreenshot}
-          style={{
-            transform: isScreenshotAnimating ? 'scale(0.98)' : 'scale(1)',
-            opacity: isScreenshotAnimating ? 0.9 : 1
-          }}
         >
           <FaCamera size={18} color="white" />
           <span className="screenshot__text">Take Screenshot</span>
         </button>
+
+        {/* Logout Button */}
+        <button className="logout__button" onClick={logout}>
+          <FaSignOutAlt size={16} />
+          <span>Logout</span>
+        </button>
       </div>
 
-      {/* Edit Details Modal */}
+      {/* Edit Details Modal - unchanged */}
       {showEditModal && (
         <div className="modal__overlay" onClick={() => setShowEditModal(false)}>
           <div className="modal__content" onClick={(e) => e.stopPropagation()}>
@@ -580,7 +550,6 @@ dispatch(authActions.doSignout());
               </div>
 
               {/* Date Input */}
-
               <div className="input__group">
                 <div className="input__with__buttons">
                   <input
@@ -595,7 +564,6 @@ dispatch(authActions.doSignout());
                   </button>
                 </div>
               </div>
-
 
               {/* Sender Input */}
               {fieldLabels.sender && (
@@ -664,7 +632,7 @@ dispatch(authActions.doSignout());
                 </div>
               )}
 
-              {/* TXID Input - New Field */}
+              {/* TXID Input */}
               {fieldLabels.txid && (
                 <div className="input__group">
                   <div className="input__with__buttons">
@@ -767,7 +735,7 @@ dispatch(authActions.doSignout());
         </div>
       )}
 
-      {/* Phone Header Modal */}
+      {/* Phone Header Modal - unchanged */}
       {showPhoneHeaderModal && (
         <div className="modal__overlay" onClick={() => setShowPhoneHeaderModal(false)}>
           <div className="modal__content" onClick={(e) => e.stopPropagation()}>
@@ -852,8 +820,6 @@ dispatch(authActions.doSignout());
                   <FaBell style={{ marginRight: '6px' }} />
                   Notification Badges
                 </h4>
-
-
               </div>
             </div>
 

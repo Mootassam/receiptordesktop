@@ -190,8 +190,8 @@ function EmptyPermissionsPage() {
           <p>Need immediate assistance?</p>
           <p>
             Email us at:{" "}
-            <a href="mailto:binex.helpdesk01@gmail.com" className="email-link">
-              binex.helpdesk01@gmail.com
+            <a href="mailto:OneClick.helpdesk01@gmail.com" className="email-link">
+              OneClick.helpdesk01@gmail.com
             </a>
           </p>
         </div>

@@ -459,7 +459,7 @@ common: {
     
     proof: {
       title: "Verifica Identità",
-      instructions: "Verifica la tua identità per accedere a tutte le funzioni del tuo BINEX",
+      instructions: "Verifica la tua identità per accedere a tutte le funzioni del tuo OneClick",
       sections: {
         documentInfo: "Informazioni Documento",
         documentUpload: "Caricamento Documento"
@@ -800,7 +800,7 @@ common: {
     },
     
     home: {
-      logoAlt: "Logo BINEX",
+      logoAlt: "Logo OneClick",
       headerAlt: "Piattaforma Trading Cripto",
       slogan: "Profitta con Sicurezza",
       promoAlt: "Banner promozionale {0}",
@@ -814,8 +814,8 @@ common: {
         description: "Un robot di trading quantitativo AI è un sistema di trading automatizzato che combina l'intelligenza artificiale (AI) con tecniche di trading quantitativo. La sua funzione principale è acquistare e vendere automaticamente prodotti finanziari e criptovalute in base ai dati di mercato e a specifiche strategie di trading per ottenere profitti stabili o controllare i rischi."
       },
       nftExploration: {
-        title: "Esplora NFT con BINEX",
-        description: "Entra nel mondo degli NFT con BINEX, il tuo portafoglio di trading di asset digitali tutto in uno. Progettato sia per principianti che per trader professionisti, BINEX ti permette di esplorare, acquistare, vendere e"
+        title: "Esplora NFT con OneClick",
+        description: "Entra nel mondo degli NFT con OneClick, il tuo portafoglio di trading di asset digitali tutto in uno. Progettato sia per principianti che per trader professionisti, OneClick ti permette di esplorare, acquistare, vendere e"
       },
       stats: {
         title: "Il Nostro Impatto",
@@ -920,15 +920,15 @@ common: {
       announcements: {
         maintenanceNotice: "Avviso di manutenzione",
         contractServerUpgrade: "Aggiornamento server contratti e avviso di manutenzione del 15 gennaio 2023",
-        binexOptionsMaintenance: "Avviso di manutenzione sistema trading opzioni Binex",
-        clientVersionUpgrade: "Importante! Avviso di Binex sull'ultimo aggiornamento versione client",
-        platformTradingAnnouncement: "Ultimo annuncio trading piattaforma Binex",
-        platformUpgradeOptimization: "Avviso aggiornamento ottimizzazione versione piattaforma Binex",
-        march15Upgrade: "15 marzo 2023 Avviso ottimizzazione manutenzione aggiornamento server contratti piattaforma Binex",
-        optionsTradingMaintenance: "Avviso manutenzione e ottimizzazione sistema trading opzioni piattaforma Binex",
-        latestVersionUpgrade: "Avviso importante piattaforma Binex sull'aggiornamento e ottimizzazione dell'ultima versione del client",
-        userSecurityReminder: "Promemoria sulla sicurezza delle informazioni utente Binex",
-        perpetualContractUpgrade: "Avviso piattaforma Binex sull'ottimizzazione e aggiornamento sistema contratti perpetui",
+        OneClickOptionsMaintenance: "Avviso di manutenzione sistema trading opzioni OneClick",
+        clientVersionUpgrade: "Importante! Avviso di OneClick sull'ultimo aggiornamento versione client",
+        platformTradingAnnouncement: "Ultimo annuncio trading piattaforma OneClick",
+        platformUpgradeOptimization: "Avviso aggiornamento ottimizzazione versione piattaforma OneClick",
+        march15Upgrade: "15 marzo 2023 Avviso ottimizzazione manutenzione aggiornamento server contratti piattaforma OneClick",
+        optionsTradingMaintenance: "Avviso manutenzione e ottimizzazione sistema trading opzioni piattaforma OneClick",
+        latestVersionUpgrade: "Avviso importante piattaforma OneClick sull'aggiornamento e ottimizzazione dell'ultima versione del client",
+        userSecurityReminder: "Promemoria sulla sicurezza delle informazioni utente OneClick",
+        perpetualContractUpgrade: "Avviso piattaforma OneClick sull'ottimizzazione e aggiornamento sistema contratti perpetui",
         maintenanceCompletion: "Avviso sul completamento della manutenzione e ottimizzazione del sistema piattaforma",
         bitcoinWithdrawal: "Avviso sui prelievi Bitcoin",
         tradingPairsUpgrade: "Avviso sull'aggiornamento di alcune coppie di trading sulla piattaforma",
@@ -944,7 +944,7 @@ common: {
         decUsdtLaunch: "Avviso lancio trading DEC/USDT",
         usdtIntroduction: "Introduzione USDT",
         ethereumNetworkMaintenance: "Avviso manutenzione rete Ethereum",
-        projectReviewStandards: "Standard revisione progetti Binex",
+        projectReviewStandards: "Standard revisione progetti OneClick",
         liquidityMiningUpgrade: "Aggiornamento Liquidity Mining",
         liquidityMiningFee: "Adeguamento tariffe liquidity mining",
         delistingTradingPairs: "Delist coppie di trading",
@@ -999,7 +999,7 @@ common: {
     privacy: {
       title: "Portale Privacy",
       hero: {
-        title: "Portale Privacy BINEX",
+        title: "Portale Privacy OneClick",
         subtitle: "Protezione dei tuoi dati e privacy con linee guida rigorose, conformità legale e migliori pratiche del settore."
       },
       principles: {
@@ -1034,7 +1034,7 @@ common: {
       personalData: {
         title: "Cosa Sono i Dati Personali?",
         definition: "I dati personali si riferiscono a qualsiasi informazione che identifica un individuo.",
-        examples: "Esempi includono: nome, ID BINEX, indirizzo email, dati di localizzazione, cronologia transazioni e informazioni del dispositivo."
+        examples: "Esempi includono: nome, ID OneClick, indirizzo email, dati di localizzazione, cronologia transazioni e informazioni del dispositivo."
       },
       dataUsage: {
         title: "Come Utilizziamo i Tuoi Dati",
@@ -1069,7 +1069,7 @@ common: {
       },
       dataSharing: {
         title: "Condivisione Dati",
-        content: "Possiamo condividere i tuoi dati con altre entità BINEX o terze parti fidate sotto rigorose garanzie contrattuali, solo quando necessario per gli scopi descritti nel nostro Avviso sulla Privacy."
+        content: "Possiamo condividere i tuoi dati con altre entità OneClick o terze parti fidate sotto rigorose garanzie contrattuali, solo quando necessario per gli scopi descritti nel nostro Avviso sulla Privacy."
       },
       cookies: {
         title: "Cookie e Tracciamento",
@@ -1100,21 +1100,21 @@ common: {
     termsOfUse: {
       title: "Termini di Utilizzo",
       hero: {
-        title: "Termini di Utilizzo BINEX"
+        title: "Termini di Utilizzo OneClick"
       },
       agreement: {
         title: "Accordo",
-        content: "Questo è un accordo vincolante tra te (l'utente) e BINEX. Copre tutti i Servizi BINEX a cui accedi o utilizzi."
+        content: "Questo è un accordo vincolante tra te (l'utente) e OneClick. Copre tutti i Servizi OneClick a cui accedi o utilizzi."
       },
       riskWarning: {
         title: "Avviso di Rischio",
-        content: "Gli asset digitali sono volatili e possono fluttuare significativamente di valore. BINEX non è un broker, consulente finanziario o consulente di investimenti. Devi condurre la tua dovuta diligenza prima di prendere qualsiasi decisione finanziaria."
+        content: "Gli asset digitali sono volatili e possono fluttuare significativamente di valore. OneClick non è un broker, consulente finanziario o consulente di investimenti. Devi condurre la tua dovuta diligenza prima di prendere qualsiasi decisione finanziaria."
       },
       aboutServices: {
         title: "Informazioni sui Nostri Servizi",
-        aboutBINEX: {
-          title: "Informazioni su BINEX",
-          content: "BINEX fornisce scambio di asset digitali, servizi di custodia e servizi finanziari correlati attraverso la nostra piattaforma."
+        aboutOneClick: {
+          title: "Informazioni su OneClick",
+          content: "OneClick fornisce scambio di asset digitali, servizi di custodia e servizi finanziari correlati attraverso la nostra piattaforma."
         },
         eligibility: {
           title: "Idoneità",
@@ -1122,14 +1122,14 @@ common: {
         },
         communication: {
           title: "Comunicazione",
-          content: "Devi mantenere aggiornate le tue informazioni di contatto. BINEX ti contatterà via email, SMS o telefono riguardo al tuo account e ai nostri servizi."
+          content: "Devi mantenere aggiornate le tue informazioni di contatto. OneClick ti contatterà via email, SMS o telefono riguardo al tuo account e ai nostri servizi."
         }
       },
       services: {
         title: "I Nostri Servizi",
         servicesProvided: {
           title: "Servizi Forniti",
-          content: "BINEX offre trading di asset digitali, soluzioni di custodia sicura e supporto clienti sia attraverso bot automatizzati che rappresentanti umani. È disponibile anche la funzionalità di chat utente."
+          content: "OneClick offre trading di asset digitali, soluzioni di custodia sicura e supporto clienti sia attraverso bot automatizzati che rappresentanti umani. È disponibile anche la funzionalità di chat utente."
         },
         fees: {
           title: "Tariffe",
@@ -1159,7 +1159,7 @@ common: {
         },
         transactionCancellation: {
           title: "Annullamento Transazione",
-          content: "BINEX si riserva il diritto di annullare o modificare transazioni in caso di sospetto frode, errori o violazioni di questi Termini."
+          content: "OneClick si riserva il diritto di annullare o modificare transazioni in caso di sospetto frode, errori o violazioni di questi Termini."
         },
         unauthorizedTransactions: {
           title: "Transazioni Non Autorizzate",
@@ -1170,11 +1170,11 @@ common: {
         title: "Asset Digitali",
         supportedAssets: {
           title: "Asset Supportati",
-          content: "Puoi effettuare transazioni solo con asset digitali esplicitamente supportati da BINEX. Tentare di depositare asset non supportati può risultare in perdita permanente."
+          content: "Puoi effettuare transazioni solo con asset digitali esplicitamente supportati da OneClick. Tentare di depositare asset non supportati può risultare in perdita permanente."
         },
         forksAirdrops: {
           title: "Forks e Airdrops",
-          content: "BINEX non garantisce supporto per fork blockchain, airdrops o altri eventi simili. Le decisioni di supporto vengono prese a nostra sola discrezione."
+          content: "OneClick non garantisce supporto per fork blockchain, airdrops o altri eventi simili. Le decisioni di supporto vengono prese a nostra sola discrezione."
         }
       },
       accountSecurity: {
@@ -1186,37 +1186,37 @@ common: {
       },
       privacy: {
         title: "Privacy",
-        content: "La tua privacy è governata dall'Avviso sulla Privacy di BINEX, che spiega come raccogliamo, utilizziamo e proteggiamo le tue informazioni personali."
+        content: "La tua privacy è governata dall'Avviso sulla Privacy di OneClick, che spiega come raccogliamo, utilizziamo e proteggiamo le tue informazioni personali."
       },
       termination: {
         title: "Terminazione Account",
         terminationSuspension: {
           title: "Terminazione/Sospensione",
-          content: "BINEX può limitare, sospendere o terminare account per frode, violazioni della legge, attività sospette o violazioni di questi Termini. Gli utenti possono chiudere account a meno che non siano congelati o dormienti."
+          content: "OneClick può limitare, sospendere o terminare account per frode, violazioni della legge, attività sospette o violazioni di questi Termini. Gli utenti possono chiudere account a meno che non siano congelati o dormienti."
         }
       },
       prohibitedUse: {
         title: "Uso Proibito",
-        content: "Non puoi utilizzare i servizi BINEX per frode, manipolazione del mercato, attività illegali, accesso non autorizzato o qualsiasi scopo che violi le leggi applicabili o questi Termini."
+        content: "Non puoi utilizzare i servizi OneClick per frode, manipolazione del mercato, attività illegali, accesso non autorizzato o qualsiasi scopo che violi le leggi applicabili o questi Termini."
       },
       liability: {
         title: "Responsabilità e Proprietà Intellettuale",
         liability: {
           title: "Responsabilità",
-          content: "BINEX non è responsabile per perdite tranne in casi di provata negligenza grave o frode. Non siamo responsabili per fluttuazioni del mercato, problemi tecnici o azioni di terze parti."
+          content: "OneClick non è responsabile per perdite tranne in casi di provata negligenza grave o frode. Non siamo responsabili per fluttuazioni del mercato, problemi tecnici o azioni di terze parti."
         },
         intellectualProperty: {
           title: "Proprietà Intellettuale",
-          content: "BINEX detiene tutti i diritti di proprietà intellettuale sulla nostra piattaforma, tecnologia e branding. Gli utenti ricevono una licenza limitata per utilizzare i nostri servizi come descritto in questi Termini."
+          content: "OneClick detiene tutti i diritti di proprietà intellettuale sulla nostra piattaforma, tecnologia e branding. Gli utenti ricevono una licenza limitata per utilizzare i nostri servizi come descritto in questi Termini."
         },
         indemnity: {
           title: "Indennizzo",
-          content: "Accetti di indennizzare e tenere indenne BINEX da qualsiasi reclamo, perdita o danno risultante dall'uso improprio dei nostri servizi o violazione di questi Termini."
+          content: "Accetti di indennizzare e tenere indenne OneClick da qualsiasi reclamo, perdita o danno risultante dall'uso improprio dei nostri servizi o violazione di questi Termini."
         }
       },
       importantNotice: {
         title: "Avviso Importante",
-        content: "Utilizzando i servizi di BINEX, riconosci di aver letto, compreso e accettato di essere vincolato da questi Termini di Utilizzo. Se non sei d'accordo, devi interrompere immediatamente l'uso dei nostri servizi."
+        content: "Utilizzando i servizi di OneClick, riconosci di aver letto, compreso e accettato di essere vincolato da questi Termini di Utilizzo. Se non sei d'accordo, devi interrompere immediatamente l'uso dei nostri servizi."
       },
       actionCards: {
         security: {
@@ -1237,7 +1237,7 @@ common: {
         }
       },
       footer: {
-        copyright: "© 2025 BINEX. Tutti i diritti riservati.",
+        copyright: "© 2025 OneClick. Tutti i diritti riservati.",
         lastUpdated: "Ultimo aggiornamento: 6 maggio 2025"
       }
     },
@@ -1320,7 +1320,7 @@ common: {
     invitation: {
       title: "Invita Amici",
       earnTogether: "Guadagna Insieme",
-      description: "Invita amici a unirsi a BINEX e guadagna ricompense quando si registrano e iniziano a fare trading.",
+      description: "Invita amici a unirsi a OneClick e guadagna ricompense quando si registrano e iniziano a fare trading.",
       yourReferralCode: "IL TUO CODICE REFERRAL",
       loading: "Caricamento...",
       copied: "COPIATO!",
@@ -1421,7 +1421,7 @@ common: {
         lostDevice: "Se il tuo dispositivo viene perso o rubato, revoca immediatamente l'accesso alla sessione dalle impostazioni del tuo account.",
         phishing: "Se sei stato vittima di un tentativo di phishing, blocca il tuo account e contatta immediatamente il supporto.",
         supportTitle: "Supporto Sicurezza 24/7",
-        supportEmail: "binex.helpdesk01@gmail.com"
+        supportEmail: "OneClick.helpdesk01@gmail.com"
       },
       resources: {
         title: "Risorse di Sicurezza",
@@ -1474,7 +1474,7 @@ common: {
         },
         accountActivated: {
           title: "Verifica KYC",
-          message: "Ciao {0} i tuoi documenti KYC sono stati verificati, ora puoi godere di funzioni illimitate su BINEX"
+          message: "Ciao {0} i tuoi documenti KYC sono stati verificati, ora puoi godere di funzioni illimitate su OneClick"
         },
         custom: {
           title: "Notifica",
@@ -1725,7 +1725,7 @@ common: {
       title: "Centro FAQ",
       hero: {
         title: "Domande Frequenti",
-        subtitle: "Trova risposte a domande comuni sull'uso di BINEX"
+        subtitle: "Trova risposte a domande comuni sull'uso di OneClick"
       },
       search: {
         placeholder: "Cerca risposte..."
@@ -1747,7 +1747,7 @@ common: {
         verificationProcess: "Carica un documento d'identità governativo e una foto selfie. La verifica viene solitamente approvata entro poche ore."
       },
       steps: {
-        goToWebsite: "Vai su https://trade-binex.com",
+        goToWebsite: "Vai su https://trade-OneClick.com",
         clickSignUp: 'Clicca "Registrati"',
         enterDetails: "Inserisci i tuoi dati",
         verifyEmail: "Verifica il tuo indirizzo email",
@@ -1793,7 +1793,7 @@ common: {
         profitLossExplanation: "Calcolato in base alla differenza di prezzo moltiplicata per la tua leva e dimensione della posizione."
       },
       benefits: {
-        title: "Perché Scegliere Futures BINEX?",
+        title: "Perché Scegliere Futures OneClick?",
         hedge: "Copertura contro la volatilità del mercato",
         multiplyProfits: "Moltiplica i profitti con la leva",
         tradeBothMarkets: "Fai trading sia su mercati in rialzo che in ribasso",
@@ -1806,8 +1806,8 @@ common: {
         joinDiscussions: "Unisciti alle discussioni"
       },
       footer: {
-        copyright: "© 2025 BINEX. Tutti i diritti riservati.",
-        needHelp: "Hai bisogno di più aiuto? Contatta binex.helpdesk01@gmail.com"
+        copyright: "© 2025 OneClick. Tutti i diritti riservati.",
+        needHelp: "Hai bisogno di più aiuto? Contatta OneClick.helpdesk01@gmail.com"
       }
     },
     

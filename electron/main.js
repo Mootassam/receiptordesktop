@@ -20,9 +20,10 @@ function createWindow() {
 
   mainWindow = new BrowserWindow({
     width: 855,
-    height: height,
+    height: 800,
     minWidth: 855,
     maxWidth: 855,
+    maxHeight:800,
     resizable: false,      // width is fixed, height can be full screen but not resizable
     webPreferences: {
       nodeIntegration: false,

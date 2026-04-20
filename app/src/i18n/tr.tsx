@@ -453,7 +453,7 @@ common: {
     
     proof: {
       title: "Kimlik Doğrulama",
-      instructions: "BINEX'inizin tüm özelliklerine erişmek için kimliğinizi doğrulayın",
+      instructions: "OneClick'inizin tüm özelliklerine erişmek için kimliğinizi doğrulayın",
       sections: {
         documentInfo: "Belge Bilgileri",
         documentUpload: "Belge Yükleme"
@@ -794,7 +794,7 @@ common: {
     },
     
     home: {
-      logoAlt: "BINEX Logosu",
+      logoAlt: "OneClick Logosu",
       headerAlt: "Kripto Ticaret Platformu",
       slogan: "Güvenle Kâr Edin",
       promoAlt: "Promosyon banner {0}",
@@ -808,8 +808,8 @@ common: {
         description: "Bir AI kantitatif ticaret robotu, yapay zeka (AI) ile kantitatif ticaret tekniklerini birleştiren otomatik bir ticaret sistemidir. Temel işlevi, istikrarlı kârlar elde etmek veya riskleri kontrol etmek için piyasa verilerine ve belirli ticaret stratejilerine dayalı olarak finansal ürünleri ve kripto para birimlerini otomatik olarak alıp satmaktır."
       },
       nftExploration: {
-        title: "BINEX ile NFT'leri Keşfedin",
-        description: "BINEX ile NFT'lerin dünyasına adım atın, tümü bir arada dijital varlık ticaret cüzdanınız. Hem yeni başlayanlar hem de profesyonel tüccarlar için tasarlanmış BINEX, NFT'leri keşfetmenize, satın almanıza, satmanıza ve"
+        title: "OneClick ile NFT'leri Keşfedin",
+        description: "OneClick ile NFT'lerin dünyasına adım atın, tümü bir arada dijital varlık ticaret cüzdanınız. Hem yeni başlayanlar hem de profesyonel tüccarlar için tasarlanmış OneClick, NFT'leri keşfetmenize, satın almanıza, satmanıza ve"
       },
       stats: {
         title: "Etkimiz",
@@ -914,15 +914,15 @@ common: {
       announcements: {
         maintenanceNotice: "Bakım bildirimi",
         contractServerUpgrade: "15 Ocak 2023 kontrat sunucusu yükseltme ve bakım duyurusu",
-        binexOptionsMaintenance: "Binex Opsiyon Ticaret Sistemi Bakım Duyurusu",
-        clientVersionUpgrade: "Önemli! Binex'in en son istemci sürüm yükseltmesi hakkında duyurusu",
-        platformTradingAnnouncement: "Binex platform ticaret en son duyurusu",
-        platformUpgradeOptimization: "Binex Platform Sürüm Yükseltme Optimizasyon Güncelleme Duyurusu",
-        march15Upgrade: "15 Mart 2023 Binex platform kontrat sunucusu yükseltme bakım optimizasyon duyurusu",
-        optionsTradingMaintenance: "Binex platform opsiyon ticaret sistemi bakım ve optimizasyon duyurusu",
-        latestVersionUpgrade: "Binex Platform İstemcinin En Son Sürümünün Yükseltilmesi ve Optimizasyonu Hakkında Önemli Duyuru",
-        userSecurityReminder: "Binex kullanıcı bilgi güvenliği hakkında hatırlatma",
-        perpetualContractUpgrade: "Binex platform sürekli kontrat sisteminin optimizasyonu ve yükseltilmesi hakkında duyuru",
+        OneClickOptionsMaintenance: "OneClick Opsiyon Ticaret Sistemi Bakım Duyurusu",
+        clientVersionUpgrade: "Önemli! OneClick'in en son istemci sürüm yükseltmesi hakkında duyurusu",
+        platformTradingAnnouncement: "OneClick platform ticaret en son duyurusu",
+        platformUpgradeOptimization: "OneClick Platform Sürüm Yükseltme Optimizasyon Güncelleme Duyurusu",
+        march15Upgrade: "15 Mart 2023 OneClick platform kontrat sunucusu yükseltme bakım optimizasyon duyurusu",
+        optionsTradingMaintenance: "OneClick platform opsiyon ticaret sistemi bakım ve optimizasyon duyurusu",
+        latestVersionUpgrade: "OneClick Platform İstemcinin En Son Sürümünün Yükseltilmesi ve Optimizasyonu Hakkında Önemli Duyuru",
+        userSecurityReminder: "OneClick kullanıcı bilgi güvenliği hakkında hatırlatma",
+        perpetualContractUpgrade: "OneClick platform sürekli kontrat sisteminin optimizasyonu ve yükseltilmesi hakkında duyuru",
         maintenanceCompletion: "Platform sistem bakımı ve optimizasyonunun tamamlanması hakkında duyuru",
         bitcoinWithdrawal: "Bitcoin Para Çekme Hakkında Duyuru",
         tradingPairsUpgrade: "Platformdaki bazı ticaret para çiftlerinin yükseltilmesi hakkında duyuru",
@@ -938,7 +938,7 @@ common: {
         decUsdtLaunch: "DEC/USDT Ticaret Başlatma Duyurusu",
         usdtIntroduction: "USDT Tanıtımı",
         ethereumNetworkMaintenance: "Ethereum ağ bakım bildirimi",
-        projectReviewStandards: "Binex Proje inceleme standartları",
+        projectReviewStandards: "OneClick Proje inceleme standartları",
         liquidityMiningUpgrade: "Likidite Madenciliği Yükseltmesi",
         liquidityMiningFee: "Likidite madenciliği ücret ayarlaması",
         delistingTradingPairs: "Ticaret çiftlerini listeden çıkarma",
@@ -993,7 +993,7 @@ common: {
     privacy: {
       title: "Gizlilik Portalı",
       hero: {
-        title: "BINEX Gizlilik Portalı",
+        title: "OneClick Gizlilik Portalı",
         subtitle: "Verilerinizi ve gizliliğinizi katı kurallar, yasal uyum ve sektörün en iyi uygulamaları ile korumak."
       },
       principles: {
@@ -1028,7 +1028,7 @@ common: {
       personalData: {
         title: "Kişisel Veri Nedir?",
         definition: "Kişisel veriler, bir bireyi tanımlayan herhangi bir bilgiyi ifade eder.",
-        examples: "Örnekler: ad, BINEX ID, e-posta adresi, konum verileri, işlem geçmişi ve cihaz bilgileri."
+        examples: "Örnekler: ad, OneClick ID, e-posta adresi, konum verileri, işlem geçmişi ve cihaz bilgileri."
       },
       dataUsage: {
         title: "Verilerinizi Nasıl Kullanıyoruz",
@@ -1063,7 +1063,7 @@ common: {
       },
       dataSharing: {
         title: "Veri Paylaşımı",
-        content: "Verilerinizi diğer BINEX kuruluşları veya güvenilir üçüncü taraflarla sıkı sözleşme güvenceleri altında, yalnızca Gizlilik Bildirimimizde belirtilen amaçlar için gerekli olduğunda paylaşabiliriz."
+        content: "Verilerinizi diğer OneClick kuruluşları veya güvenilir üçüncü taraflarla sıkı sözleşme güvenceleri altında, yalnızca Gizlilik Bildirimimizde belirtilen amaçlar için gerekli olduğunda paylaşabiliriz."
       },
       cookies: {
         title: "Çerezler ve İzleme",
@@ -1094,21 +1094,21 @@ common: {
     termsOfUse: {
       title: "Kullanım Şartları",
       hero: {
-        title: "BINEX Kullanım Şartları"
+        title: "OneClick Kullanım Şartları"
       },
       agreement: {
         title: "Sözleşme",
-        content: "Bu, siz (kullanıcı) ile BINEX arasında bağlayıcı bir sözleşmedir. Eriştiğiniz veya kullandığınız tüm BINEX Hizmetlerini kapsar."
+        content: "Bu, siz (kullanıcı) ile OneClick arasında bağlayıcı bir sözleşmedir. Eriştiğiniz veya kullandığınız tüm OneClick Hizmetlerini kapsar."
       },
       riskWarning: {
         title: "Risk Uyarısı",
-        content: "Dijital varlıklar oynaktır ve değer olarak önemli ölçüde dalgalanabilir. BINEX bir aracı, finansal danışman veya yatırım danışmanı değildir. Herhangi bir finansal karar vermeden önce kendi araştırmanızı yapmalısınız."
+        content: "Dijital varlıklar oynaktır ve değer olarak önemli ölçüde dalgalanabilir. OneClick bir aracı, finansal danışman veya yatırım danışmanı değildir. Herhangi bir finansal karar vermeden önce kendi araştırmanızı yapmalısınız."
       },
       aboutServices: {
         title: "Hizmetlerimiz Hakkında",
-        aboutBINEX: {
-          title: "BINEX Hakkında",
-          content: "BINEX, platformumuz aracılığıyla dijital varlık değişimi, saklama hizmetleri ve ilgili finansal hizmetler sağlar."
+        aboutOneClick: {
+          title: "OneClick Hakkında",
+          content: "OneClick, platformumuz aracılığıyla dijital varlık değişimi, saklama hizmetleri ve ilgili finansal hizmetler sağlar."
         },
         eligibility: {
           title: "Uygunluk",
@@ -1116,14 +1116,14 @@ common: {
         },
         communication: {
           title: "İletişim",
-          content: "İletişim bilgilerinizi güncel tutmalısınız. BINEX, hesabınız ve hizmetlerimiz hakkında sizinle e-posta, SMS veya telefon yoluyla iletişime geçecektir."
+          content: "İletişim bilgilerinizi güncel tutmalısınız. OneClick, hesabınız ve hizmetlerimiz hakkında sizinle e-posta, SMS veya telefon yoluyla iletişime geçecektir."
         }
       },
       services: {
         title: "Hizmetlerimiz",
         servicesProvided: {
           title: "Sağlanan Hizmetler",
-          content: "BINEX hem otomatik botlar hem de insan temsilcileri aracılığıyla dijital varlık ticareti, güvenli saklama çözümleri ve müşteri desteği sunar. Kullanıcı sohbet işlevselliği de mevcuttur."
+          content: "OneClick hem otomatik botlar hem de insan temsilcileri aracılığıyla dijital varlık ticareti, güvenli saklama çözümleri ve müşteri desteği sunar. Kullanıcı sohbet işlevselliği de mevcuttur."
         },
         fees: {
           title: "Ücretler",
@@ -1153,7 +1153,7 @@ common: {
         },
         transactionCancellation: {
           title: "İşlem İptali",
-          content: "BINEX, dolandırıcılık şüphesi, hatalar veya bu Şartların ihlali durumlarında işlemleri iptal etme veya değiştirme hakkını saklı tutar."
+          content: "OneClick, dolandırıcılık şüphesi, hatalar veya bu Şartların ihlali durumlarında işlemleri iptal etme veya değiştirme hakkını saklı tutar."
         },
         unauthorizedTransactions: {
           title: "Yetkisiz İşlemler",
@@ -1164,11 +1164,11 @@ common: {
         title: "Dijital Varlıklar",
         supportedAssets: {
           title: "Desteklenen Varlıklar",
-          content: "Yalnızca BINEX tarafından açıkça desteklenen dijital varlıklarla işlem yapabilirsiniz. Desteklenmeyen varlıkları yatırmaya çalışmak kalıcı kayıpla sonuçlanabilir."
+          content: "Yalnızca OneClick tarafından açıkça desteklenen dijital varlıklarla işlem yapabilirsiniz. Desteklenmeyen varlıkları yatırmaya çalışmak kalıcı kayıpla sonuçlanabilir."
         },
         forksAirdrops: {
           title: "Fork'lar ve Airdrop'lar",
-          content: "BINEX blockchain fork'ları, airdrop'ları veya benzer diğer olaylar için destek garantisi vermez. Destek kararları yalnızca takdirimize bağlı olarak alınır."
+          content: "OneClick blockchain fork'ları, airdrop'ları veya benzer diğer olaylar için destek garantisi vermez. Destek kararları yalnızca takdirimize bağlı olarak alınır."
         }
       },
       accountSecurity: {
@@ -1180,37 +1180,37 @@ common: {
       },
       privacy: {
         title: "Gizlilik",
-        content: "Gizliliğiniz, kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklayan BINEX Gizlilik Bildirimi tarafından yönetilir."
+        content: "Gizliliğiniz, kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklayan OneClick Gizlilik Bildirimi tarafından yönetilir."
       },
       termination: {
         title: "Hesap Sonlandırma",
         terminationSuspension: {
           title: "Sonlandırma/Askıya Alma",
-          content: "BINEX, dolandırıcılık, yasa ihlalleri, şüpheli faaliyetler veya Şartların ihlali durumlarında hesapları kısıtlayabilir, askıya alabilir veya sonlandırabilir. Kullanıcılar, dondurulmuş veya hareketsiz olmadığı sürece hesaplarını kapatabilir."
+          content: "OneClick, dolandırıcılık, yasa ihlalleri, şüpheli faaliyetler veya Şartların ihlali durumlarında hesapları kısıtlayabilir, askıya alabilir veya sonlandırabilir. Kullanıcılar, dondurulmuş veya hareketsiz olmadığı sürece hesaplarını kapatabilir."
         }
       },
       prohibitedUse: {
         title: "Yasak Kullanım",
-        content: "BINEX hizmetlerini dolandırıcılık, piyasa manipülasyonu, yasa dışı faaliyetler, yetkisiz erişim veya uygulanabilir yasaları veya bu Şartları ihlal eden herhangi bir amaç için kullanamazsınız."
+        content: "OneClick hizmetlerini dolandırıcılık, piyasa manipülasyonu, yasa dışı faaliyetler, yetkisiz erişim veya uygulanabilir yasaları veya bu Şartları ihlal eden herhangi bir amaç için kullanamazsınız."
       },
       liability: {
         title: "Sorumluluk ve Fikri Mülkiyet",
         liability: {
           title: "Sorumluluk",
-          content: "BINEX, kanıtlanmış ağır ihmal veya dolandırıcılık durumları hariç kayıplardan sorumlu değildir. Piyasa dalgalanmalarından, teknik sorunlardan veya üçüncü taraf eylemlerinden sorumlu değiliz."
+          content: "OneClick, kanıtlanmış ağır ihmal veya dolandırıcılık durumları hariç kayıplardan sorumlu değildir. Piyasa dalgalanmalarından, teknik sorunlardan veya üçüncü taraf eylemlerinden sorumlu değiliz."
         },
         intellectualProperty: {
           title: "Fikri Mülkiyet",
-          content: "BINEX, platformumuz, teknolojimiz ve markalamamız üzerindeki tüm fikri mülkiyet haklarını saklı tutar. Kullanıcılar, bu Şartlarda belirtildiği şekilde hizmetlerimizi kullanmak için sınırlı bir lisans alır."
+          content: "OneClick, platformumuz, teknolojimiz ve markalamamız üzerindeki tüm fikri mülkiyet haklarını saklı tutar. Kullanıcılar, bu Şartlarda belirtildiği şekilde hizmetlerimizi kullanmak için sınırlı bir lisans alır."
         },
         indemnity: {
           title: "Tazminat",
-          content: "Hizmetlerimizi kötüye kullanmanızdan veya bu Şartları ihlal etmenizden kaynaklanan herhangi bir talep, kayıp veya hasara karşı BINEX'i tazmin etmeyi ve zarara uğratmamayı kabul edersiniz."
+          content: "Hizmetlerimizi kötüye kullanmanızdan veya bu Şartları ihlal etmenizden kaynaklanan herhangi bir talep, kayıp veya hasara karşı OneClick'i tazmin etmeyi ve zarara uğratmamayı kabul edersiniz."
         }
       },
       importantNotice: {
         title: "Önemli Uyarı",
-        content: "BINEX hizmetlerini kullanarak, bu Kullanım Şartlarını okuduğunuzu, anladığınızı ve bunlara bağlı olmayı kabul ettiğinizi onaylarsınız. Kabul etmiyorsanız, hizmetlerimizi kullanmayı derhal durdurmalısınız."
+        content: "OneClick hizmetlerini kullanarak, bu Kullanım Şartlarını okuduğunuzu, anladığınızı ve bunlara bağlı olmayı kabul ettiğinizi onaylarsınız. Kabul etmiyorsanız, hizmetlerimizi kullanmayı derhal durdurmalısınız."
       },
       actionCards: {
         security: {
@@ -1231,7 +1231,7 @@ common: {
         }
       },
       footer: {
-        copyright: "© 2025 BINEX. Tüm hakları saklıdır.",
+        copyright: "© 2025 OneClick. Tüm hakları saklıdır.",
         lastUpdated: "Son güncelleme: 6 Mayıs 2025"
       }
     },
@@ -1314,7 +1314,7 @@ common: {
     invitation: {
       title: "Arkadaşlarını Davet Et",
       earnTogether: "Birlikte Kazanın",
-      description: "Arkadaşlarınızı BINEX'e katılmaya davet edin, kaydolup ticarete başladıklarında ödüller kazanın.",
+      description: "Arkadaşlarınızı OneClick'e katılmaya davet edin, kaydolup ticarete başladıklarında ödüller kazanın.",
       yourReferralCode: "REFERANS KODUNUZ",
       loading: "Yükleniyor...",
       copied: "KOPYALANDI!",
@@ -1415,7 +1415,7 @@ common: {
         lostDevice: "Cihazınız kaybolur veya çalınırsa, hesap ayarlarından oturum erişimini hemen iptal edin.",
         phishing: "Bir phishing girişimine kurban gittinizse, hesabınızı dondurun ve hemen destekle iletişime geçin.",
         supportTitle: "7/24 Güvenlik Desteği",
-        supportEmail: "binex.helpdesk01@gmail.com"
+        supportEmail: "OneClick.helpdesk01@gmail.com"
       },
       resources: {
         title: "Güvenlik Kaynakları",
@@ -1468,7 +1468,7 @@ common: {
         },
         accountActivated: {
           title: "KYC Doğrulama",
-          message: "Merhaba {0}, KYC belgeleriniz doğrulandı, artık BINEX'te sınırsız özelliklerin keyfini çıkarabilirsiniz"
+          message: "Merhaba {0}, KYC belgeleriniz doğrulandı, artık OneClick'te sınırsız özelliklerin keyfini çıkarabilirsiniz"
         },
         custom: {
           title: "Bildirim",
@@ -1719,7 +1719,7 @@ common: {
       title: "SSS Merkezi",
       hero: {
         title: "Sıkça Sorulan Sorular",
-        subtitle: "BINEX kullanımıyla ilgili yaygın sorulara yanıt bulun"
+        subtitle: "OneClick kullanımıyla ilgili yaygın sorulara yanıt bulun"
       },
       search: {
         placeholder: "Yanıtları ara..."
@@ -1741,7 +1741,7 @@ common: {
         verificationProcess: "Resmi kimlik ve selfie fotoğrafı yükleyin. Doğrulama genellikle birkaç saat içinde onaylanır."
       },
       steps: {
-        goToWebsite: "https://trade-binex.com'a gidin",
+        goToWebsite: "https://trade-OneClick.com'a gidin",
         clickSignUp: '"Kaydol"a tıklayın',
         enterDetails: "Bilgilerinizi girin",
         verifyEmail: "E-posta adresinizi doğrulayın",
@@ -1787,7 +1787,7 @@ common: {
         profitLossExplanation: "Fiyat farkının kaldıracınız ve pozisyon büyüklüğünüzle çarpılmasına dayalı olarak hesaplanır."
       },
       benefits: {
-        title: "Neden BINEX Futures'ı Seçmelisiniz?",
+        title: "Neden OneClick Futures'ı Seçmelisiniz?",
         hedge: "Piyasa oynaklığına karşı korunma",
         multiplyProfits: "Kaldıraçla kârları çoğaltın",
         tradeBothMarkets: "Hem yükselen hem de düşen piyasalarda işlem yapın",
@@ -1800,8 +1800,8 @@ common: {
         joinDiscussions: "Tartışmalara katılın"
       },
       footer: {
-        copyright: "© 2025 BINEX. Tüm hakları saklıdır.",
-        needHelp: "Daha fazla yardıma mı ihtiyacınız var? binex.helpdesk01@gmail.com ile iletişime geçin"
+        copyright: "© 2025 OneClick. Tüm hakları saklıdır.",
+        needHelp: "Daha fazla yardıma mı ihtiyacınız var? OneClick.helpdesk01@gmail.com ile iletişime geçin"
       }
     },
     
