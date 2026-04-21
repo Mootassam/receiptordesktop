@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   backend:
-    container_name: namles-backend
+    container_name: receipt-backend
     build:
       context: ./server
       dockerfile: Dockerfile
@@ -20,7 +20,7 @@ services:
       - db
 
   db:
-    container_name: namles-db
+    container_name: receipt-db
     image: mongo:4.0-xenial
     ports:
       - "2777:27017"
@@ -29,7 +29,7 @@ services:
       - phone:/data/db
 
   web:
-    container_name: namles-web
+    container_name: receipt-web
     build:
       context: ./admin
       dockerfile: Dockerfile
