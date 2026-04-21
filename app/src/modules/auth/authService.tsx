@@ -3,6 +3,7 @@ import AuthToken from "../../modules/auth/authToken";
 import AuthCurrentTenant from "../../modules/auth/authCurrentTenant";
 import AuthInvitationToken from "../../modules/auth/authInvitationToken";
 import UserService from "./userService";
+import { getDeviceIdentity } from "../../shared/deviceIdentity";
 
 export default class AuthService {
   static async registerWithEmailAndPassword(
@@ -15,10 +16,12 @@ export default class AuthService {
 
     const tenantId = await UserService.getSingle();
 
+    const device = await getDeviceIdentity();
     const response = await authAxios.post("/auth/sign-up", {
       email,
       password,
       phoneNumber,
+      device,
       invitationToken,
       tenantId: tenantId,
     });
@@ -31,9 +34,11 @@ export default class AuthService {
   static async signinWithEmailAndPassword(email, password) {
     const invitationToken = AuthInvitationToken.get();
 
+    const device = await getDeviceIdentity();
     const response = await authAxios.post("/auth/sign-in", {
       email,
       password,
+      device,
       invitationToken,
       tenantId: AuthCurrentTenant.get(),
     });

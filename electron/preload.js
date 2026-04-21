@@ -90,6 +90,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // Window focus/blur state (emitted by main process on window events)
   onWindowFocusChanged: (cb) => onChannel('window-focus-changed', cb),
   offWindowFocusChanged: () => offChannel('window-focus-changed'),
+
+  // Device identity (for license / device-binding)
+  getDeviceIdentity: () => ipcRenderer.invoke('get-device-identity'),
 });
 
 // ─── Forward webview → main postMessages ──────────────────────────────────────

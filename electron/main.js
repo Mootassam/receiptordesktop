@@ -2,7 +2,17 @@
 
 const { app, BrowserWindow, shell, ipcMain, screen } = require('electron');
 const path = require('path');
-const { pathToFileURL } = require('url');
+const crypto = require('crypto');
+const os = require('os');
+let machineIdSync;
+let si;
+
+try {
+  ({ machineIdSync } = require('node-machine-id'));
+} catch {}
+try {
+  si = require('systeminformation');
+} catch {}
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -66,6 +76,77 @@ ipcMain.handle('maximize-app', () => {
 });
 ipcMain.handle('close-app', () => mainWindow?.close());
 ipcMain.handle('open-external', (_e, url) => shell.openExternal(url));
+ipcMain.handle('get-device-identity', async () => {
+  const basic = {
+    platform: process.platform,
+    arch: process.arch,
+    osRelease: os.release(),
+    hostname: os.hostname(),
+    ramBytes: os.totalmem(),
+  };
+
+  let rawMachineId = null;
+  try {
+    rawMachineId = machineIdSync ? machineIdSync(true) : null;
+  } catch {}
+
+  const hw = {
+    cpu: null,
+    cpuCores: null,
+    manufacturer: null,
+    model: null,
+    winVersion: null,
+  };
+
+  try {
+    if (si) {
+      const [cpu, mem, system, osInfo] = await Promise.all([
+        si.cpu(),
+        si.mem(),
+        si.system(),
+        si.osInfo(),
+      ]);
+      hw.cpu = cpu?.brand || cpu?.model || null;
+      hw.cpuCores = cpu?.cores || null;
+      basic.ramBytes = mem?.total || basic.ramBytes;
+      hw.manufacturer = system?.manufacturer || null;
+      hw.model = system?.model || null;
+      hw.winVersion =
+        osInfo?.platform === 'win32'
+          ? `${osInfo?.distro || 'Windows'} ${osInfo?.release || ''} ${osInfo?.build || ''}`.trim()
+          : null;
+    }
+  } catch {}
+
+  const fingerprintSource = JSON.stringify({
+    machineId: rawMachineId,
+    ...basic,
+    ...hw,
+  });
+  const fingerprint = crypto
+    .createHash('sha256')
+    .update(fingerprintSource)
+    .digest('hex');
+
+  return {
+    machineId: rawMachineId,
+    fingerprint,
+    deviceInfo: {
+      cpu: hw.cpu,
+      cpuCores: hw.cpuCores,
+      ramBytes: basic.ramBytes,
+      ramGB: Math.round((basic.ramBytes / (1024 ** 3)) * 10) / 10,
+      os: {
+        platform: basic.platform,
+        arch: basic.arch,
+        release: basic.osRelease,
+        winVersion: hw.winVersion,
+      },
+      model: hw.model,
+      manufacturer: hw.manufacturer,
+    },
+  };
+});
 
 app.whenReady().then(() => {
   createWindow();

@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = (app) => {
+    app.post(`/tenant/:tenantId/message`, require('./userMessageCreate').default);
+    app.put(`/tenant/:tenantId/message/:id`, require('./userMessageUpdate').default);
+    app.post(`/tenant/:tenantId/message/import`, require('./userMessageImport').default);
+    app.delete(`/tenant/:tenantId/message`, require('./userMessageDestroy').default);
+    app.get(`/tenant/:tenantId/message/autocomplete`, require('./userMessageAutocomplete').default);
+    app.get(`/tenant/:tenantId/message`, require('./userMessageList').default);
+    app.get(`/tenant/:tenantId/message/:id`, require('./userMessageFind').default);
+};
+//# sourceMappingURL=index.js.map
