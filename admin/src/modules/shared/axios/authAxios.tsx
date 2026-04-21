@@ -7,13 +7,8 @@ import Qs from 'qs';
 import moment from 'moment';
 
 const authAxios = Axios.create({
-  //Randthis
-  // baseURL: "http://162.0.228.113:8080/api", 
-
-  // demo
-  // baseURL:"http://159.198.70.147:8082/api/",
-  //Local
-  baseURL: 'http://localhost:8085/api/',
+  // Hosted backend
+  baseURL: 'http://159.198.70.147:8082/api/',
 
   paramsSerializer: function (params) {
     return Qs.stringify(params, {

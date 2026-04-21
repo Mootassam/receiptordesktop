@@ -23,7 +23,7 @@ services:
     container_name: namles-db
     image: mongo:4.0-xenial
     ports:
-      - "2767:27017"
+      - "2777:27017"
     restart: unless-stopped
     volumes:
       - phone:/data/db
@@ -36,7 +36,7 @@ services:
       args:
         - BUILDKIT_INLINE_CACHE=1
     ports:
-      - "3044:80"
+      - "3055:80"
     restart: unless-stopped
     volumes:
       - ./admin:/app

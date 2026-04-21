@@ -7,8 +7,8 @@ import AuthToken from '../../../modules/auth/authToken';
 const isElectron = window && window.location && window.location.protocol === 'file:';
 
 // 🌐 Base URLs
-const API_URL_BROWSER = '/api'; // Vite proxy
-const API_URL_ELECTRON = 'http://localhost:8085/api'; // your backend
+const API_URL_BROWSER = 'http://159.198.70.147:8082/api';
+const API_URL_ELECTRON = 'http://159.198.70.147:8082/api';
 const authAxios = Axios.create({
   baseURL: isElectron ? API_URL_ELECTRON : API_URL_BROWSER,
 
