@@ -3,6 +3,10 @@ import styled from 'styled-components';
 const HeaderWrapper = styled.div`
   height: 61px;
   padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
 
   @media (max-width: 576px) {
     .i18n-select {
@@ -57,9 +61,34 @@ const HeaderWrapper = styled.div`
     display: flex;
   }
 
+  .header-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-link-btn {
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    color: #1e293b;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .header-link-btn:hover {
+    background: #e2e8f0;
+  }
+
   @media (max-width: 576px) {
     .user-dropdown-text {
       display: none;
+    }
+    .header-link-btn {
+      padding: 6px 8px;
+      font-size: 12px;
     }
   }
   i {

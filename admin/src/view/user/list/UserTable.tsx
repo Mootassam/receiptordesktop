@@ -126,6 +126,12 @@ function UserTable() {
 
     return 'Newly bound device';
   };
+  const formatIso = (value) => {
+    if (!value) return '-';
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return '-';
+    return d.toISOString();
+  };
   
   return (
     <div className="user-list-container">
@@ -334,8 +340,8 @@ function UserTable() {
               <div><strong>OS:</strong> {deviceRow?.deviceBinding?.osPlatform || '-'} {deviceRow?.deviceBinding?.osRelease || ''}</div>
               <div><strong>Windows:</strong> {deviceRow?.deviceBinding?.winVersion || '-'}</div>
               <div><strong>Model:</strong> {deviceRow?.deviceBinding?.manufacturer || '-'} {deviceRow?.deviceBinding?.model || ''}</div>
-              <div><strong>First Bound:</strong> {deviceRow?.deviceBinding?.firstBoundAt || '-'}</div>
-              <div><strong>Last Seen:</strong> {deviceRow?.deviceBinding?.lastSeenAt || '-'}</div>
+              <div><strong>First Bound:</strong> {formatIso(deviceRow?.deviceBinding?.firstBoundAt)}</div>
+              <div><strong>Last Seen:</strong> {formatIso(deviceRow?.deviceBinding?.lastSeenAt)}</div>
             </div>
           </div>
         </div>

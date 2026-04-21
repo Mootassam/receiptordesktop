@@ -16,6 +16,7 @@ const models = [
   require("./depositMethod").default,
   require("./wallet").default,
   require("./Transfer").default,    // stacking depends on stakeProgram
+  require("./userActivity").default,
 ];
 
 export default function init(database) {

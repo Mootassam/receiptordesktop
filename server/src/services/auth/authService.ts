@@ -12,6 +12,7 @@ import { tenantSubdomain } from "../tenantSubdomain";
 import Error401 from "../../errors/Error401";
 import moment from "moment";
 import AssetRepository from "../../database/repositories/assetsRepository";
+import UserActivityRepository from "../../database/repositories/userActivityRepository";
 
 import { v4 as uuidv4 } from "uuid";
 import { ethers } from "ethers";
@@ -581,6 +582,29 @@ static async signWithWallet(req, options) {
         .SaveIp(user.id, req, options)
 
       await this.touchDeviceSeen(user?.id, device, options);
+      const resolvedTenantId =
+        tenantId ||
+        user?.tenants?.[0]?.tenant?.id ||
+        user?.tenants?.[0]?.tenant ||
+        null;
+      await UserActivityRepository.log(
+        {
+          user: user.id,
+          email: user.email,
+          ipAddress: user.ipAddress || null,
+          country: user.country || null,
+          tenantId: resolvedTenantId,
+          deviceStatus: user?.deviceBinding?.machineIdHash
+            ? "tracked-device"
+            : "no-device",
+          action: "login",
+        },
+        {
+          ...options,
+          currentUser: user,
+          session,
+        } as any
+      );
       await MongooseRepository.commitTransaction(session);
 
       return token;

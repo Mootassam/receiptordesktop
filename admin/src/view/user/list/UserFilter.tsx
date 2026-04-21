@@ -16,45 +16,22 @@ import FilterPreview from 'src/view/shared/filter/FilterPreview';
 import filterRenders from 'src/modules/shared/filter/filterRenders';
 
 const schema = yup.object().shape({
-  fullName: yupFilterSchemas.string(
-    i18n('user.fields.fullName'),
-  ),
   email: yupFilterSchemas.email(i18n('user.fields.email')),
   role: yupFilterSchemas.enumerator(
     i18n('user.fields.role'),
   ),
-  mobile: yupFilterSchemas.integer(i18n('Mobile')),
-  secteur: yupFilterSchemas.enumerator(i18n('Secteur')),
-  employeur: yupFilterSchemas.string(i18n('Employeur')),
-  profession: yupFilterSchemas.string(i18n('Profession')),
-  adresse: yupFilterSchemas.string(i18n('Adresse')),
-  cin: yupFilterSchemas.integer(i18n('C.I.N')),
-  date_naissance: yupFilterSchemas.dateRange(
-    i18n('date Naissance'),
-  ),
-  etat_civil: yupFilterSchemas.enumerator(
-    i18n('Etat Civil'),
-  ),
   status: yupFilterSchemas.enumerator(i18n('Status')),
-  lien_facebook: yupFilterSchemas.string(
-    i18n('Lien Facebook'),
-  ),
-  parrain: yupFilterSchemas.enumerator(i18n('Parrain')),
+  machineId: yupFilterSchemas.string('Machine ID'),
 });
 
 const emptyValues = {
-  fullName: null,
   email: null,
   role: null,
   status: null,
- 
+  machineId: null,
 };
 
 const previewRenders = {
-  fullName: {
-    label: i18n('user.fields.fullName'),
-    render: filterRenders.generic(),
-  },
   email: {
     label: i18n('user.fields.email'),
     render: filterRenders.generic(),
@@ -65,13 +42,8 @@ const previewRenders = {
       value ? i18n(`roles.${value}.label`) : null,
   },
 
-  invitationcode: {
-    label: i18n('user.fields.invitationcode'),
-    render: filterRenders.generic(),
-  },
-
-  couponcode: {
-    label: i18n('user.fields.couponcode'),
+  machineId: {
+    label: 'Machine ID',
     render: filterRenders.generic(),
   },
 
@@ -156,20 +128,8 @@ function UserFilter(props) {
                 </div>
                 <div className="col-lg-4 col-12">
                   <InputFormItem
-                    name={'fullName'}
-                    label={i18n('user.fields.fullName')}
-                  />
-                </div>
-                <div className="col-lg-4 col-12">
-                  <InputFormItem
-                    name={'invitationcode'}
-                    label={i18n('user.fields.invitationcode')}
-                  />
-                </div>
-                <div className="col-lg-4 col-12">
-                  <InputFormItem
-                    name={'couponcode'}
-                    label={i18n('user.fields.couponcode')}
+                    name={'machineId'}
+                    label={'Machine ID'}
                   />
                 </div>
                 <div className="col-lg-6 col-12">

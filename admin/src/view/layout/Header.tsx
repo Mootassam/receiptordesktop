@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { i18n } from 'src/i18n';
 import authActions from 'src/modules/auth/authActions';
 import authSelectors from 'src/modules/auth/authSelectors';
-import layoutActions from 'src/modules/layout/layoutActions';
 import { getHistory } from 'src/modules/store';
 import I18nSelect from 'src/view/layout/I18nSelect';
 import HeaderWrapper from 'src/view/layout/styles/HeaderWrapper';
@@ -12,10 +11,6 @@ import config from 'src/config';
 
 function Header(props) {
   const dispatch = useDispatch();
-
-  const doToggleMenu = () => {
-    dispatch(layoutActions.doToggleMenu());
-  };
 
   const userText = useSelector(
     authSelectors.selectCurrentUserNameOrEmailPrefix,
@@ -34,9 +29,9 @@ function Header(props) {
   const doNavigateToProfile = () => {
     getHistory().push('/profile');
   };
-  const doNavigateToAuditLog = () => {
-    getHistory().push('/audit-logs');
-  };
+  const doNavigateToUserHome = () => getHistory().push('/');
+  const doNavigateToUserActivity = () =>
+    getHistory().push('/user-activity');
   const doNavigateToSettings = () => {
     getHistory().push('/settings');
   };
@@ -51,14 +46,22 @@ function Header(props) {
 
   return (
     <HeaderWrapper className="navbar sticky-top navbar-light bg-white border-bottom">
-      <button
-        type="button"
-        onClick={doToggleMenu}
-        className="menu-toggle-button"
-      >
-        <i className="fas fa-bars" />
-      </button>
-
+      <div className="header-links">
+        <button
+          type="button"
+          className="header-link-btn"
+          onClick={doNavigateToUserHome}
+        >
+          Users
+        </button>
+        <button
+          type="button"
+          className="header-link-btn"
+          onClick={doNavigateToUserActivity}
+        >
+          User Activity
+        </button>
+      </div>
       <div>
       
         <div className="dropdown">
@@ -124,15 +127,6 @@ function Header(props) {
               <i className="fas fa-wrench" />
               {i18n('settings.menu')}
             </button> */}
-
-            <button
-              onClick={doNavigateToAuditLog}
-              className="dropdown-item"
-              type="button"
-            >
-              <i className="fas fa-book" />
-              {i18n('auditLog.menu')}
-            </button>
 
             <button
               onClick={doSignout}

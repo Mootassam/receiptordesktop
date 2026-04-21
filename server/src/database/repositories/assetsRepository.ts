@@ -12,7 +12,6 @@ import axios from "axios";
 import User from "../models/user";
 import UserRepository from "./userRepository";
 import Transfer from "../models/Transfer";
-import { RedisService } from "../redisConnection";
 class WalletRepository {
   static async create(data, options: IRepositoryOptions) {
     const currentTenant = MongooseRepository.getCurrentTenant(options);
@@ -800,21 +799,30 @@ static async findAndCountAllMobile(
 
 
   static async convertCoins(fiat: string) {
-    const redis = RedisService.getClient();
+    const coinMap = {
+      BTC: "bitcoin",
+      ETH: "ethereum",
+      SOL: "solana",
+      XRP: "ripple",
+      USDT: "tether",
+      USDC: "usd-coin",
+      DAI: "dai",
+      SHIB: "shiba-inu",
+      TRX: "tron",
+      BNB: "binancecoin",
+      DOGE: "dogecoin",
+    };
 
-    const cryptoUSD = JSON.parse(await redis.get("CRYPTO_USD") || "{}");
-    const fiatRates = JSON.parse(await redis.get("FIAT_RATES") || "{}");
+    const fiatCode = String(fiat || "USD").toLowerCase();
+    const ids = Object.values(coinMap).join(",");
+    const res = await axios.get("https://api.coingecko.com/api/v3/simple/price", {
+      params: { ids, vs_currencies: fiatCode },
+    });
 
-    if (!fiatRates[fiat]) {
-      throw new Error("Unsupported fiat");
-    }
-
-    const rate = fiatRates[fiat];
     const result: Record<string, number> = {};
-
-    for (const symbol in cryptoUSD) {
-      result[symbol] = Number((cryptoUSD[symbol] * rate).toFixed(6));
-    }
+    Object.entries(coinMap).forEach(([symbol, id]) => {
+      result[symbol] = Number(res.data?.[id]?.[fiatCode] || 0);
+    });
 
     return result;
   }

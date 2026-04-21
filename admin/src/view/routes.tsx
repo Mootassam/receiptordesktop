@@ -7,8 +7,8 @@ const permissions = Permissions.values;
 const privateRoutes = [
   {
     path: '/',
-    loader: () => import('src/view/company/company'),
-    permissionRequired: permissions.categoryRead,
+    loader: () => import('src/view/user/list/UserPage'),
+    permissionRequired: permissions.userRead,
     exact: true,
   },
   {
@@ -453,9 +453,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/audit-logs',
-    loader: () => import('src/view/auditLog/AuditLogPage'),
-    permissionRequired: permissions.auditLogRead,
+    path: '/user-activity',
+    loader: () => import('src/view/userActivity/UserActivityPage'),
+    permissionRequired: permissions.userRead,
+    exact: true,
   },
 
   {

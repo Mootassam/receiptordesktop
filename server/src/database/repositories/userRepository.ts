@@ -977,6 +977,15 @@ static async createFromWallet(req, data, options: IRepositoryOptions) {
         });
       }
 
+      if (filter.machineId) {
+        criteriaAnd.push({
+          "deviceBinding.machineIdHash": {
+            $regex: MongooseQueryUtils.escapeRegExp(filter.machineId),
+            $options: "i",
+          },
+        });
+      }
+
       if (filter.createdAtRange) {
         const [start, end] = filter.createdAtRange;
 
