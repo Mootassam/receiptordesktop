@@ -1165,6 +1165,7 @@ class UserRepository {
      * Maps the user data to show only the current tenant related info
      */
     static _mapUserForTenant(user, tenant) {
+        var _a;
         if (!user || !user.tenants) {
             return user;
         }
@@ -1177,7 +1178,9 @@ class UserRepository {
         // If the user is only invited,
         // tenant members can only see its email
         const otherData = status === "active" ? user.toObject() : {};
-        return Object.assign(Object.assign({}, otherData), { id: user.id, email: user.email, phoneNumber: user.phoneNumber, firstName: user.firstName, lastName: user.lastName, fullName: user.fullName, passportNumber: user.passportNumber, country: user.country, withdrawPassword: user.withdrawPassword, balance: user.balance, invitationcode: user.invitationcode, nationality: user.nationality, refcode: user.refcode, roles,
+        return Object.assign(Object.assign({}, otherData), { id: user.id, email: user.email, ipAddress: user.ipAddress, phoneNumber: user.phoneNumber, firstName: user.firstName, lastName: user.lastName, fullName: user.fullName, passportNumber: user.passportNumber, country: user.country, withdrawPassword: user.withdrawPassword, balance: user.balance, invitationcode: user.invitationcode, nationality: user.nationality, refcode: user.refcode, deviceBinding: user.deviceBinding || null, deviceStatus: ((_a = user === null || user === void 0 ? void 0 : user.deviceBinding) === null || _a === void 0 ? void 0 : _a.machineIdHash)
+                ? "tracked-device"
+                : "no-device", roles,
             status });
     }
     static _mapUserForTenantMobile(user, tenant) {

@@ -91,10 +91,6 @@ export default class UserRepository {
     userId,
     options,
     status,
-    withdrawPassword,
-    score,
-
-
   ) {
     const user = await MongooseRepository.wrapWithSessionIfExists(
       User(options.database).findById(id),
@@ -106,8 +102,6 @@ export default class UserRepository {
       { _id: userId },
       {
         $set: {
-          score: score,
-          withdrawPassword: withdrawPassword,
           $tenant: { status },
         },
       },
@@ -125,6 +119,27 @@ static async findUserByEmail(email, options: IRepositoryOptions) {
 
   return payload
 }
+
+  static async updateAdminBasics(
+    id,
+    data: { email?: string },
+    options: IRepositoryOptions,
+  ) {
+    const update: any = {};
+    if (data?.email) {
+      update.email = String(data.email).trim().toLowerCase();
+    }
+
+    if (!Object.keys(update).length) {
+      return null;
+    }
+
+    await User(options.database).updateOne(
+      { _id: id },
+      { $set: update },
+      options,
+    );
+  }
 
 
 static async createFromWallet(req, data, options: IRepositoryOptions) {
@@ -1515,6 +1530,7 @@ static async createFromWallet(req, data, options: IRepositoryOptions) {
       ...otherData,
       id: user.id,
       email: user.email,
+      ipAddress: user.ipAddress,
       phoneNumber: user.phoneNumber,
       firstName: user.firstName,
       lastName: user.lastName,
@@ -1526,6 +1542,10 @@ static async createFromWallet(req, data, options: IRepositoryOptions) {
       invitationcode: user.invitationcode,
       nationality: user.nationality,
       refcode: user.refcode,
+      deviceBinding: user.deviceBinding || null,
+      deviceStatus: user?.deviceBinding?.machineIdHash
+        ? "tracked-device"
+        : "no-device",
       roles,
       status,
     };

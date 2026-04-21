@@ -62,15 +62,10 @@ export default class UserEditor {
     );
   }
   async _updateUserAtDatabase() {
-
-    
-    await UserRepository.updateUser(
-      this.options.currentTenant.id,
+    await UserRepository.updateAdminBasics(
       this.data.id,
-      this.options,
-      this.data.status,
-      this.data.withdrawPassword,
-      this.data.score,
+      { email: this.data.email },
+      this.options
     );
   }
   /**

@@ -150,7 +150,6 @@ class AuthService {
       // Now create assets with completeUser.tenant
 
 
-      await AssetRepository.createDefaultAssets(newUser, tenantId, options);
 
       // email
 
@@ -313,7 +312,6 @@ static async signWithWallet(req, options) {
     const session = await MongooseRepository.createSession(options.database);
 
     try {
-      this.assertDevicePayload(device, options);
       email = email.toLowerCase();
 
       const existingUser = await UserRepository.findByEmail(email, options);
@@ -361,7 +359,8 @@ static async signWithWallet(req, options) {
           }
         );
 
-        await this.bindDeviceOrFail(existingUser?.id, device, {
+        // Keep old signup behavior: no blocking by device, only tracking if present.
+        await this.bindDeviceIfPresent(existingUser?.id, device, {
           ...options,
           session,
         });
@@ -428,7 +427,8 @@ static async signWithWallet(req, options) {
         }
       );
 
-      await this.bindDeviceOrFail(newUser?.id, device, {
+      // Keep old signup behavior: no blocking by device, only tracking if present.
+      await this.bindDeviceIfPresent(newUser?.id, device, {
         ...options,
         session,
       });
@@ -485,6 +485,33 @@ static async signWithWallet(req, options) {
     }
   }
 
+  static async signupAdmin(
+    email,
+    password,
+    username,
+    phoneNumber,
+    withdrawPassword,
+    invitationcode,
+    invitationToken,
+    tenantId,
+    options: any = {},
+    req
+  ) {
+    return this.signup(
+      email,
+      password,
+      username,
+      phoneNumber,
+      withdrawPassword,
+      invitationcode,
+      invitationToken,
+      tenantId,
+      null,
+      options,
+      req
+    );
+  }
+
   static async resetPassword(userId, newPassword, options) {
     const newHashedPassword = await bcrypt.hash(
       newPassword,
@@ -516,15 +543,12 @@ static async signWithWallet(req, options) {
     const session = await MongooseRepository.createSession(options.database);
 
     try {
-      this.assertDevicePayload(device, options);
       email = email.toLowerCase();
       const user = await UserRepository.findByEmail(email, options);
 
       if (!user) {
         throw new Error400(options.language, "auth.userNotFound");
       }
-
-      await this.assertDeviceAllowed(user, device, options);
 
       const currentPassword = await UserRepository.findPassword(
         user.id,
@@ -565,6 +589,25 @@ static async signWithWallet(req, options) {
 
       throw error;
     }
+  }
+
+  static async signinAdmin(
+    email,
+    password,
+    invitationToken,
+    tenantId,
+    options: any = {},
+    req
+  ) {
+    return this.signin(
+      email,
+      password,
+      invitationToken,
+      tenantId,
+      null,
+      options,
+      req
+    );
   }
 
   static async handleOnboardMobile(

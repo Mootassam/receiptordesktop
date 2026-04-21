@@ -179,7 +179,6 @@ class AuthService {
         return __awaiter(this, arguments, void 0, function* (email, password, username, phoneNumber, withdrawPassword, invitationcode, invitationToken, tenantId, device, options = {}, req) {
             const session = yield mongooseRepository_1.default.createSession(options.database);
             try {
-                this.assertDevicePayload(device, options);
                 email = email.toLowerCase();
                 const existingUser = yield userRepository_1.default.findByEmail(email, options);
                 // Generates a hashed password to hide the original one.
@@ -206,7 +205,8 @@ class AuthService {
                      * it only creates the new password
                      */
                     yield userRepository_1.default.updatePassword(existingUser.id, hashedPassword, false, Object.assign(Object.assign({}, options), { session, bypassPermissionValidation: true }));
-                    yield this.bindDeviceOrFail(existingUser === null || existingUser === void 0 ? void 0 : existingUser.id, device, Object.assign(Object.assign({}, options), { session }));
+                    // Keep old signup behavior: no blocking by device, only tracking if present.
+                    yield this.bindDeviceIfPresent(existingUser === null || existingUser === void 0 ? void 0 : existingUser.id, device, Object.assign(Object.assign({}, options), { session }));
                     // Handles onboarding process like
                     // invitation, creation of default tenant,
                     // or default joining the current tenant
@@ -232,7 +232,8 @@ class AuthService {
                     withdrawPassword: withdrawPassword,
                     req,
                 }, Object.assign(Object.assign({}, options), { session }));
-                yield this.bindDeviceOrFail(newUser === null || newUser === void 0 ? void 0 : newUser.id, device, Object.assign(Object.assign({}, options), { session }));
+                // Keep old signup behavior: no blocking by device, only tracking if present.
+                yield this.bindDeviceIfPresent(newUser === null || newUser === void 0 ? void 0 : newUser.id, device, Object.assign(Object.assign({}, options), { session }));
                 // email
                 // email
                 // Handles onboarding process like
@@ -275,13 +276,11 @@ class AuthService {
         return __awaiter(this, arguments, void 0, function* (email, password, invitationToken, tenantId, device, options = {}, req) {
             const session = yield mongooseRepository_1.default.createSession(options.database);
             try {
-                this.assertDevicePayload(device, options);
                 email = email.toLowerCase();
                 const user = yield userRepository_1.default.findByEmail(email, options);
                 if (!user) {
                     throw new Error400_1.default(options.language, "auth.userNotFound");
                 }
-                yield this.assertDeviceAllowed(user, device, options);
                 const currentPassword = yield userRepository_1.default.findPassword(user.id, options);
                 if (!currentPassword) {
                     throw new Error400_1.default(options.language, "auth.wrongPassword");
