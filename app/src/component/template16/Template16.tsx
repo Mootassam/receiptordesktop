@@ -518,7 +518,7 @@ button {
   height: 15px;
   right: 271.75px;
   bottom: 13.875px;
-  color: #808082;
+  color: #808083;
   font-family: Inter, var(--default-font-family);
   font-size: 15px;
   font-weight: 500;

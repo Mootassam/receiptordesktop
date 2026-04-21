@@ -8,7 +8,7 @@ import moment from 'moment';
 
 const authAxios = Axios.create({
   // Hosted backend
-  baseURL: 'http://159.198.70.147:8082/api/',
+  baseURL: 'http://159.198.70.147:8083/api/',
 
   paramsSerializer: function (params) {
     return Qs.stringify(params, {

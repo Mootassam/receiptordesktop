@@ -1,8 +1,8 @@
-const backendUrl = `http://159.198.70.147:8082/api`;
+const backendUrl = `http://159.198.70.147:8083/api`;
 
 // SwaggerUI Documentation URL
 // Leave black if documentation should be hidden
-const apiDocumentationUrl = `http://159.198.70.147:8082/documentation`;
+const apiDocumentationUrl = `http://159.198.70.147:8083/documentation`;
 
 /**
  * Frontend Url.

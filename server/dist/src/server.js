@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv").config();
 const api_1 = __importDefault(require("./api"));
-const PORT = process.env.PORT || 8082;
+const PORT = process.env.PORT || 8083;
 (() => __awaiter(void 0, void 0, void 0, function* () {
     api_1.default.listen(PORT, () => {
         console.log(`Listening on port ${PORT}`);
