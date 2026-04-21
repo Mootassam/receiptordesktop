@@ -185,7 +185,7 @@ button {
   height: 12.5px;
   right: 17.5px;
   bottom: 17.5px;
-  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2026-04-20/NwHhM5wYV4.png)
+  background: url(${assetBase}template22/NwHhM5wYV4.png)
     no-repeat center;
   background-size: cover;
   z-index: 29;
@@ -196,7 +196,7 @@ button {
   height: 11.875px;
   right: 46.25px;
   bottom: 17.5px;
-  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2026-04-20/GSWEOq59Sk.png)
+  background: url(${assetBase}template22/GSWEOq59Sk.png)
     no-repeat center;
   background-size: cover;
   z-index: 30;
@@ -207,7 +207,7 @@ button {
   height: 11.25px;
   right: 66.875px;
   bottom: 18.125px;
-  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2026-04-20/5X3x2Oqqu5.png)
+  background: url(${assetBase}template22/5X3x2Oqqu5.png)
     no-repeat center;
   background-size: cover;
   z-index: 31;
@@ -243,7 +243,7 @@ button {
   height: 15.625px;
   right: 335px;
   bottom: 10.625px;
-  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2026-04-20/WFL7iHNs5j.png)
+  background: url(${assetBase}template22/WFL7iHNs5j.png)
     no-repeat center;
   background-size: cover;
   z-index: 27;
@@ -301,7 +301,7 @@ button {
   position: relative;
   width: 13.75px;
   height: 13.75px;
-  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2026-04-20/Weu1PyCmbT.png)
+  background: url(${assetBase}template22/Weu1PyCmbT.png)
     no-repeat center;
   background-size: cover;
   z-index: 22;
@@ -568,7 +568,7 @@ button {
   height: 41.875px;
   right: 0;
   bottom: 0;
-  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2026-04-20/V943KeeqNG.png)
+  background: url(${assetBase}template22/V943KeeqNG.png)
     no-repeat center;
   background-size: cover;
   z-index: 4;
@@ -595,7 +595,7 @@ button {
   width: 130.625px;
   height: 5px;
   margin: 16.875px 0 0 120px;
-  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2026-04-20/k6XZU3WEiY.png)
+  background: url(${assetBase}template22/k6XZU3WEiY.png)
     no-repeat center;
   background-size: cover;
   z-index: 1;

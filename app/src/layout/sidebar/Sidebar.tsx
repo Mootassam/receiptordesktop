@@ -209,6 +209,42 @@ function Sidebar({
       date: 'Date',
       time: 'Time',
       fee: 'Network fee'
+    },
+    template22: {
+      sender: 'Address',
+      receiver: 'Txid',
+      amount: 'Amount',
+      date: 'Date',
+      time: 'Time',
+      fee: 'Network fee'
+    },
+    template23: {
+      sender: 'Address',
+      amount: 'Amount',
+      date: 'Date',
+      time: 'Time',
+      fee: 'Network fee'
+    },
+    template24: {
+      sender: 'Address',
+      receiver: 'Txid',
+      amount: 'Amount',
+      date: 'Date',
+      time: 'Time'
+    },
+    template25: {
+      sender: 'Address',
+      amount: 'Amount',
+      date: 'Date',
+      time: 'Time',
+      fee: 'Network fee'
+    },
+    template26: {
+      sender: 'Address',
+      amount: 'Amount',
+      date: 'Date',
+      time: 'Time',
+      fee: 'Network fee'
     }
   };
 
@@ -442,7 +478,7 @@ function Sidebar({
               onChange={(e) => setvalue(e.target.value)}
             >
               {optionBank
-                .filter((item) => item.type === transactionType)
+                .filter((item) => item.type === transactionType && item.coin === selectedCoin)
                 .map((item) => (
                   <option key={item.value} value={item.value}>
                     {item.name}

@@ -30,14 +30,6 @@ const optionBank = [
   { name: "Template 25", value: "template25", type: "withdraw", coin: "BTC" },
 
 
-
-
-
-
-
-
-
 ];
-
 
 export default optionBank;
