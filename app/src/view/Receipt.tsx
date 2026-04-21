@@ -28,6 +28,14 @@ import Template18 from "../component/template18/Template18";
 import Template19 from "../component/template19/Template19";
 import Template20 from "../component/template20/Template20";
 import Template21 from "../component/template21/Template21";
+import Template22 from "../component/template22/Template22";
+import Template23 from "../component/template23/Template23";
+import Template24 from "../component/template24/Template24";
+import Template25 from "../component/template25/Template25";
+import Template26 from "../component/template26/Template26";
+
+
+
 
 
 function Receipt() {
@@ -121,6 +129,16 @@ function Receipt() {
               {value === "template20" && <Template20 formData={formData} />}
 
               {value === "template21" && <Template21 formData={formData} />}
+              {value === "template22" && <Template22 formData={formData} />}
+              {value === "template23" && <Template23 formData={formData} />}
+              {value === "template24" && <Template24 formData={formData} />}
+              {value === "template25" && <Template25 formData={formData} />}
+              {value === "template26" && <Template26 formData={formData} />}
+
+
+
+
+
 
 
 
