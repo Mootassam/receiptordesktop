@@ -33,6 +33,8 @@ import Template23 from "../component/template23/Template23";
 import Template24 from "../component/template24/Template24";
 import Template25 from "../component/template25/Template25";
 import Template26 from "../component/template26/Template26";
+import Template27 from "../component/template27/Template27";
+
 
 
 
@@ -132,6 +134,8 @@ function Receipt() {
               {value === "template24" && <Template24 formData={formData} />}
               {value === "template25" && <Template25 formData={formData} />}
               {value === "template26" && <Template26 formData={formData} />}
+              {value === "template27" && <Template27 formData={formData} />}
+
 
 
 

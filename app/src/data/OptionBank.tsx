@@ -10,6 +10,8 @@ const optionBank = [
   { name: "Template 15", value: "Template15", type: "deposit", coin: "USDT" },
   { name: "Template 24", value: "template24", type: "deposit", coin: "USDT" },
   { name: "Template 26", value: "template26", type: "deposit", coin: "ETH" },
+  { name: "Template 27", value: "template27", type: "deposit", coin: "ETH" },
+
 
   // Withdraw templates
   { name: "Template 3", value: "template3", type: "withdraw", coin: "USDT" },
