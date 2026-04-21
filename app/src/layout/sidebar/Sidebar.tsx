@@ -51,8 +51,6 @@ function Sidebar({
   screenshot,
   value,
   setvalue,
-  setSize,
-  size,
   undo,
   erase,
   color,

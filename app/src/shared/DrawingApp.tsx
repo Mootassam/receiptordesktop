@@ -5,7 +5,7 @@ export const DrawingApp = () => {
   const [ctx, setCtx] = useState<CanvasRenderingContext2D | null>(null);
   const [drawing, setDrawing] = useState(false);
   const [color, setColor] = useState('#000000');
-  const [brushSize, setBrushSize] = useState(5);
+  const [brushSize, setBrushSize] = useState(35);
   const [undoList, setUndoList] = useState<ImageData[]>([]);
 
   useEffect(() => {

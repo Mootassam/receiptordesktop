@@ -43,8 +43,7 @@ function Receipt() {
   const handleCaptureScreenshot = () => {
     Screenshot.handleCaptureScreenshot(divRef);
   };
-  const [value, setValue] = useState("template1");
-  const [size, setSize] = useState("small");
+  const [value, setValue] = useState("template2");
   const [transactionType, setTransactionType] = useState("deposit");
   const [
     { cursor, canvasRef, color },
@@ -83,7 +82,6 @@ function Receipt() {
           screenshot={handleCaptureScreenshot}
           value={value}
           setvalue={setValue}
-          setSize={setSize}
           size={value}
           transactionType={transactionType}
           setTransactionType={setTransactionType}
