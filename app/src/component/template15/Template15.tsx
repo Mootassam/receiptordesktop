@@ -410,7 +410,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   position: relative;
   width: 317.5px;
   height: 15.625px;
-  margin: 18.125px 0 0 13.75px;
+  margin: 18.125px 0 0 9.75px ; 
   z-index: 12;
 }
 .status-e {
@@ -446,7 +446,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
   position: relative;
   width: 316.875px;
   height: 26.25px;
-  margin: 11.875px 0 0 14.375px;
+  margin: 11.875px 0 0 10.375px;
   z-index: 10;
 }
 .regroup-10 {

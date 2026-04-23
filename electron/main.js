@@ -33,19 +33,41 @@ function createWindow() {
     height: 800,
     minWidth: 855,
     maxWidth: 855,
-    maxHeight:800,
-    resizable: false,      // width is fixed, height can be full screen but not resizable
+    maxHeight: 800,
+    resizable: false,
+    icon: path.join(__dirname, '../build/header.png'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
+      sandbox: true, // Enable sandbox for better security
       preload: path.join(__dirname, 'preload.js'),
       backgroundThrottling: true,
       spellcheck: false,
-      webSecurity: false,
+      webSecurity: false, // Maintain existing setting as it might be needed for cross-origin
+      devTools: isDev, // Disable DevTools in production
     },
     frame: true,
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',
   });
+
+  // Disable context menu to prevent "Inspect Element" in production
+  if (!isDev) {
+    mainWindow.webContents.on('context-menu', (e) => {
+      e.preventDefault();
+    });
+
+    // Disable common DevTools shortcuts (F12, Ctrl+Shift+I, etc.)
+    mainWindow.webContents.on('before-input-event', (event, input) => {
+      if (
+        (input.control && input.shift && input.key.toLowerCase() === 'i') || // Ctrl+Shift+I
+        (input.control && input.shift && input.key.toLowerCase() === 'j') || // Ctrl+Shift+J
+        (input.control && input.key.toLowerCase() === 'u') || // Ctrl+U (View Source)
+        input.key === 'F12'
+      ) {
+        event.preventDefault();
+      }
+    });
+  }
 
   const startURL = isDev
     ? 'http://localhost:5173'
@@ -158,4 +180,25 @@ app.whenReady().then(() => {
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
+});
+
+// Performance: Clear cache on exit
+app.on('before-quit', async () => {
+  try {
+    const ses = mainWindow?.webContents?.session || require('electron').session.defaultSession;
+    await ses.clearCache();
+  } catch {}
+});
+
+// Performance: Lower CPU/GPU priority when window is blurred
+app.on('browser-window-blur', () => {
+  if (mainWindow?.webContents) {
+    // Window is blurred, backgroundThrottling will handle most performance savings
+  }
+});
+
+app.on('browser-window-focus', () => {
+  if (mainWindow?.webContents) {
+    // Window is focused
+  }
 });

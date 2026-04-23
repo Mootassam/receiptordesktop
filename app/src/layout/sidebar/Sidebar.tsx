@@ -225,7 +225,7 @@ function Sidebar({
     },
     template24: {
       sender: 'Address',
-      receiver: 'Txid',
+      txid: 'Txid',
       amount: 'Amount',
       date: 'Date',
       time: 'Time'
@@ -243,7 +243,8 @@ function Sidebar({
       date: 'Date',
       time: 'Time',
       fee: 'Network fee'
-    }
+    },
+
   };
 
   // Get current template field labels

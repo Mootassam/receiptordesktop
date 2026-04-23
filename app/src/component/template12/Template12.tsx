@@ -428,7 +428,7 @@ const Template12: React.FC<Template12Props> = ({ formData }) => {
             justify-content: flex-start;
             position: absolute;
             height: 12.5px;
-            right: 310px;
+            right:  311px;
             bottom: 16.875px;
             color: #393939;
             font-family: Inter, var(--default-font-family);
@@ -484,7 +484,7 @@ const Template12: React.FC<Template12Props> = ({ formData }) => {
             justify-content: flex-start;
             position: absolute;
             height: 12.5px;
-            right: 290px;
+            right: 291px;
             bottom: 13.75px;
             color: #3d3d3d;
             font-family: Inter, var(--default-font-family);

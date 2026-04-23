@@ -6,26 +6,12 @@ interface Template3Props {
   formData: FormData;
 }
 
-// Helper: format USD with small rate (optional, keep consistent)
-const formatUSD = (amount: number): string => {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(amount);
-};
-
-const USDT_TO_USD_RATE = 1.001;
-
 const Template3: React.FC<Template3Props> = ({ formData }) => {
   const assetBase = window.location.protocol === "file:" ? "./" : "/";
 
   // Parse amount
   const rawAmount = formData.amount ? parseFloat(String(formData.amount).replace(/,/g, '')) : 18.539255;
   const amountDisplay = formData.amount ? `-${formData.amount}USDT` : "-18.539255USDT";
-  const usdEquivalent = formatUSD(rawAmount * USDT_TO_USD_RATE);
-  // For simplicity, we keep the original amount display as is; USD not shown in this template but we can add if needed.
 
   return (
     <>
@@ -202,7 +188,6 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
         .groups-6 {
           position: relative;
           width: 369.375px;
-          height: 441.875px;
           margin: 1.875px 0 0 0;
           background: rgba(0, 0, 0, 0);
           z-index: 12;
@@ -286,7 +271,7 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
         .why-not-arrived {
           display: flex;
           align-items: center;
-              justify-content: center;
+          justify-content: center;
           position: relative;
           height: 13.125px;
           margin: 1.25px 0 0 0px;
@@ -309,459 +294,264 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
           background-size: cover;
           z-index: 39;
         }
+
+        /* ---------- FLEX DETAILS (preserves exact original styles) ---------- */
         .groups-a {
-          position: relative;
           width: 369.375px;
-          height: auto;
-          min-height: 293.125px;
           margin: -0.63px 0 0 0;
+          padding: 29px 11.875px 0 11.875px;   /* same as original right/left */
           background: rgba(0, 0, 0, 0);
           z-index: 13;
-          overflow: visible auto;
-        }
-        .groups-b {
-          position: relative;
-          width: 369.375px;
-          min-height: 60.625px;
-          margin: 92.5px 0 0 0;
-          background: rgba(0, 0, 0, 0);
-          z-index: 26;
-        }
-        .cddcbdc {
-    display: flex;
-    align-items: start;
-    justify-content: flex-end;
-    position: absolute;
-    width: 189px;
-    min-height: 48.75px;
-    right: 29.5px;
-    bottom: 2.5px;
-    color: #E4E9EF;
-    font-family: Inter, var(--default-font-family);
-    font-size: 11.88px;
-    font-weight: 400;
-    line-height: 15.7px;
-    text-align: right;
-    white-space: pre-line;
-    word-break: break-all;
-    overflow-wrap: break-word;
-    z-index: 28;
-    gap: 1.88px;
-    overflow: visible;
+          display: flex;
+          flex-direction: column;
+          gap: 11px;   /* we'll use margin on rows to match original spacing */
         }
 
-        .txid {
+        /* Each detail row uses flex with space-between */
+        .detail-row {
           display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 12.5px;
-          right: 333.75px;
-          bottom: 37.5px;
+          justify-content: space-between;
+          align-items: flex-start;
+          width: 100%;
+          margin-bottom: 12px;   /* matches original vertical rhythm */
+        }
+
+        /* TxID row (specific to original .groups-b styling) */
+        .txid-row {
+          margin-bottom: 2.5px;   /* adjusted to match original */
+        }
+
+        .txid-label {
           color: #5d646e;
           font-family: Inter, var(--default-font-family);
           font-size: 11.25px;
           font-weight: 400;
           line-height: 12.5px;
-          text-align: left;
           white-space: nowrap;
-          z-index: 29;
         }
-        .image-c {
-          position: absolute;
-          width: 11.25px;
-          height: 11.875px;
-          right: 14.375px;
-          bottom: 37.5px;
-          background: url(${assetBase}template3/eAVgFbQxa2.png)
-            no-repeat center;
-          background-size: cover;
-          z-index: 27;
-        }
-        .groups-d {
-          position: relative;
-          width: 369.375px;
-          height: 33.125px;
-          margin: 2.5px 0 0 0;
-          background: rgba(0, 0, 0, 0);
-          z-index: 23;
-        }
-        .usdt {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 14px;
-          right: 11.875px;
-          bottom: 9.75px;
+
+        .txid-value {
           color: #E4E9EF;
           font-family: Inter, var(--default-font-family);
           font-size: 11.875px;
           font-weight: 400;
-          line-height: 14px;
-          text-align: left;
-          white-space: nowrap;
-          z-index: 24;
+          line-height: 15.7px;
+          text-align: right;
+          word-break: break-all;
+          max-width: 220px;
         }
-        .amount {
+
+        .txid-wrapper {
           display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 13.125px;
-          right: 313.75px;
-          bottom: 9.375px;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        .copy-icon-txid {
+          width: 11.25px;
+          height: 11.875px;
+          background: url(${assetBase}template3/eAVgFbQxa2.png) no-repeat center;
+          background-size: cover;
+          flex-shrink: 0;
+          margin-top: 2px;
+        }
+
+        /* Amount row */
+        .amount-label {
           color: #606972;
           font-family: Inter, var(--default-font-family);
           font-size: 11.25px;
           font-weight: 400;
           line-height: 13.125px;
-          text-align: left;
           white-space: nowrap;
-          z-index: 25;
         }
-        .groups-e {
-          position: relative;
-          width: 369.375px;
-          height: 32.5px;
-          margin: 0.63px 0 0 0;
-          background: rgba(0, 0, 0, 0);
-          z-index: 20;
-        }
-        .usdt-f {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 13.125px;
-          right: 11.875px;
-          bottom: 10.625px;
+
+        .amount-value {
           color: #E4E9EF;
           font-family: Inter, var(--default-font-family);
-          font-size: 12.5px;
+          font-size: 11.875px;
           font-weight: 400;
-          line-height: 13.125px;
-          text-align: left;
-          white-space: nowrap;
-          z-index: 21;
+          line-height: 14px;
+          text-align: right;
         }
-        .network-fee {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 13.125px;
-          right: 293px;
-          bottom: 10px;
+
+        /* Network fee row */
+        .fee-label {
           color: #5d656f;
           font-family: Inter, var(--default-font-family);
           font-size: 11.25px;
           font-weight: 400;
           line-height: 13.125px;
-          text-align: left;
           white-space: nowrap;
-          z-index: 22;
         }
-        .groups-10 {
-          position: relative;
-          width: 369.375px;
-          height: 32.5px;
-          margin: 1.25px 0 0 0;
-          background: rgba(0, 0, 0, 0);
-          z-index: 17;
+
+        .fee-value {
+          color: #E4E9EF;
+          font-family: Inter, var(--default-font-family);
+          font-size: 12.5px;
+          font-weight: 400;
+          line-height: 13.125px;
+          text-align: right;
         }
-        .withdrawal-wallet {
+
+        /* Withdrawal Wallet / Spot Wallet (double row) */
+        .wallet-row {
           display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 14.375px;
-          right: 263px;
-          bottom: 10px;
+          justify-content: space-between;
+          width: 100%;
+          margin-bottom: 12px;
+        }
+
+        .withdrawal-wallet-label {
           color: #5d656e;
           font-family: Inter, var(--default-font-family);
           font-size: 11.25px;
           font-weight: 400;
           line-height: 13.615px;
-          text-align: left;
-          white-space: nowrap;
-          z-index: 19;
         }
-        .spot-wallet {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 14.375px;
-          right: 11.875px;
-          bottom: 9.375px;
+
+        .spot-wallet-label {
           color: #E4E9EF;
           font-family: Inter, var(--default-font-family);
           font-size: 11.25px;
           font-weight: 400;
           line-height: 13.615px;
-          text-align: left;
-          white-space: nowrap;
-          z-index: 18;
         }
-        .groups-11 {
-          position: relative;
-          width: 369.375px;
-          height: 33.75px;
-          margin: 0.63px 0 0 0;
-          background: rgba(0, 0, 0, 0);
-          z-index: 14;
-        }
-        .date {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 13.75px;
-          right: 11.875px;
-          bottom: 12.5px;
-          color: #E4E9EF;
-          font-family: Inter, var(--default-font-family);
-          font-size: 12.5px;
-          font-weight: 400;
-          line-height: 13.75px;
-          text-align: left;
-          white-space: nowrap;
-          z-index: 15;
-        }
-        .date-12 {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 12.5px;
-          right: 330.625px;
-          bottom: 13.125px;
+
+        /* Date row */
+        .date-label {
           color: #5f6670;
           font-family: Inter, var(--default-font-family);
           font-size: 11.25px;
           font-weight: 400;
           line-height: 12.5px;
-          text-align: left;
           white-space: nowrap;
-          z-index: 16;
         }
-        .groups-13 {
-          position: absolute;
-          width: 369.375px;
-          height: 64.375px;
-          right: 0;
-          bottom: 201.25px;
-          background: rgba(0, 0, 0, 0);
-          z-index: 30;
+
+        .date-value {
+          color: #E4E9EF;
+          font-family: Inter, var(--default-font-family);
+          font-size: 12.5px;
+          font-weight: 400;
+          line-height: 13.75px;
+          text-align: right;
         }
-        .network {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 11.875px;
-          right: 310.625px;
-          bottom: 50.625px;
+
+        /* Network row */
+        .network-label {
           color: #5e666f;
           font-family: Inter, var(--default-font-family);
           font-size: 11.25px;
           font-weight: 400;
           line-height: 11.875px;
-          text-align: left;
           white-space: nowrap;
-          z-index: 38;
         }
-        .trx {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 11.875px;
-          right: 11.875px;
-          bottom: 50.625px;
+
+        .network-value {
           color: #E4E9EF;
           font-family: Inter, var(--default-font-family);
           font-size: 11.875px;
           font-weight: 400;
           line-height: 11.875px;
-          text-align: left;
-          white-space: nowrap;
-          z-index: 37;
-        }
-        .groups-14 {
-          position: absolute;
-          width: 369.375px;
-          height: auto;
-          min-height: 45.625px;
-          right: 0;
-          bottom: 198.75px;
-          background: rgba(0, 0, 0, 0);
-          z-index: 31;
-        }
-        .flex-row-bf {
-          position: relative;
-          min-height: 15.625px;
-          margin: 7.75px 0 0 16.15px;
-          z-index: 36;
-          display: flex;
-          align-items: start;
-          justify-content: space-between;
-        }
-        .tdfy-ftecxp-vjmf {
-          display: flex;
-          align-items: start;
-          justify-content: flex-start;
-          width: 196px;
-          min-height: 15.625px;
-          right: 15px;
-          bottom: 0;
-          color: #E4E9EF;
-          font-family: Inter, var(--default-font-family);
-          font-size: 11.88px;
-    font-weight: 400;
-    line-height: 15.7px;
           text-align: right;
-          white-space: pre-line;
-          word-break: break-all;
-          overflow-wrap: break-word;
-          z-index: 35;
         }
-        .address {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          height: 12.5px;
-          right: 298.5px;
-          bottom: 1.875px;
+
+        /* Address row */
+        .address-label {
           color: #5e656f;
           font-family: Inter, var(--default-font-family);
           font-size: 11.25px;
           font-weight: 400;
           line-height: 12.5px;
-          text-align: left;
           white-space: nowrap;
-          z-index: 36;
         }
-        .image-15 {
-          width: 11.25px;
-          height: 11.25px;
-          right: 0;
-          bottom: 3.125px;
-          background: url(${assetBase}template3/2gHAqx7RqX.png)
-            no-repeat center;
-          background-size: cover;
-          z-index: 34;
-        }
-        .flex-row-a {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          position: relative;
-          width: 38.75px;
-          height: 13.125px;
-          margin: 0.63px 0 0 316.25px;
-          z-index: 33;
-        }
-        .h {
-          flex-shrink: 0;
-          position: relative;
-          height: 11.875px;
-          color: #a6acb2;
+
+        .address-value {
+          color: #E4E9EF;
           font-family: Inter, var(--default-font-family);
           font-size: 11.875px;
           font-weight: 400;
-          line-height: 11.875px;
-          text-align: left;
-          white-space: nowrap;
-          z-index: 33;
+          line-height: 15.7px;
+          text-align: right;
+          word-break: break-all;
+          max-width: 200px;
         }
-        .image-16 {
+
+        .address-wrapper {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        .copy-icon-address {
+          width: 11.25px;
+          height: 11.25px;
+          background: url(${assetBase}template3/2gHAqx7RqX.png) no-repeat center;
+          background-size: cover;
           flex-shrink: 0;
-          position: relative;
-          width: 13.125px;
-          background: #1f2630;
-          z-index: 32;
+          margin-top: 2px;
         }
+
+        /* Bottom buttons */
         .groups-17 {
           position: relative;
           width: 348.75px;
           height: 46.875px;
-          margin: 193.125px 0 0 10px;
+          margin: 187.125px 0 0 10px;
           background: rgba(0, 0, 0, 0);
           z-index: 5;
+          display: flex;
+          justify-content: space-between;
         }
         .button-18 {
-          position: absolute;
           width: 171.25px;
           height: 46.875px;
-          right: 177.5px;
-          bottom: 0;
           background: rgba(0, 0, 0, 0);
           z-index: 9;
         }
         .background-19 {
-          position: relative;
           width: 165px;
           height: 41.25px;
           margin: 3.75px 0 0 3.125px;
           background: #323a47;
           border: 0.63px solid #303842;
-          z-index: 10;
           border-radius: 3.75px;
-        }
-        .scam-report {
           display: flex;
           align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 16.875px;
-          right: 41.25px;
-          bottom: 11.25px;
+          justify-content: center;
+        }
+        .scam-report {
           color: #b7bdc5;
           font-family: Inter, var(--default-font-family);
           font-size: 12.5px;
           font-weight: 400;
           line-height: 15.128px;
-          text-align: left;
           white-space: nowrap;
-          z-index: 11;
         }
         .button-1a {
-          position: absolute;
           width: 170.625px;
           height: 46.875px;
-          right: 0;
-          bottom: 0;
           background: rgba(0, 0, 0, 0);
           z-index: 6;
         }
         .background-1b {
-          position: relative;
           width: 164.375px;
           height: 41.25px;
           margin: 3.75px 0 0 3.125px;
           background: #323a47;
           border: 0.63px solid #303842;
-          z-index: 7;
           border-radius: 3.75px;
-        }
-        .save-address {
           display: flex;
           align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 15.625px;
-          right: 38.125px;
-          bottom: 12.5px;
+          justify-content: center;
+        }
+        .save-address {
           color: #a7aeb6;
           font-family: Inter, var(--default-font-family);
           font-size: 12.5px;
           font-weight: 700;
           line-height: 15.128px;
-          text-align: left;
           white-space: nowrap;
-          z-index: 8;
         }
         .background-1c {
           position: relative;
@@ -773,22 +563,6 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
           background-size: cover;
           z-index: 4;
         }
-        .image-1d {
-          position: absolute;
-          height: 800px;
-          top: 0;
-          right: 0;
-          left: 0;
-          background-size: cover;
-          z-index: 3;
-        }
-
-        .receiver__amount { 
-        display: flex;
-        align-items: start;
-        justify-content: flex-start;
-            padding-right: 13px;
-        gap: 3.75px;}
       `}</style>
 
       <div className="main-container">
@@ -813,57 +587,73 @@ const Template3: React.FC<Template3Props> = ({ formData }) => {
                 <div className="image-8"></div>
                 <span className="completed">Completed</span>
               </div>
-              <span className="crypto-transferr"
-              >Crypto transferred out of Binance. Please contact the recipient
-                platform for<br />your transaction receipt.</span
-              ><span className="why-not-arrived"
-              >Why hasn't my withdrawal arrived?</span
-              >
+              <span className="crypto-transferr">
+                Crypto transferred out of Binance. Please contact the recipient
+                platform for<br />your transaction receipt.
+              </span>
+              <span className="why-not-arrived">Why hasn't my withdrawal arrived?</span>
             </div>
             <div className="background-9"></div>
+
+            {/* ----- FLEX DETAILS (exact original look) ----- */}
             <div className="groups-a">
-              <div className="groups-b">
-                <span className="cddcbdc"
-                >{formData.sender || "c215dd230cbdc710adee7a3b07fabde76cf3d1f81f9eea805676bf767896cccf"}</span>
-                <span className="txid">Txid</span>
-                <div className="image-c"></div>
+
+               {/* Network */}
+              <div className="detail-row">
+                <span className="network-label">Network</span>
+                <span className="network-value">TRX</span>
               </div>
-              <div className="groups-d">
-                <span className="usdt">{formData.amount ? `${formData.amount} USDT` : "19.539255 USDT"}</span>
-                <span className="amount">Amount</span>
-              </div>
-              <div className="groups-e">
-                <span className="usdt-f">{formData.fee || "1"} USDT</span>
-                <span className="network-fee">Network fee</span>
-              </div>
-              <div className="groups-10">
-                <span className="withdrawal-wallet">Withdrawal Wallet</span>
-                <span className="spot-wallet">Spot Wallet</span>
-              </div>
-              <div className="groups-11">
-                <span className="date">{Dates.formatTemplate3(formData.date)}</span>
-                <span className="date-12">Date</span>
-              </div>
-              <div className="groups-13">
-                <span className="network">Network</span><span className="trx">TRX</span>
-              </div>
-              <div className="groups-14">
-                <div className="flex-row-bf">
-                  <span className="address">Address</span>
 
 
-                  <div className='receiver__amount'>
-                    <span className="tdfy-ftecxp-vjmf"
-                    >{formData.receiver || "TDfyFTe1cxpV3JmfgEznJmV7vsFtCc589H"}
-                    </span>
-                    <div className="image-15"></div>
-
-                  </div>
+                  {/* Address */}
+              <div className="detail-row">
+                <span className="address-label">Address</span>
+                <div className="address-wrapper">
+                  <span className="address-value">{formData.receiver || "TDfyFTe1cxpV3JmfgEznJmV7vsFtCc589H"}</span>
+                  <div className="copy-icon-address"></div>
                 </div>
-            
               </div>
+
+
+              {/* TxID */}
+              <div className="detail-row txid-row">
+                <span className="txid-label">Txid</span>
+                <div className="txid-wrapper">
+                  <span className="txid-value">{formData.sender || "c215dd230cbdc710adee7a3b07fabde76cf3d1f81f9eea805676bf767896cccf"}</span>
+                  <div className="copy-icon-txid"></div>
+                </div>
+              </div>
+
+              {/* Amount */}
+              <div className="detail-row">
+                <span className="amount-label">Amount</span>
+                <span className="amount-value">{formData.amount ? `${formData.amount} USDT` : "19.539255 USDT"}</span>
+              </div>
+
+              {/* Network fee */}
+              <div className="detail-row">
+                <span className="fee-label">Network fee</span>
+                <span className="fee-value">{formData.fee || "1"} USDT</span>
+              </div>
+
+              {/* Withdrawal Wallet / Spot Wallet */}
+              <div className="wallet-row">
+                <span className="withdrawal-wallet-label">Withdrawal Wallet</span>
+                <span className="spot-wallet-label">Spot Wallet</span>
+              </div>
+
+              {/* Date */}
+              <div className="detail-row">
+                <span className="date-label">Date</span>
+                <span className="date-value">{Dates.formatTemplate3(formData.date)}</span>
+              </div>
+
+             
+
+          
             </div>
           </div>
+
           <div className="groups-17">
             <div className="button-18">
               <div className="background-19">

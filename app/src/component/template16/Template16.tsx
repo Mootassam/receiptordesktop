@@ -246,19 +246,11 @@ button {
   z-index: 24;
 }
 .background {
-  position: absolute;
-  width: 1.25px;
-  height: 800px;
-  right: 0;
-  bottom: 0;
-  background: url(/images/template16/XP5UdfRb2j.png)
-    no-repeat center;
-  background-size: cover;
-  z-index: 2;
+
 }
 .background-7 {
   position: absolute;
-  width: 340px;
+  // width: 340px;
   height: 123.75px;
   right: 10px;
   bottom: 510.625px;
@@ -287,7 +279,7 @@ button {
   display: block;
   position: relative;
   height: 18.125px;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 4px;
   color: #464648;
   font-family: Inter, var(--default-font-family);
   font-size: 15.625px;
@@ -396,9 +388,9 @@ button {
 }
 .background-b {
   position: relative;
-  width: 333.125px;
+  width: 100%;
   height: 38.75px;
-  margin: 4.375px 0 0 5px;
+  margin: 4.375px 0 0 0px;
   background: #f3f3f6;
   z-index: 5;
   border-radius: 3.75px;
@@ -409,7 +401,7 @@ button {
   justify-content: flex-start;
   position: absolute;
   height: 16.25px;
-  right: 230.625px;
+  right: 237.625px;
   bottom: 11.875px;
   color: #454547;
   font-family: Inter, var(--default-font-family);
@@ -433,12 +425,11 @@ button {
 }
 .background-d {
   position: absolute;
-  width: 340.625px;
+  width: 100%;
   height: 101.875px;
   right: 0;
   bottom: 68.75px;
   background: #f4f4f6;
-  border: 3.75px solid #fefefe;
 }
 .groups-e {
   position: absolute;
