@@ -1,6 +1,6 @@
 import React, { createContext, useContext, ReactNode } from "react";
 
-export type PhoneBarTheme = "auto" | "light" | "dark";
+export type PhoneBarTheme = "light" | "dark";
 
 /**
  * Status-bar visual model (skin):
@@ -28,11 +28,12 @@ export interface PhoneStatus {
   wifi: boolean;
   /** Network label for the "cellular" model, e.g. "4G", "5G", "LTE". */
   network: string;
+  /** Selected notification icon ids shown to the right of the time (max 4). */
+  notifications: string[];
   /**
-   * Icon/text color theme:
-   *  - "auto"  → use each template's own default color
-   *  - "light" → dark icons (for light backgrounds)
-   *  - "dark"  → light icons (for dark backgrounds)
+   * Icon/text color theme (two options only):
+   *  - "light" → black icons (for light backgrounds)
+   *  - "dark"  → white icons (for dark backgrounds)
    */
   theme: PhoneBarTheme;
 }
@@ -46,7 +47,8 @@ export const defaultPhoneStatus: PhoneStatus = {
   signal: 4,
   wifi: true,
   network: "4G",
-  theme: "auto",
+  notifications: [],
+  theme: "light",
 };
 
 interface PhoneStatusContextType {

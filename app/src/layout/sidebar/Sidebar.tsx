@@ -4,6 +4,7 @@ import optionBank from "../../data/OptionBank";
 import { FormData } from "../../shared/FormDataContext";
 import { PhoneStatus } from "../../shared/PhoneStatusContext";
 import StatusBar from "../../shared/StatusBar";
+import { NOTIFICATION_OPTIONS, MAX_NOTIFICATIONS } from "../../shared/notificationIcons";
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "../../modules/auth/authActions";
 import {
@@ -290,6 +291,18 @@ function Sidebar({
       hour12: false
     });
     setPhoneDraft(prev => ({ ...prev, time: timeString }));
+  };
+
+  // Toggle a notification icon, capped at MAX_NOTIFICATIONS
+  const toggleNotification = (id: string) => {
+    setPhoneDraft(prev => {
+      const selected = prev.notifications.includes(id);
+      if (selected) {
+        return { ...prev, notifications: prev.notifications.filter(n => n !== id) };
+      }
+      if (prev.notifications.length >= MAX_NOTIFICATIONS) return prev;
+      return { ...prev, notifications: [...prev.notifications, id] };
+    });
   };
 
   // Coin options
@@ -821,6 +834,8 @@ function Sidebar({
             </div>
 
             <div className="modal__form">
+              <div className="section__label">Style</div>
+
               {/* Phone Bar Style — choose one of 4 models (live previews) */}
               <div className="input__group">
                 <label>Phone Bar Style</label>
@@ -846,14 +861,13 @@ function Sidebar({
                 </div>
               </div>
 
-              {/* Icon color theme */}
+              {/* Icon color — two options: black (light bg) or white (dark bg) */}
               <div className="input__group">
                 <label>Icon Color</label>
                 <div className="segmented">
                   {([
-                    { id: 'auto', label: 'Auto' },
-                    { id: 'light', label: 'Light BG' },
-                    { id: 'dark', label: 'Dark BG' },
+                    { id: 'light', label: 'Light BG · Black' },
+                    { id: 'dark', label: 'Dark BG · White' },
                   ] as const).map((opt) => (
                     <button
                       key={opt.id}
@@ -866,6 +880,8 @@ function Sidebar({
                   ))}
                 </div>
               </div>
+
+              <div className="section__label">Left Side</div>
 
               {/* Time */}
               <div className="input__group">
@@ -882,6 +898,39 @@ function Sidebar({
                   </button>
                 </div>
               </div>
+
+              {/* Notifications (left side, next to the time) */}
+              <div className="input__group">
+                <label>
+                  <FaBell size={11} style={{ marginRight: '6px' }} />
+                  Notifications
+                  <span className="notif__hint">
+                    {phoneDraft.notifications.length}/{MAX_NOTIFICATIONS}
+                  </span>
+                </label>
+                <div className="notif__grid">
+                  {NOTIFICATION_OPTIONS.map((opt) => {
+                    const active = phoneDraft.notifications.includes(opt.id);
+                    const full = phoneDraft.notifications.length >= MAX_NOTIFICATIONS;
+                    const Icon = opt.Icon;
+                    return (
+                      <button
+                        key={opt.id}
+                        type="button"
+                        className={`notif__chip ${active ? 'active' : ''}`}
+                        disabled={!active && full}
+                        onClick={() => toggleNotification(opt.id)}
+                        title={opt.label}
+                      >
+                        <Icon size={16} color={active ? '#1e293b' : '#94a3b8'} />
+                        <span>{opt.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="section__label">Right Side</div>
 
               {/* Signal strength */}
               <div className="input__group">

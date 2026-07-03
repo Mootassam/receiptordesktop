@@ -1,8 +1,9 @@
 import React from "react";
 import { usePhoneStatus, PhoneStatus } from "./PhoneStatusContext";
+import { notificationById } from "./notificationIcons";
 
 interface StatusBarProps {
-  /** Template's default icon/time color, used when the phone-bar theme is "auto". */
+  /** Kept for backward compatibility; icon color is now driven by the light/dark theme. */
   color?: string;
   /** Height of the status bar row. */
   height?: number | string;
@@ -49,7 +50,8 @@ const StatusBar: React.FC<StatusBarProps> = ({ color = "#262626", height = 40, s
   const { phoneStatus } = usePhoneStatus();
   const s = { ...phoneStatus, ...status };
 
-  const iconColor = s.theme === "dark" ? "#ffffff" : s.theme === "light" ? "#262626" : color;
+  // Only two looks: black icons (light background) or white icons (dark background).
+  const iconColor = s.theme === "dark" ? "#ffffff" : "#111111";
   const dim = withAlpha(iconColor, 0.28);
 
   const signal = clamp(Math.round(s.signal), 0, 4);
@@ -95,20 +97,31 @@ const StatusBar: React.FC<StatusBarProps> = ({ color = "#262626", height = 40, s
         zIndex: 50,
       }}
     >
-      {/* Time */}
-      <span
-        style={{
-          marginLeft: "8px",
-          color: iconColor,
-          fontFamily: FONT,
-          fontSize: "13.75px",
-          fontWeight: 700,
-          lineHeight: 1,
-          whiteSpace: "nowrap",
-        }}
-      >
-        {s.time || "8:03"}
-      </span>
+      {/* Time + notification icons (left side) */}
+      <div style={{ display: "flex", alignItems: "center", gap: "6px", minWidth: 0, marginLeft: "8px" }}>
+        <span
+          style={{
+            color: iconColor,
+            fontFamily: FONT,
+            fontSize: "13.75px",
+            fontWeight: 700,
+            lineHeight: 1,
+            whiteSpace: "nowrap",
+          }}
+        >
+          {s.time || "8:03"}
+        </span>
+        {s.notifications && s.notifications.length > 0 && (
+          <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+            {s.notifications.map((id) => {
+              const opt = notificationById(id);
+              if (!opt) return null;
+              const Icon = opt.Icon;
+              return <Icon key={id} size={13} color={iconColor} style={{ display: "block", flexShrink: 0 }} />;
+            })}
+          </div>
+        )}
+      </div>
 
       {/* Right cluster: signal · Wi-Fi/network · battery */}
       <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
