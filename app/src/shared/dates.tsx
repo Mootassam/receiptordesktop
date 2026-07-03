@@ -141,12 +141,54 @@ class Dates {
     return d.format("MMM DD,YYYY,h:mm A");
   }
 
-  static formatTemplate21(date: string | undefined): string {
-    if (!date) return "4:19 PM - Jan22, 2026";
-    const d = moment(date);
-    if (!d.isValid()) return "4:19 PM - Jan22, 2026";
-    return d.format("h:mm A - MMMDD, YYYY");
-  }
-}
+   static formatTemplate21(date: string | undefined): string {
+     if (!date) return "4:19 PM - Jan22, 2026";
+     const d = moment(date);
+     if (!d.isValid()) return "4:19 PM - Jan22, 2026";
+     return d.format("h:mm A - MMMDD, YYYY");
+   }
+
+   static formatTemplate22(date: string | undefined): string {
+     if (!date) return "2026-04-07 07:13:51";
+     const d = moment(date);
+     if (!d.isValid()) return "2026-04-07 07:13:51";
+     return d.format("YYYY-MM-DD HH:mm:ss");
+   }
+
+   static formatTemplate23(date: string | undefined): string {
+     if (!date) return "Apr 8,2026 4:36AM";
+     const d = moment(date);
+     if (!d.isValid()) return "Apr 8,2026 4:36AM";
+     return d.format("MMM D,YYYY h:mma");
+   }
+
+   static formatTemplate24(date: string | undefined): string {
+     if (!date) return "Oct 9 at 5:42 am";
+     const d = moment(date);
+     if (!d.isValid()) return "Oct 9 at 5:42 am";
+     return d.format("MMM D [at] h:mma");
+   }
+
+   static formatTemplate25(date: string | undefined): string {
+     if (!date) return "Apr 9,2026 8:01AM";
+     const d = moment(date);
+     if (!d.isValid()) return "Apr 9,2026 8:01AM";
+     return d.format("MMM D,YYYY h:mma");
+   }
+
+   static formatTemplate26(date: string | undefined): string {
+     if (!date) return "Apr 8,2026 12:24AM";
+     const d = moment(date);
+     if (!d.isValid()) return "Apr 8,2026 12:24AM";
+     return d.format("MMM D,YYYY h:mma");
+   }
+
+   static formatTemplate27(date: string | undefined): string {
+     if (!date) return "Oct 9 at 5:42 am";
+     const d = moment(date);
+     if (!d.isValid()) return "Oct 9 at 5:42 am";
+     return d.format("MMM D [at] h:mma");
+   }
+ }
 
 export default Dates;

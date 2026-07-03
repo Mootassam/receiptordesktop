@@ -88,7 +88,7 @@ const Template23: React.FC<Template23Props> = ({ formData }) => {
   const displayPrice = pricePerCoinFormatted;
   const displayNetwork = formData?.chain || 'Ethereum (ERC20)';
   const displayFeeETH = feeETHFormatted;
-  const displayDate = formData.date || 'Apr 8,2026 4:36AM';
+   const displayDate = Dates.formatTemplate23(formData.date);
   const displayReference = formData.reference || '391788550';
   const displayStatus = formData.status || 'Pending';
 

@@ -98,7 +98,7 @@ const Template24: React.FC<Template24Props> = ({ formData }) => {
 
   // Prepare dynamic values
   const displayChain = formData.chain || 'TRON (TRC20)';
-  const displayTime = formData.time || '2026-04-04 11:20:19';
+  const displayTime = Dates.formatTemplate22(formData.date || '2026-04-04 11:20:19');
   const displayAddress = formData.sender || 'TE5vtrL4xyS198GDX76wmCeMuTAzeSKxKu';
   const displayTxid = formData.txid || 'fdc9c7d6a78b637bd202ee1ad9fd71d2d527c778b5237d85d75bba66fabf11c5';
 
@@ -399,10 +399,17 @@ const Template24: React.FC<Template24Props> = ({ formData }) => {
 
         /* Maintain exact spacing as before */
         .groups-b {
-       position: relative;
+       position: absolute;
+       bottom: 10px;
+       left: 0;
+       right: 0;
+       margin: 0 auto;
     width: 346.875px;
-    height: 47.5px;
-    margin: 243.75px 0 0 6.875px; 
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    align-items: center;
+    justify-content: center;
     background: rgba(0, 0, 0, 0);
     z-index: 2;
     overflow: visible auto;
@@ -454,7 +461,6 @@ const Template24: React.FC<Template24Props> = ({ formData }) => {
     position: relative;
     width: 130px;
     height: 5px;
-    margin: 35px auto;
     background: url(/template24/q4YgcoFgG0.png) no-repeat center;
     background-size: cover;
     z-index: 1;
@@ -520,8 +526,9 @@ const Template24: React.FC<Template24Props> = ({ formData }) => {
                 <span className="view-in-blockcha">View in Blockchain Explorer</span>
               </div>
             </div>
-          </div>
           <div className="background-c" />
+
+          </div>
         </div>
       </div>
     </>

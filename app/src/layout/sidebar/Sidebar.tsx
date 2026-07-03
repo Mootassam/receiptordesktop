@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import "./sidebar.css";
 import optionBank from "../../data/OptionBank";
 import { FormData } from "../../shared/FormDataContext";
+import { PhoneStatus } from "../../shared/PhoneStatusContext";
+import StatusBar from "../../shared/StatusBar";
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "../../modules/auth/authActions";
 import {
@@ -21,6 +23,9 @@ import {
   FaTelegram,
   FaWhatsapp,
   FaComment,
+  FaWifi,
+  FaBolt,
+  FaSignal,
   FaSignOutAlt
 } from "react-icons/fa";
 
@@ -62,6 +67,8 @@ function Sidebar({
   setTransactionType,
   formData,
   setFormData,
+  phoneStatus,
+  setPhoneStatus,
 }) {
   // Template field label mappings
   const templateFieldLabels = {
@@ -260,17 +267,30 @@ function Sidebar({
   const [language, setLanguage] = useState("english");
   const [randomData, setRandomData] = useState(false);
   const [isScreenshotAnimating, setIsScreenshotAnimating] = useState(false);
-  const [showPhoneHeaderModal, setShowPhoneHeaderModal] = useState(false);
 
-  const [phoneHeaderData, setPhoneHeaderData] = useState({
-    time: "09:41",
-    battery: 85,
-    batteryCharging: false,
-    missedCalls: 0,
-    telegram: 0,
-    whatsapp: 0,
-    notifications: 3
-  });
+  // Phone status bar editor (draft is committed to the shared state on Save)
+  const [showPhoneBarModal, setShowPhoneBarModal] = useState(false);
+  const [phoneDraft, setPhoneDraft] = useState<PhoneStatus>(phoneStatus);
+
+  const openPhoneBarModal = () => {
+    setPhoneDraft(phoneStatus);
+    setShowPhoneBarModal(true);
+  };
+
+  const savePhoneBar = () => {
+    setPhoneStatus(phoneDraft);
+    setShowPhoneBarModal(false);
+  };
+
+  const setPhoneNow = () => {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+    setPhoneDraft(prev => ({ ...prev, time: timeString }));
+  };
 
   // Coin options
   const coinOptions = [
@@ -538,6 +558,12 @@ function Sidebar({
               Clear
             </button>
           </div>
+
+          {/* Phone Status Bar Button */}
+          <button onClick={openPhoneBarModal} className="phonebar__button">
+            <FaMobileAlt size={14} />
+            <span>Edit Phone Bar</span>
+          </button>
         </div>
 
         {/* Screenshot Button with pulse animation */}
@@ -770,79 +796,144 @@ function Sidebar({
         </div>
       )}
 
-      {/* Phone Header Modal - unchanged */}
-      {showPhoneHeaderModal && (
-        <div className="modal__overlay" onClick={() => setShowPhoneHeaderModal(false)}>
+      {/* Phone Status Bar Modal */}
+      {showPhoneBarModal && (
+        <div className="modal__overlay" onClick={() => setShowPhoneBarModal(false)}>
           <div className="modal__content" onClick={(e) => e.stopPropagation()}>
             <div className="modal__header">
               <h2 className="modal__title">
                 <FaMobileAlt style={{ marginRight: '8px' }} />
-                Edit Phone Header
+                Edit Phone Bar
               </h2>
-              <button className="modal__close" onClick={() => setShowPhoneHeaderModal(false)}>
+              <button className="modal__close" onClick={() => setShowPhoneBarModal(false)}>
                 <FaTimes />
               </button>
             </div>
 
+            {/* Always-visible live preview (pinned under the header) */}
+            <div className="phonebar__previewbar">
+              <div className={`phonebar__preview phonebar__preview--${phoneDraft.theme === 'dark' ? 'dark' : 'light'}`}>
+                <StatusBar
+                  color={phoneDraft.theme === 'dark' ? '#ffffff' : '#262626'}
+                  status={phoneDraft}
+                />
+              </div>
+            </div>
+
             <div className="modal__form">
-              <div className="phone__header-preview">
-                <div className="phone__header-status-bar">
-                  <span className="phone__time">{phoneHeaderData.time}</span>
-                  <div className="phone__status-right">
-                    <div className="phone__signal">
-                      <span className="signal__bar"></span>
-                      <span className="signal__bar"></span>
-                      <span className="signal__bar"></span>
-                      <span className="signal__bar"></span>
-                    </div>
-                    <div className="phone__battery">
-                      <FaBatteryFull size={14} />
-                      <span>{phoneHeaderData.battery}%</span>
-                    </div>
-                  </div>
+              {/* Phone Bar Style — choose one of 4 models (live previews) */}
+              <div className="input__group">
+                <label>Phone Bar Style</label>
+                <div className="model__cards">
+                  {([
+                    { id: 'classic', label: 'Classic' },
+                    { id: 'ios', label: 'iOS %' },
+                    { id: 'bars', label: 'Bars %' },
+                    { id: 'cellular', label: '4G' },
+                  ] as const).map((opt) => (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      className={`model__card ${phoneDraft.model === opt.id ? 'active' : ''}`}
+                      onClick={() => setPhoneDraft(prev => ({ ...prev, model: opt.id }))}
+                    >
+                      <span className="model__card-preview">
+                        <StatusBar height={30} color="#ffffff" status={{ ...phoneDraft, model: opt.id, theme: 'dark' }} />
+                      </span>
+                      <span className="model__card-label">{opt.label}</span>
+                    </button>
+                  ))}
                 </div>
               </div>
 
+              {/* Icon color theme */}
               <div className="input__group">
-                <label>Time (HH:MM)</label>
+                <label>Icon Color</label>
+                <div className="segmented">
+                  {([
+                    { id: 'auto', label: 'Auto' },
+                    { id: 'light', label: 'Light BG' },
+                    { id: 'dark', label: 'Dark BG' },
+                  ] as const).map((opt) => (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      className={`segmented__btn ${phoneDraft.theme === opt.id ? 'active' : ''}`}
+                      onClick={() => setPhoneDraft(prev => ({ ...prev, theme: opt.id }))}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Time */}
+              <div className="input__group">
+                <label>Phone Time</label>
                 <div className="input__with__buttons">
                   <input
                     type="text"
-                    value={phoneHeaderData.time}
-                    onChange={(e) => setPhoneHeaderData(prev => ({ ...prev, time: e.target.value }))}
-                    placeholder="09:41"
+                    value={phoneDraft.time}
+                    onChange={(e) => setPhoneDraft(prev => ({ ...prev, time: e.target.value }))}
+                    placeholder="9:41"
                   />
-                  <button
-                    className="input__button"
-                    onClick={() => {
-                      const now = new Date();
-                      const timeString = now.toLocaleTimeString('en-US', {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        hour12: false
-                      });
-                      setPhoneHeaderData(prev => ({ ...prev, time: timeString }));
-                    }}
-                    title="Set current time"
-                  >
+                  <button className="input__button" onClick={setPhoneNow} title="Set current time">
                     <FaClock size={14} />
                   </button>
                 </div>
               </div>
 
+              {/* Signal strength */}
               <div className="input__group">
-                <label>Battery Level (%)</label>
+                <label><FaSignal size={11} style={{ marginRight: '6px' }} />Signal Bars</label>
+                <div className="segmented">
+                  {[0, 1, 2, 3, 4].map((n) => (
+                    <button
+                      key={n}
+                      type="button"
+                      className={`segmented__btn ${phoneDraft.signal === n ? 'active' : ''}`}
+                      onClick={() => setPhoneDraft(prev => ({ ...prev, signal: n }))}
+                    >
+                      {n}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Network label (cellular model only) */}
+              {phoneDraft.model === 'cellular' && (
+                <div className="input__group">
+                  <label><FaSignal size={11} style={{ marginRight: '6px' }} />Network</label>
+                  <div className="segmented">
+                    {['3G', '4G', '5G', 'LTE'].map((n) => (
+                      <button
+                        key={n}
+                        type="button"
+                        className={`segmented__btn ${phoneDraft.network === n ? 'active' : ''}`}
+                        onClick={() => setPhoneDraft(prev => ({ ...prev, network: n }))}
+                      >
+                        {n}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Battery level */}
+              <div className="input__group">
+                <label><FaBatteryFull size={12} style={{ marginRight: '6px' }} />Battery Level — {phoneDraft.battery}%</label>
                 <div className="input__with__buttons">
                   <input
-                    type="number"
+                    type="range"
                     min="0"
                     max="100"
-                    value={phoneHeaderData.battery}
-                    onChange={(e) => setPhoneHeaderData(prev => ({ ...prev, battery: parseInt(e.target.value) || 0 }))}
+                    value={phoneDraft.battery}
+                    onChange={(e) => setPhoneDraft(prev => ({ ...prev, battery: parseInt(e.target.value) || 0 }))}
+                    className="phonebar__range"
                   />
                   <button
                     className="input__button"
-                    onClick={() => setPhoneHeaderData(prev => ({ ...prev, battery: 100 }))}
+                    onClick={() => setPhoneDraft(prev => ({ ...prev, battery: 100 }))}
                     title="Full battery"
                   >
                     <FaBatteryFull size={14} />
@@ -850,19 +941,51 @@ function Sidebar({
                 </div>
               </div>
 
-              <div className="notifications__section">
-                <h4 className="notifications__title">
-                  <FaBell style={{ marginRight: '6px' }} />
-                  Notification Badges
-                </h4>
+              {/* Toggles — Wi-Fi · Low Power · Charging on one line */}
+              <div className="toggle__group">
+                {phoneDraft.model !== 'cellular' && (
+                  <div className="toggle__chip">
+                    <span className="toggle__chip-label"><FaWifi size={13} />Wi-Fi</span>
+                    <label className="toggle__switch">
+                      <input
+                        type="checkbox"
+                        checked={phoneDraft.wifi}
+                        onChange={(e) => setPhoneDraft(prev => ({ ...prev, wifi: e.target.checked }))}
+                      />
+                      <span className="toggle__slider"></span>
+                    </label>
+                  </div>
+                )}
+                <div className="toggle__chip">
+                  <span className="toggle__chip-label"><FaBolt size={13} />Low Power</span>
+                  <label className="toggle__switch">
+                    <input
+                      type="checkbox"
+                      checked={phoneDraft.lowPower}
+                      onChange={(e) => setPhoneDraft(prev => ({ ...prev, lowPower: e.target.checked }))}
+                    />
+                    <span className="toggle__slider"></span>
+                  </label>
+                </div>
+                <div className="toggle__chip">
+                  <span className="toggle__chip-label"><FaBolt size={13} />Charging</span>
+                  <label className="toggle__switch">
+                    <input
+                      type="checkbox"
+                      checked={phoneDraft.charging}
+                      onChange={(e) => setPhoneDraft(prev => ({ ...prev, charging: e.target.checked }))}
+                    />
+                    <span className="toggle__slider"></span>
+                  </label>
+                </div>
               </div>
             </div>
 
             <div className="modal__actions">
-              <button className="modal__btn modal__btn--cancel" onClick={() => setShowPhoneHeaderModal(false)}>
+              <button className="modal__btn modal__btn--cancel" onClick={() => setShowPhoneBarModal(false)}>
                 Cancel
               </button>
-              <button className="modal__btn modal__btn--save" onClick={() => setShowPhoneHeaderModal(false)}>
+              <button className="modal__btn modal__btn--save" onClick={savePhoneBar}>
                 Save Changes
               </button>
             </div>

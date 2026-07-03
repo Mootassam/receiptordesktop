@@ -99,7 +99,7 @@ const Template26: React.FC<Template26Props> = ({ formData }) => {
   const displayPrice = pricePerCoinFormatted;
   const displayNetwork = formData.chain || 'Ethereum (ERC20)';
   const displayTxid = formatTxid(formData.txid);
-  const displayDate = formData.date || 'Apr 8,2026 12:24AM';
+   const displayDate = Dates.formatTemplate26(formData.date);
   const displayStatus = formData.status || 'Completed';
 
   return (

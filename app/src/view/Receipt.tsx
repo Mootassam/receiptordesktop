@@ -6,6 +6,7 @@ import Sidebar from "../layout/sidebar/Sidebar";
 import Screenshot from "../shared/Screenshot";
 import { DrawingApp } from "../shared/DrawingApp";
 import { FormDataProvider, FormData } from "../shared/FormDataContext";
+import { PhoneStatusProvider, PhoneStatus, defaultPhoneStatus } from "../shared/PhoneStatusContext";
 
 import Template1 from "../component/tempalate1/Template1";
 import Template2 from "../component/tempalate2/Template2";
@@ -65,6 +66,9 @@ function Receipt() {
     referenceNo: ""
   });
 
+  // Phone status bar state (time / battery / signal / wifi), edited from the sidebar
+  const [phoneStatus, setPhoneStatus] = useState<PhoneStatus>(defaultPhoneStatus);
+
   // Set canvas dimensions based on template
   const getCanvasDimensions = () => {
     switch (value) {
@@ -89,6 +93,8 @@ function Receipt() {
           setTransactionType={setTransactionType}
           formData={formData}
           setFormData={setFormData}
+          phoneStatus={phoneStatus}
+          setPhoneStatus={setPhoneStatus}
           {...toolbarProps}
         />
         <main className="app__main">
@@ -105,6 +111,7 @@ function Receipt() {
               />
             </div>
 
+            <PhoneStatusProvider value={{ phoneStatus, setPhoneStatus }}>
             <FormDataProvider value={{ formData, setFormData }} >
               {value === "template1" && <Template1 formData={formData} />}
               {value === "template2" && <Template2 formData={formData} />}
@@ -147,6 +154,7 @@ function Receipt() {
 
 
             </FormDataProvider>
+            </PhoneStatusProvider>
           </div>
         </main>
       </div>

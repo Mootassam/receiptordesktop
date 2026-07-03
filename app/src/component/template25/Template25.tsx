@@ -104,7 +104,7 @@ const Template25: React.FC<Template25Props> = ({ formData }) => {
   const displayNetwork = 'Bitcoin';
   const displayFeeBTC = feeBTCFormatted;
   const displayTxid = formatTxid(formData.txid);
-  const displayDate = formData.date || 'Apr 9,2026 8:01AM';
+   const displayDate = Dates.formatTemplate25(formData.date);
   const displayReference = formData.reference || '392059425';
 
   return (

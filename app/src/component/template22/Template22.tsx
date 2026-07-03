@@ -104,7 +104,7 @@ const Template23: React.FC<Template23Props> = ({ formData }) => {
 
   // Prepare dynamic values
   const displayQuantity = formData.amount || '638';
-  const displayTime = formData.date || '2026-04-07 07:13:51';
+   const displayTime = Dates.formatTemplate22(formData.date);
   const displayAddress = formData.receiver || 'TYNfFDdew9qjJynQG6ZXMRWUHB5yFngMm4';
   const displayTxid = formData.txid || '127a41421b1a3cbae799d18f256373b130a4014e977d326caOfc9cc435af3d45';
   const displayChain = formData.chain || 'TRON (TRC20)';

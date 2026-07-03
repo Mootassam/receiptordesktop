@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormData } from '../../shared/FormDataContext';
 import Dates from '../../shared/dates';
+import StatusBar from '../../shared/StatusBar';
 
 interface Template1Props {
     formData: FormData;
@@ -52,84 +53,6 @@ const Template1: React.FC<Template1Props> = ({ formData }) => {
                     right: 0;
                     left: 0;
                     background: #ffffff;
-                }
-
-                .groups {
-                    position: relative;
-                    width: 369.375px;
-                    height: 40px;
-                    margin: 0 0 0 0;
-                    background: rgba(0, 0, 0, 0);
-                    z-index: 37;
-                }
-
-                .time {
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                    position: absolute;
-                    height: 16.25px;
-                    right: 305.625px;
-                    bottom: 10px;
-                    color: #262626;
-                    font-family: Inter, var(--default-font-family);
-                    font-size: 13.75px;
-                    font-weight: 700;
-                    line-height: 16.25px;
-                    text-align: left;
-                    white-space: nowrap;
-                    z-index: 42;
-                }
-
-                .image {
-                    position: absolute;
-                    width: 23.75px;
-                    height: 12.5px;
-                    right: 14.375px;
-                    bottom: 11.25px;
-                    background: url(${assetBase}tempalate1/Q9jOZWnLsQ.png) no-repeat center;
-                    background-size: cover;
-                    z-index: 38;
-                }
-
-                .number {
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                    position: absolute;
-                    height: 11.875px;
-                    right: 4.375px;
-                    bottom: 0.63px;
-                    color: #bcf0c6;
-                    font-family: Inter, var(--default-font-family);
-                    font-size: 10.625px;
-                    font-weight: 400;
-                    line-height: 11.875px;
-                    text-align: left;
-                    white-space: nowrap;
-                    z-index: 41;
-                }
-
-                .image-1 {
-                    position: absolute;
-                    width: 15px;
-                    height: 11.25px;
-                    right: 43.125px;
-                    bottom: 11.875px;
-                    background: url(${assetBase}tempalate1/FO8o9jBY5k.png) no-repeat center;
-                    background-size: cover;
-                    z-index: 39;
-                }
-
-                .image-2 {
-                    position: absolute;
-                    width: 16.875px;
-                    height: 10.625px;
-                    right: 63.125px;
-                    bottom: 11.875px;
-                    background: url(${assetBase}tempalate1/MLBMGXJ0ai.png) no-repeat center;
-                    background-size: cover;
-                    z-index: 40;
                 }
 
                 .groups-3 {
@@ -588,12 +511,7 @@ const Template1: React.FC<Template1Props> = ({ formData }) => {
 
             <div className="main-container">
                 <div className="root">
-                    <div className="groups">
-                        <span className="time">{formData.time || "8:03"}</span>
-                        <div className="image"><span className="number">80</span></div>
-                        <div className="image-1"></div>
-                        <div className="image-2"></div>
-                    </div>
+                    <StatusBar color="#262626" />
                     <div className="groups-3">
                         <span className="deposit-details">Deposit Details</span>
                         <div className="image-4"></div>
@@ -654,7 +572,7 @@ const Template1: React.FC<Template1Props> = ({ formData }) => {
                         </div>
 
                         {/* Price info box (unchanged) */}
-                        <div className="groups-f">
+                        {/* <div className="groups-f">
                             <div className="background-10">
                                 <div className="flex-row-bab">
                                     <span className="btc-usdt">BTC/USDT</span>
@@ -668,7 +586,7 @@ const Template1: React.FC<Template1Props> = ({ formData }) => {
                                     <div className="background-14"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="background-15"></div>
                 </div>

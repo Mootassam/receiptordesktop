@@ -9,6 +9,10 @@ export interface FormData {
   txid: string;
   fee?: string;
   referenceNo?: string;
+  chain?: string;
+  reference?: string;
+  status?: string;
+  height?: string;
 }
 
 interface FormDataContextType {
