@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormData } from '../../shared/FormDataContext';
+import StatusBar from '../../shared/StatusBar';
 import Dates from '../../shared/dates';
 
 interface Template9Props {
@@ -671,14 +672,7 @@ const Template9: React.FC<Template9Props> = ({ formData }) => {
 
       <div className="main-container">
         <div className="flex-row-ee">
-          <div className="groups">
-            <div className="button">
-              <div className="background"><span className="time">{formData.time || '9:37'}</span></div>
-            </div>
-            <span className="network-4g">4G</span>
-            <div className="image"></div>
-            <div className="image-1"></div>
-          </div>
+          <StatusBar defaultTheme="dark" />
           <div className="groups-2">
             <div className="groups-3">
               <div className="image-4"></div>

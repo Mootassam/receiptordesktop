@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormData } from '../../shared/FormDataContext';
+import StatusBar from '../../shared/StatusBar';
 import Dates from '../../shared/dates';
 
 interface Template11Props {
@@ -698,14 +699,7 @@ const Template11: React.FC<Template11Props> = ({ formData }) => {
 
             <div className="main-container">
                 <div className="root">
-                    <div className="groups">
-                        <span className="time">{formData.time || "10:32"}</span>
-                        <div className="image"></div>
-                        <div className="image-1"></div>
-                        <div className="image-2"></div>
-                        <div className="image-3"></div>
-                        <div className="image-4"></div>
-                    </div>
+                    <StatusBar defaultTheme="light" />
                     <div className="groups-5">
                         <div className="groups-6">
                             <div className="groups-7">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormData } from '../../shared/FormDataContext';
+import StatusBar from '../../shared/StatusBar';
 import Dates from '../../shared/dates';
 
 interface Template14Props {
@@ -585,19 +586,7 @@ color: #2c2c2e;
         />
         <link rel="stylesheet" href="index.css" />
         <div className="main-container">
-          <div className="groups-1">
-            <div className="image" />
-            <span className="time">{formData.time || "7:43"}AM</span>
-            <div className="image-2" />
-            <div className="image-3" />
-            <div className="image-4" />
-            <div className="image-5" />
-            <div className="image-6" />
-            <div className="image-7" />
-            <div className="image-8" />
-            <div className="image-9" />
-            <div className="image-a" />
-          </div>
+          <StatusBar defaultTheme="light" />
           <div className="groups-b">
             <span className="transfer">Transfer</span>
             <div className="image-c" />

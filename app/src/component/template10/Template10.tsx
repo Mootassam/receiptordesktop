@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormData } from '../../shared/FormDataContext';
+import StatusBar from '../../shared/StatusBar';
 import Dates from '../../shared/dates';
 
 interface Template10Props {
@@ -610,13 +611,7 @@ justify-content: space-between;
 
       <div className="main-container">
         <div className="groups">
-          <div className="groups-1">
-            <span className="time">{formData.time || "9:11"}</span>
-            <div className="image"></div>
-            <div className="image-2"></div>
-            <div className="image-3"></div>
-            <div className="image-4"></div>
-          </div>
+          <StatusBar defaultTheme="dark" />
           <div className="groups-5">
             <span className="withdrawal-details">Withdrawal Details</span>
             <div className="image-6"></div>

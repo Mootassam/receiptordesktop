@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FormData } from '../../shared/FormDataContext';
+import StatusBar from '../../shared/StatusBar';
 import Dates from '../../shared/dates';
 import axios from 'axios';
 
@@ -578,12 +579,7 @@ const Template23: React.FC<Template23Props> = ({ formData }) => {
 
       <div className="main-container">
         <div className="root">
-          <div className="groups">
-            <span className="time">{displayTime}</span>
-            <div className="image" />
-            <span className="text-2">4G</span>
-            <div className="image-1" />
-          </div>
+          <StatusBar defaultTheme="dark" />
           <div className="groups-2">
             <div className="image-3" />
           </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormData } from '../../shared/FormDataContext';
+import StatusBar from '../../shared/StatusBar';
 import Dates from '../../shared/dates';
 
 interface Template15Props {
@@ -535,13 +536,7 @@ const Template15: React.FC<Template15Props> = ({ formData }) => {
 
 
         <div className="main-container">
-            <div className="groups">
-              <span className="time">{timeDisplay}</span>
-              <div className="image" />
-              <div className="image-1" />
-              <div className="image-2" />
-              <div className="image-3" />
-            </div>
+            <StatusBar defaultTheme="dark" />
             <div className="groups-4">
               <span className="transfer">Transfer</span>
               <div className="image-5" />

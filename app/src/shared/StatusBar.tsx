@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 import { usePhoneStatus, PhoneStatus } from "./PhoneStatusContext";
 import { notificationById } from "./notificationIcons";
+
+// Module counter → a stable unique id per StatusBar instance (React 17 has no useId).
+let statusBarSeq = 0;
 
 interface StatusBarProps {
   /** Kept for backward compatibility; icon color is now driven by the light/dark theme. */
   color?: string;
   /** Height of the status bar row. */
   height?: number | string;
+  /** Template's natural background — used when the user's theme is "auto". */
+  defaultTheme?: "light" | "dark";
   /**
    * Optional override of the shared phone status (used by the editor's live preview).
    * When omitted, the bar reads from PhoneStatusContext.
@@ -46,12 +51,13 @@ const withAlpha = (hex: string, a: number): string => {
  * CSS class collisions. Values come from PhoneStatusContext (editable from the sidebar);
  * `color` themes the icons per template.
  */
-const StatusBar: React.FC<StatusBarProps> = ({ color = "#262626", height = 40, status }) => {
+const StatusBar: React.FC<StatusBarProps> = ({ color = "#262626", height = 40, defaultTheme = "light", status }) => {
   const { phoneStatus } = usePhoneStatus();
   const s = { ...phoneStatus, ...status };
 
-  // Only two looks: black icons (light background) or white icons (dark background).
-  const iconColor = s.theme === "dark" ? "#ffffff" : "#111111";
+  // Two looks: black icons (light bg) or white icons (dark bg). "auto" follows the template.
+  const resolvedTheme = s.theme === "auto" ? defaultTheme : s.theme;
+  const iconColor = resolvedTheme === "dark" ? "#ffffff" : "#111111";
   const dim = withAlpha(iconColor, 0.28);
 
   const signal = clamp(Math.round(s.signal), 0, 4);
@@ -76,6 +82,14 @@ const StatusBar: React.FC<StatusBarProps> = ({ color = "#262626", height = 40, s
     fillColor = iconColor;
     numberColor = luminance(iconColor) > 0.6 ? "#1c1c1e" : "#ffffff";
   }
+
+  // Battery % number style (shared by the base + knockout layers so they align perfectly).
+  // Battery interior is drawn as SVG (below) so html2canvas captures the centered %,
+  // the level fill, and the knockout faithfully. Unique clip id per instance.
+  const idRef = useRef<number>();
+  if (idRef.current === undefined) idRef.current = ++statusBarSeq;
+  const clipId = "batclip" + idRef.current;
+  const batteryFillW = (24.4 * battery) / 100; // interior width (24.4) × level
 
   // Signal marks (bars, or dots for the "ios" model).
   const heights = isDots ? [3.5, 5.5, 7.5, 9.5] : [4, 6.5, 9, 12];
@@ -168,42 +182,36 @@ const StatusBar: React.FC<StatusBarProps> = ({ color = "#262626", height = 40, s
           <div
             style={{
               position: "relative",
+              overflow: "hidden",
               display: "flex",
               alignItems: "center",
-              justifyContent: showNumber ? "center" : "flex-start",
-              width: showNumber ? "25px" : "24px",
-              height: "11.5px",
-              border: `1.2px solid ${iconColor}`,
-              borderRadius: "3px",
-              padding: "1.2px",
+              justifyContent: "flex-start",
+              width: showNumber ? "27px" : "24px",
+              height: showNumber ? "13px" : "11.5px",
+              border: `1.3px solid ${iconColor}`,
+              borderRadius: "4px",
+              padding: showNumber ? "0" : "1.2px",
+              background: "transparent",
               boxSizing: "border-box",
             }}
           >
             {showNumber ? (
-              <>
-                {/* Solid fill spanning the capsule, with the % knocked out on top */}
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: "1px",
-                    background: fillColor,
-                    borderRadius: "1.5px",
-                  }}
-                />
-                <span
-                  style={{
-                    position: "relative",
-                    color: numberColor,
-                    fontFamily: FONT,
-                    fontSize: "7.5px",
-                    fontWeight: 700,
-                    lineHeight: 1,
-                    letterSpacing: "-0.4px",
-                  }}
-                >
-                  {battery}
-                </span>
-              </>
+              // SVG interior: text-anchor + clipPath give a perfectly centered % and an
+              // accurate level fill that html2canvas rasterizes exactly.
+              <svg width="100%" height="100%" viewBox="0 0 24.4 10.4" preserveAspectRatio="none" style={{ display: "block" }} aria-hidden="true">
+                <defs>
+                  <clipPath id={clipId}>
+                    <rect x="0" y="0" width={batteryFillW} height="10.4" />
+                  </clipPath>
+                </defs>
+                {/* Base number — shows over the empty part */}
+                <text x="12.2" y="5.2" textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontSize="9" fontWeight="800" fill={iconColor}>{battery}</text>
+                {/* Level fill + knockout number, clipped to the charge level */}
+                <g clipPath={`url(#${clipId})`}>
+                  <rect x="0" y="0" width="24.4" height="10.4" fill={fillColor} />
+                  <text x="12.2" y="5.2" textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontSize="9" fontWeight="800" fill={numberColor}>{battery}</text>
+                </g>
+              </svg>
             ) : (
               <div
                 style={{
@@ -231,8 +239,8 @@ const StatusBar: React.FC<StatusBarProps> = ({ color = "#262626", height = 40, s
           {/* terminal nub */}
           <div
             style={{
-              width: "1.8px",
-              height: "4.5px",
+              width: "2px",
+              height: showNumber ? "5px" : "4.5px",
               marginLeft: "1px",
               background: iconColor,
               borderRadius: "0 2px 2px 0",

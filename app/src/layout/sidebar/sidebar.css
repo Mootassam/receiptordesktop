@@ -8,10 +8,10 @@
   background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   backdrop-filter: blur(10px);
   box-shadow: 5px 0 25px rgba(0, 0, 0, 0.08);
-  padding: 20px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 29px;
   border-right: 1px solid rgba(0, 0, 0, 0.05);
   z-index: 100;
   overflow-y: auto;
@@ -21,8 +21,8 @@
 .coin__selection {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 10px;
+  margin-bottom: 4px;
 }
 
 .coin__selection label {
@@ -45,13 +45,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px 8px;
+  padding: 11px 8px;
   border: 2px solid #e2e8f0;
   border-radius: 10px;
   background: white;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  min-height: 70px;
+  min-height: 66px;
 }
 
 .coin__option:hover {
@@ -66,14 +66,14 @@
 }
 
 .coin__icon {
-  width: 28px;
-  height: 28px;
-  margin-bottom: 6px;
+  width: 27px;
+  height: 27px;
+  margin-bottom: 5px;
   object-fit: contain;
 }
 
 .coin__name {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: #334155;
   font-family: 'Inter', sans-serif;
@@ -95,7 +95,7 @@
   border: none;
   border-radius: 8px;
   background: transparent;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: #64748b;
   cursor: pointer;
@@ -113,7 +113,7 @@
 .sidebar__form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
   padding: 0 2px;
 }
 
@@ -124,7 +124,7 @@
 }
 
 .form__group label {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: #475569;
   text-transform: uppercase;
@@ -135,11 +135,11 @@
 /* Select Styling */
 .app__select {
   width: 100%;
-  padding: 12px 14px;
+  padding: 11px 13px;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   background: white;
-  font-size: 13px;
+  font-size: 14px;
   color: #334155;
   transition: all 0.3s ease;
   font-family: 'Inter', sans-serif;
@@ -213,28 +213,31 @@
   transform: translateY(-1px);
 }
 
-/* Brush Size Slider - Removed preview */
-.brush__size-container {
+/* Compact tools row: color + undo + erase + brush slider on one line */
+.tools__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   background: white;
-  padding: 12px;
+  padding: 11px 12px;
   border-radius: 10px;
   border: 1px solid #e2e8f0;
 }
 
-.brush__size-container input[type="range"] {
-  width: 100%;
+.brush__slider {
+  flex: 1;
   height: 6px;
   background: #e2e8f0;
   border-radius: 3px;
   outline: none;
   -webkit-appearance: none;
-  margin: 8px 0 4px;
+  cursor: pointer;
 }
 
-.brush__size-container input[type="range"]::-webkit-slider-thumb {
+.brush__slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   background: #3b82f6;
   border-radius: 50%;
   cursor: pointer;
@@ -242,27 +245,18 @@
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
 }
 
-.brush__size-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: #64748b;
-  margin-top: 4px;
-  font-family: 'Inter', sans-serif;
-}
-
 /* Action Buttons */
 .action__buttons {
   display: flex;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .edit__button, .clear__button {
   flex: 1;
-  padding: 12px;
+  padding: 11px;
   border-radius: 10px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -343,10 +337,10 @@
 
 /* Screenshot Button */
 .app__screenshot {
-  padding: 14px 20px;
+  padding: 11px 18px;
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
-  margin-top: 15px;
+  margin-top: 4px;
   border: none;
   border-radius: 12px;
   font-size: 14px;
@@ -945,8 +939,8 @@
   justify-content: center;
   gap: 8px;
   width: 100%;
-  padding: 14px 20px;
-  margin: 16px 0;
+  padding: 13px 20px;
+  margin: 10px 0 0;
   background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   border: none;
   border-radius: 12px;
@@ -1078,7 +1072,7 @@
 /* ===================== Phone Bar editor ===================== */
 .phonebar__button {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 8px;
   padding: 11px 14px;
   display: flex;
   align-items: center;
@@ -1088,7 +1082,7 @@
   border-radius: 10px;
   background: #f8fafc;
   color: #334155;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
   cursor: pointer;

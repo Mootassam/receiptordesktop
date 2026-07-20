@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FormData } from '../../shared/FormDataContext';
+import StatusBar from '../../shared/StatusBar';
 import Dates from '../../shared/dates';
 
 interface Template5Props {
@@ -429,13 +430,7 @@ const Template5: React.FC<Template5Props> = ({ formData }) => {
       <div className="main-container">
         <div className="root">
           <div className="groups">
-            <div className="groups-1">
-              <span className="time">{formData.time || "08:43"}</span>
-              <div className="image"></div>
-              <div className="image-2"></div>
-              <div className="image-3"></div>
-              <div className="image-4"></div>
-            </div>
+            <StatusBar defaultTheme="light" />
             <div className="groups-5"><div className="image-6"></div></div>
             <span className="usdt-dep">USDT (ERC20) Deposit</span>
             <div className="groups-7">

@@ -7,12 +7,12 @@ import {
   FaInstagram,
   FaFacebookMessenger,
   FaFacebookF,
-  FaTwitter,
   FaSnapchatGhost,
   FaEnvelope,
   FaPhoneSlash,
   FaCommentDots,
 } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export interface NotificationOption {
   id: string;
@@ -32,7 +32,7 @@ export const NOTIFICATION_OPTIONS: NotificationOption[] = [
   { id: "instagram", label: "Instagram", Icon: FaInstagram },
   { id: "messenger", label: "Messenger", Icon: FaFacebookMessenger },
   { id: "facebook", label: "Facebook", Icon: FaFacebookF },
-  { id: "twitter", label: "Twitter", Icon: FaTwitter },
+  { id: "twitter", label: "X", Icon: FaXTwitter },
   { id: "snapchat", label: "Snapchat", Icon: FaSnapchatGhost },
   { id: "gmail", label: "Gmail", Icon: FaEnvelope },
   { id: "missed", label: "Missed Call", Icon: FaPhoneSlash },

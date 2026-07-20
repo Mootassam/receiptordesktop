@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FormData } from '../../shared/FormDataContext';
+import StatusBar from '../../shared/StatusBar';
 import Dates from '../../shared/dates';
 import axios from 'axios';
 
@@ -470,13 +471,7 @@ button {
       <>
         <div className="main-container">
           <div className="root">
-            <div className="groups">
-              <span className="time">{formData.time || "1:27"}</span>
-              <div className="image" />
-              <div className="image-1" />
-              <div className="image-2" />
-              <div className="image-3" />
-            </div>
+            <StatusBar defaultTheme="light" />
             <div className="groups-4">
               <span className="crypto-sent-comp">Crypto sent-Completed</span>
               <div className="image-5" />

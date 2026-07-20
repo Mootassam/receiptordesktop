@@ -1,5 +1,6 @@
 import React from 'react'
 import { FormData } from '../../shared/FormDataContext';
+import StatusBar from '../../shared/StatusBar';
 import Dates from '../../shared/dates';
 
 interface Template13Props {
@@ -806,19 +807,7 @@ const Template13: React.FC<Template13Props> = ({ formData }) => {
             <div className="main-container">
                 <div className="wrapper">
                     <div className="box">
-                        <div className="box-2">
-                            <span className="text">{formData.time || "7:42"}{formData.time?.includes('AM') || formData.time?.includes('PM') ? '' : 'AM'}</span>
-                            <div className="img"></div>
-                            <div className="pic"></div>
-                            <div className="pic-2"></div>
-                            <div className="pic-3"></div>
-                            <div className="pic-4"></div>
-                            <div className="img-2"></div>
-                            <div className="pic-5"></div>
-                            <div className="image"></div>
-                            <div className="image-1"></div>
-                            <div className="image-2"></div>
-                        </div>
+                        <StatusBar defaultTheme="light" />
                         <div className="groups">
                             <div className="image-3"></div>
                             <div className="image-4"></div>

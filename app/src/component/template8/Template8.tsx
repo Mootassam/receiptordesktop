@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormData } from '../../shared/FormDataContext';
+import StatusBar from '../../shared/StatusBar';
 import Dates from '../../shared/dates';
 
 interface Template8Props {
@@ -658,14 +659,7 @@ const Template8: React.FC<Template8Props> = ({ formData }) => {
       `}</style>
 
       <div className="main-container">
-        <div className="groups">
-          <span className="time-stamp">{formData.time || '2:14'}</span>
-          <span className="lte">LTE</span>
-          <div className="image"></div>
-          <div className="image-1"></div>
-          <div className="image-2"></div>
-          <div className="image-3"></div>
-        </div>
+        <StatusBar defaultTheme="light" />
         <div className="groups-4">
           <span className="withdrawal-details">Withdrawal Details</span>
           <div className="image-5"></div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormData } from '../../shared/FormDataContext';
+import StatusBar from '../../shared/StatusBar';
 import Dates from '../../shared/dates';
 
 interface Template12Props {
@@ -695,14 +696,7 @@ const Template12: React.FC<Template12Props> = ({ formData }) => {
 
             <div className="main-container">
                 <div className="root">
-                    <div className="groups">
-                        <span className="time">{timeDisplay}</span>
-                        <div className="image"></div>
-                        <div className="image-1"></div>
-                        <div className="image-2"></div>
-                        <div className="image-3"></div>
-                        <div className="image-4"></div>
-                    </div>
+                    <StatusBar defaultTheme="light" />
                     <div className="button">
                         <div className="background">
                             <span className="view-blockchain-explorer">View on blockchain explorer</span>

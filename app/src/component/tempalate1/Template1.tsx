@@ -511,7 +511,7 @@ const Template1: React.FC<Template1Props> = ({ formData }) => {
 
             <div className="main-container">
                 <div className="root">
-                    <StatusBar color="#262626" />
+                    <StatusBar defaultTheme="light" />
                     <div className="groups-3">
                         <span className="deposit-details">Deposit Details</span>
                         <div className="image-4"></div>

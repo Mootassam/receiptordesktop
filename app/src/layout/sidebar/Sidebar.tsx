@@ -5,6 +5,7 @@ import { FormData } from "../../shared/FormDataContext";
 import { PhoneStatus } from "../../shared/PhoneStatusContext";
 import StatusBar from "../../shared/StatusBar";
 import { NOTIFICATION_OPTIONS, MAX_NOTIFICATIONS } from "../../shared/notificationIcons";
+import { makeT, Lang, LANGUAGES } from "../../shared/sidebarTranslations";
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "../../modules/auth/authActions";
 import {
@@ -265,7 +266,14 @@ function Sidebar({
   const fieldLabels = getCurrentFieldLabels();
   const [selectedCoin, setSelectedCoin] = useState("USDT");
   const [showEditModal, setShowEditModal] = useState(false);
-  const [language, setLanguage] = useState("english");
+  const [language, setLanguage] = useState<Lang>(
+    (localStorage.getItem("sidebarLang") as Lang) || "en"
+  );
+  const t = makeT(language);
+  const changeLanguage = (lang: Lang) => {
+    setLanguage(lang);
+    localStorage.setItem("sidebarLang", lang);
+  };
   const [randomData, setRandomData] = useState(false);
   const [isScreenshotAnimating, setIsScreenshotAnimating] = useState(false);
 
@@ -372,17 +380,6 @@ function Sidebar({
     }));
   };
 
-  // Set current time
-  const setCurrentTime = () => {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString('en-US', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false
-    });
-    setFormData(prev => ({ ...prev, time: timeString }));
-  };
-
   // Set current date
   const setCurrentDate = () => {
     const today = new Date().toISOString().split('T')[0];
@@ -446,9 +443,26 @@ function Sidebar({
   return (
     <>
       <div className="app__sidebar">
+        {/* Language Selection */}
+        <div className="form__group">
+          <label htmlFor="language">{t("language")}</label>
+          <select
+            id="language"
+            className="app__select"
+            value={language}
+            onChange={(e) => changeLanguage(e.target.value as Lang)}
+          >
+            {LANGUAGES.map((l) => (
+              <option key={l.code} value={l.code}>
+                {l.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
         {/* Coin Selection */}
         <div className="coin__selection">
-          <label htmlFor="coin">Select Coin</label>
+          <label htmlFor="coin">{t("selectCoin")}</label>
           <div className="coin__options">
             {coinOptions.map((coin) => (
               <button
@@ -488,20 +502,20 @@ function Sidebar({
             className={`type__btn ${transactionType === 'deposit' ? 'active' : ''}`}
             onClick={() => setTransactionType('deposit')}
           >
-            Deposit
+            {t("deposit")}
           </button>
           <button
             className={`type__btn ${transactionType === 'withdraw' ? 'active' : ''}`}
             onClick={() => setTransactionType('withdraw')}
           >
-            Withdraw
+            {t("withdraw")}
           </button>
         </div>
 
         <div className="sidebar__form">
           {/* Wallet Selection */}
           <div className="form__group">
-            <label htmlFor="wallet">Select Wallet</label>
+            <label htmlFor="wallet">{t("selectWallet")}</label>
             <select
               id="wallet"
               name="bank"
@@ -519,45 +533,33 @@ function Sidebar({
             </select>
           </div>
 
-          {/* Tools Section */}
+          {/* Tools + Brush (one compact row) */}
           <div className="form__group">
-            <label htmlFor="">Drawing Tools</label>
-
-            <div className="sidebar__">
-              <div className="app__tools">
-                <input
-                  type="color"
-                  value={color}
-                  onChange={changeColor}
-                  className="btn--color"
-                  title="Select color"
-                />
-                <button className="tool__btn undo" onClick={undo} title="Undo">
-                  <FaUndo size={16} />
-                </button>
-                <button onClick={erase} className="tool__btn erase__button" title="Eraser">
-                  <FaEraser size={16} />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Brush Size */}
-          <div className="form__group">
-            <label htmlFor="brushSize">Brush Size</label>
-            <div className="brush__size-container">
+            <label htmlFor="brushSize">{t("drawingTools")}</label>
+            <div className="tools__row">
+              <input
+                type="color"
+                value={color}
+                onChange={changeColor}
+                className="btn--color"
+                title="Select color"
+              />
+              <button className="tool__btn undo" onClick={undo} title="Undo">
+                <FaUndo size={15} />
+              </button>
+              <button onClick={erase} className="tool__btn erase__button" title="Eraser">
+                <FaEraser size={15} />
+              </button>
               <input
                 type="range"
                 id="brushSize"
+                className="brush__slider"
                 min="1"
                 max="70"
                 value={brushSize}
                 onChange={changeBrushSize}
+                title={`${t("brushSize")}: ${t("small")} — ${t("large")}`}
               />
-              <div className="brush__size-label">
-                <span>Small</span>
-                <span>Large</span>
-              </div>
             </div>
           </div>
 
@@ -565,17 +567,17 @@ function Sidebar({
           <div className="action__buttons">
             <button onClick={() => setShowEditModal(true)} className="edit__button">
               <FaEdit size={12} />
-              &nbsp;Edit
+              &nbsp;{t("edit")}
             </button>
             <button onClick={clear} className="clear__button">
-              Clear
+              {t("clear")}
             </button>
           </div>
 
           {/* Phone Status Bar Button */}
           <button onClick={openPhoneBarModal} className="phonebar__button">
             <FaMobileAlt size={14} />
-            <span>Edit Phone Bar</span>
+            <span>{t("editPhoneBar")}</span>
           </button>
         </div>
 
@@ -585,13 +587,13 @@ function Sidebar({
           onClick={handleScreenshot}
         >
           <FaCamera size={18} color="white" />
-          <span className="screenshot__text">Take Screenshot</span>
+          <span className="screenshot__text">{t("takeScreenshot")}</span>
         </button>
 
         {/* Logout Button */}
         <button className="logout__button" onClick={logout}>
           <FaSignOutAlt size={16} />
-          <span>Logout</span>
+          <span>{t("logout")}</span>
         </button>
       </div>
 
@@ -600,29 +602,13 @@ function Sidebar({
         <div className="modal__overlay" onClick={() => setShowEditModal(false)}>
           <div className="modal__content" onClick={(e) => e.stopPropagation()}>
             <div className="modal__header">
-              <h2 className="modal__title">Edit Transaction Details</h2>
+              <h2 className="modal__title">{t("editTransactionDetails")}</h2>
               <button className="modal__close" onClick={() => setShowEditModal(false)}>
                 <FaTimes />
               </button>
             </div>
 
             <div className="modal__form">
-              {/* Time Input */}
-              <div className="input__group">
-                <div className="input__with__buttons">
-                  <input
-                    type="text"
-                    name="time"
-                    value={formData.time}
-                    onChange={handleInputChange}
-                    placeholder={fieldLabels.time || "Time (HH:MM)"}
-                  />
-                  <button className="input__button" onClick={setCurrentTime} title="Set current time">
-                    <FaClock size={14} />
-                  </button>
-                </div>
-              </div>
-
               {/* Date Input */}
               <div className="input__group">
                 <div className="input__with__buttons">
@@ -631,7 +617,7 @@ function Sidebar({
                     name="date"
                     value={formData.date}
                     onChange={handleInputChange}
-                    placeholder={fieldLabels.date}
+                    placeholder={t(fieldLabels.date)}
                   />
                   <button className="input__button" onClick={setCurrentDate} title="Set today's date">
                     <FaCalendar size={14} />
@@ -648,7 +634,7 @@ function Sidebar({
                       name="sender"
                       value={formData.sender}
                       onChange={handleInputChange}
-                      placeholder={fieldLabels.sender}
+                      placeholder={t(fieldLabels.sender)}
                     />
                     <button
                       className="input__button"
@@ -670,7 +656,7 @@ function Sidebar({
                       name="amount"
                       value={formData.amount}
                       onChange={handleInputChange}
-                      placeholder={fieldLabels.amount}
+                      placeholder={t(fieldLabels.amount)}
                       step="0.01"
                     />
                     <button
@@ -693,7 +679,7 @@ function Sidebar({
                       name="receiver"
                       value={formData.receiver}
                       onChange={handleInputChange}
-                      placeholder={fieldLabels.receiver}
+                      placeholder={t(fieldLabels.receiver)}
                     />
                     <button
                       className="input__button"
@@ -715,7 +701,7 @@ function Sidebar({
                       name="txid"
                       value={formData.txid}
                       onChange={handleInputChange}
-                      placeholder={fieldLabels.txid}
+                      placeholder={t(fieldLabels.txid)}
                     />
                     <button
                       className="input__button"
@@ -745,7 +731,7 @@ function Sidebar({
                       name="fee"
                       value={formData.fee || ''}
                       onChange={handleInputChange}
-                      placeholder={fieldLabels.fee}
+                      placeholder={t(fieldLabels.fee)}
                     />
                     <button
                       className="input__button"
@@ -767,7 +753,7 @@ function Sidebar({
                       name="referenceNo"
                       value={formData.referenceNo || ''}
                       onChange={handleInputChange}
-                      placeholder={fieldLabels.referenceNo}
+                      placeholder={t(fieldLabels.referenceNo)}
                     />
                     <button
                       className="input__button"
@@ -783,7 +769,7 @@ function Sidebar({
               {/* Random Data Option */}
               <div className="random__option">
                 <div className="random__toggle">
-                  <span className="random__label">Generate Random Data</span>
+                  <span className="random__label">{t("generateRandomData")}</span>
                   <label className="toggle__switch">
                     <input
                       type="checkbox"
@@ -799,10 +785,10 @@ function Sidebar({
 
             <div className="modal__actions">
               <button className="modal__btn modal__btn--cancel" onClick={() => setShowEditModal(false)}>
-                Cancel
+                {t("cancel")}
               </button>
               <button className="modal__btn modal__btn--save" onClick={handleSave}>
-                Save Changes
+                {t("saveChanges")}
               </button>
             </div>
           </div>
@@ -816,7 +802,7 @@ function Sidebar({
             <div className="modal__header">
               <h2 className="modal__title">
                 <FaMobileAlt style={{ marginRight: '8px' }} />
-                Edit Phone Bar
+                {t("editPhoneBar")}
               </h2>
               <button className="modal__close" onClick={() => setShowPhoneBarModal(false)}>
                 <FaTimes />
@@ -834,11 +820,11 @@ function Sidebar({
             </div>
 
             <div className="modal__form">
-              <div className="section__label">Style</div>
+              <div className="section__label">{t("style")}</div>
 
               {/* Phone Bar Style — choose one of 4 models (live previews) */}
               <div className="input__group">
-                <label>Phone Bar Style</label>
+                <label>{t("phoneBarStyle")}</label>
                 <div className="model__cards">
                   {([
                     { id: 'classic', label: 'Classic' },
@@ -863,11 +849,12 @@ function Sidebar({
 
               {/* Icon color — two options: black (light bg) or white (dark bg) */}
               <div className="input__group">
-                <label>Icon Color</label>
+                <label>{t("iconColor")}</label>
                 <div className="segmented">
                   {([
-                    { id: 'light', label: 'Light BG · Black' },
-                    { id: 'dark', label: 'Dark BG · White' },
+                    { id: 'auto', label: 'Auto' },
+                    { id: 'light', label: 'Black' },
+                    { id: 'dark', label: 'White' },
                   ] as const).map((opt) => (
                     <button
                       key={opt.id}
@@ -875,17 +862,17 @@ function Sidebar({
                       className={`segmented__btn ${phoneDraft.theme === opt.id ? 'active' : ''}`}
                       onClick={() => setPhoneDraft(prev => ({ ...prev, theme: opt.id }))}
                     >
-                      {opt.label}
+                      {opt.id === 'auto' ? t('auto') : opt.id === 'light' ? t('black') : t('white')}
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="section__label">Left Side</div>
+              <div className="section__label">{t("leftSide")}</div>
 
               {/* Time */}
               <div className="input__group">
-                <label>Phone Time</label>
+                <label>{t("phoneTime")}</label>
                 <div className="input__with__buttons">
                   <input
                     type="text"
@@ -903,7 +890,7 @@ function Sidebar({
               <div className="input__group">
                 <label>
                   <FaBell size={11} style={{ marginRight: '6px' }} />
-                  Notifications
+                  {t("notifications")}
                   <span className="notif__hint">
                     {phoneDraft.notifications.length}/{MAX_NOTIFICATIONS}
                   </span>
@@ -930,11 +917,11 @@ function Sidebar({
                 </div>
               </div>
 
-              <div className="section__label">Right Side</div>
+              <div className="section__label">{t("rightSide")}</div>
 
               {/* Signal strength */}
               <div className="input__group">
-                <label><FaSignal size={11} style={{ marginRight: '6px' }} />Signal Bars</label>
+                <label><FaSignal size={11} style={{ marginRight: '6px' }} />{t("signalBars")}</label>
                 <div className="segmented">
                   {[0, 1, 2, 3, 4].map((n) => (
                     <button
@@ -952,7 +939,7 @@ function Sidebar({
               {/* Network label (cellular model only) */}
               {phoneDraft.model === 'cellular' && (
                 <div className="input__group">
-                  <label><FaSignal size={11} style={{ marginRight: '6px' }} />Network</label>
+                  <label><FaSignal size={11} style={{ marginRight: '6px' }} />{t("network")}</label>
                   <div className="segmented">
                     {['3G', '4G', '5G', 'LTE'].map((n) => (
                       <button
@@ -970,7 +957,7 @@ function Sidebar({
 
               {/* Battery level */}
               <div className="input__group">
-                <label><FaBatteryFull size={12} style={{ marginRight: '6px' }} />Battery Level — {phoneDraft.battery}%</label>
+                <label><FaBatteryFull size={12} style={{ marginRight: '6px' }} />{t("batteryLevel")} — {phoneDraft.battery}%</label>
                 <div className="input__with__buttons">
                   <input
                     type="range"
@@ -994,7 +981,7 @@ function Sidebar({
               <div className="toggle__group">
                 {phoneDraft.model !== 'cellular' && (
                   <div className="toggle__chip">
-                    <span className="toggle__chip-label"><FaWifi size={13} />Wi-Fi</span>
+                    <span className="toggle__chip-label"><FaWifi size={13} />{t("wifi")}</span>
                     <label className="toggle__switch">
                       <input
                         type="checkbox"
@@ -1006,7 +993,7 @@ function Sidebar({
                   </div>
                 )}
                 <div className="toggle__chip">
-                  <span className="toggle__chip-label"><FaBolt size={13} />Low Power</span>
+                  <span className="toggle__chip-label"><FaBolt size={13} />{t("lowPower")}</span>
                   <label className="toggle__switch">
                     <input
                       type="checkbox"
@@ -1017,7 +1004,7 @@ function Sidebar({
                   </label>
                 </div>
                 <div className="toggle__chip">
-                  <span className="toggle__chip-label"><FaBolt size={13} />Charging</span>
+                  <span className="toggle__chip-label"><FaBolt size={13} />{t("charging")}</span>
                   <label className="toggle__switch">
                     <input
                       type="checkbox"
@@ -1032,10 +1019,10 @@ function Sidebar({
 
             <div className="modal__actions">
               <button className="modal__btn modal__btn--cancel" onClick={() => setShowPhoneBarModal(false)}>
-                Cancel
+                {t("cancel")}
               </button>
               <button className="modal__btn modal__btn--save" onClick={savePhoneBar}>
-                Save Changes
+                {t("saveChanges")}
               </button>
             </div>
           </div>

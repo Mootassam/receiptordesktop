@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FormData } from '../../shared/FormDataContext';
+import StatusBar from '../../shared/StatusBar';
 import Dates from '../../shared/dates';
 
 interface Template16Props {
@@ -657,16 +658,7 @@ button {
 
       <div className="main-container">
         <div className="root">
-          <div className="groups">
-            <span className="time">{formData.time || "12:18"}</span>
-            <div className="image" />
-            <div className="image-1" />
-            <div className="image-2" />
-            <div className="image-3" />
-            <div className="image-4" />
-            <div className="image-5" />
-            <div className="image-6" />
-          </div>
+          <StatusBar defaultTheme="light" />
           <div className="flex-row-fcd">
             <div className="background" />
             <div className="background-7">

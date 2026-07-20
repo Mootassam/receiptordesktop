@@ -7,8 +7,8 @@ import AuthToken from '../../../modules/auth/authToken';
 const isElectron = window && window.location && window.location.protocol === 'file:';
 
 // 🌐 Base URLs
-const API_URL_BROWSER = 'http://159.198.70.147:8083/api';
-const API_URL_ELECTRON = 'http://159.198.70.147:8083/api';
+const API_URL_BROWSER = 'http://72.62.210.173:8083/api';
+const API_URL_ELECTRON = 'http://72.62.210.173:8083/api';
 const authAxios = Axios.create({
   baseURL: isElectron ? API_URL_ELECTRON : API_URL_BROWSER,
 
